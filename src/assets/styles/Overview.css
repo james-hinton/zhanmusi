@@ -1,0 +1,11 @@
+.repo__box {
+    display:flex;
+    flex-direction: column;
+    margin-left:1em;
+}
+
+.repo__box--row {
+    display:flex;
+    flex-direction: row;
+    width:100%;
+}

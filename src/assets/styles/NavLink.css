@@ -1,0 +1,12 @@
+a {
+    text-decoration: none;
+    color:#ebebeb;
+}
+
+a:hover {
+    color:gray;
+}
+
+.navlink {
+    font-weight:600;
+}

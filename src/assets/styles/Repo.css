@@ -1,0 +1,49 @@
+p {
+    margin:0;
+}
+
+.repo {
+
+    display:flex;
+    flex-direction: column;
+
+    width:100%;
+    margin-right:1.2em;
+    margin-bottom:1em;
+
+
+    height:7em;
+    justify-content: space-around;
+    padding:1em;
+
+    border-style:solid;
+    border-width:0.5px;
+    border-color:gray;
+    border-radius:0.4em;
+}
+
+.title {
+    display:flex;
+    justify-content: space-between;
+
+}
+.project {
+    color:rgba(0, 0, 255, 0.7);
+    font-weight: 900;
+    
+}
+.about {
+    color:gray;
+}
+.language {
+    color:gray;
+}
+.publicity {
+    color:Gray;
+    font-size:small;
+    border-style:solid;
+    border-radius:1em;
+    border-width:1px;
+    padding:3px;
+    border-color:rgb(221, 221, 221)
+}
