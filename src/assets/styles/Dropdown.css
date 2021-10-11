@@ -1,0 +1,27 @@
+.dropdown {
+
+    width:400px;
+    background-color: #24292F;
+
+    position:absolute;
+    top:60px;
+    border-radius:1em;
+    padding-bottom:1em;
+    padding:1em;
+}
+
+.dropdown__item {
+    display:flex;
+    width:100%;
+    background-color:#24292F;
+    color:white;
+    padding-bottom:1em;
+    border-style:solid;
+    border-width:1px;
+    border-color:rgb(63, 63, 63);
+    align-items: center;
+}
+
+.dropdown__item-image {
+    margin-right:2em;
+}

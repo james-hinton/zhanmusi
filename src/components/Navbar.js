@@ -5,12 +5,12 @@ import GitHub from '../assets/github.png'
 
 import '../assets/styles/Navbar.css'
 
-const Navbar = ({setBackground}) => {
+const Navbar = ({setBackground, pokeData, setpokeData}) => {
 
     return (
         <>
-        <div class="navbar">
-            <div class="navbar__item">
+        <div className="navbar">
+            <div className="navbar__item">
                 <Image
                     logo
                     image={GitHub}
@@ -18,42 +18,44 @@ const Navbar = ({setBackground}) => {
                 />
             </div>
 
-            <div class="navbar__item">
+            <div className="navbar__item">
                 <Search
                     setBackground={setBackground}
+                    pokeData={pokeData}
+                    setpokeData={setpokeData}
                 />
             </div>
 
 
-            <div class="navbar__item">
+            <div className="navbar__item">
                 <NavLink
                     text='Pull requests'
                     link='#'
                 />
             </div>
 
-            <div class="navbar__item">
+            <div className="navbar__item">
                 <NavLink
                     text='Issues'
                     link='#'
                 />
             </div>
 
-            <div class="navbar__item">
+            <div className="navbar__item">
                 <NavLink
                     text='Marketplace'
                     link='#'
                 />
             </div>
 
-            <div class="navbar__item">
+            <div className="navbar__item">
                 <NavLink
                     text='Explore'
                     link='#'
                 />
             </div>
 
-            <div class="navbar__item right">
+            <div className="navbar__item right">
                 <NavLink
                     text='Contact'
                     link='#'

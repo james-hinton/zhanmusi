@@ -9,6 +9,8 @@ function App() {
 
   const [background, setBackground] = useState(null)
 
+  const [pokeData, setpokeData] = useState([])
+
   useEffect(() => {
     if (background) {
       document.body.style.background = background
@@ -20,11 +22,13 @@ function App() {
 
       <Navbar
         setBackground={setBackground}
+        pokeData={pokeData}
+        setpokeData={setpokeData}
       />
 
       <div className="content">
               <LeftContentBar
-              
+                pokeData={pokeData}
               />
 
               <RightContentBar
