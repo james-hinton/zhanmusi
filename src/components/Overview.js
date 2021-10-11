@@ -8,11 +8,8 @@ const Overview = () => {
     return (
         <>
             <div className="repo__box">
-                <h4>Popular repositories </h4>
                 
-                <div className="repo__box--subtitle">
-                    <i>View projects tab for more...</i>
-                </div>
+
 
                 <div className="repo__box--row">
                     <Repo 
@@ -44,9 +41,13 @@ const Overview = () => {
                     />
                 </div>
 
+                <div className="repo__box--subtitle">
+                    <i>View projects tab for more...</i>
+                </div>
+
             </div>
 
-            <div className="repo__box">
+            <div className="repo__box contributions">
                 <h4>Contributions</h4>
                 
                 <Contributions />

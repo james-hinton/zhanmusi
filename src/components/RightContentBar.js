@@ -1,6 +1,5 @@
 import Overview from './Overview';
-import About from './About'
-
+import Experience from './Experience'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -26,15 +25,15 @@ const RightContentBar = ({}) => {
                 </TabPanel>
 
                 <TabPanel>
-                    <About />
+                    <Experience />
                 </TabPanel>
 
                 <TabPanel>
-                    <About />
+                    <Experience />
                 </TabPanel>
 
                 <TabPanel>
-                    <About />
+                    <Experience />
                 </TabPanel>
             </Tabs>
         </div>

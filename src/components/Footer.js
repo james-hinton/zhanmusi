@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="footer__content-left">
                         <div className="footer__content-left--item">
                             <NavLink 
-                                text= {'2021 James Hinton'}
+                                text= {'James'}
                                 dark
                             />
                         </div>
@@ -48,7 +48,7 @@ const Footer = () => {
                             </div>
                             <div className="footer__content-right--item">
                                 <NavLink 
-                                    text= {'Who am I'}
+                                    text= {'More'}
                                     dark
                                 />
                             </div>

@@ -52,6 +52,14 @@ const Navbar = ({setBackground}) => {
                     link='#'
                 />
             </div>
+
+            <div class="navbar__item right">
+                <NavLink
+                    text='Contact'
+                    link='#'
+                    border
+                />
+            </div>
             
 
 

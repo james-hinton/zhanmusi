@@ -1,13 +1,14 @@
 import classNames from 'classnames'
 import '../assets/styles/NavLink.css'
 
-const Navlink = ({text, link, dark}) => {
+const Navlink = ({text, link, dark, border}) => {
 
     return (
         <>  
             <div className={classNames({
                 navlink: 'navlink',
-                dark: 'dark'
+                dark: 'dark',
+                border
             })} >
                 <a href={link}>
                     <p className={dark && 'dark'}>{text}</p>
