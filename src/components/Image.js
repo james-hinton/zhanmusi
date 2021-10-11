@@ -3,13 +3,14 @@ import classNames from "classnames";
 
 
 
-const Image = ({image, circle, logo}) => {
+const Image = ({image, circle, logo, height, margin}) => {
 
     return (
         <>  
-            <img src={image} className={classNames({
+            <img src={image} height={height}  className={classNames({
                 circle:circle,
                 logo:logo,
+                margin:margin,
             })} />
         </>
     )

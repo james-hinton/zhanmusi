@@ -10,3 +10,8 @@ a:hover {
 .navlink {
     font-weight:600;
 }
+
+.dark {
+    color:black!important;
+    font-size:0.9em;
+}

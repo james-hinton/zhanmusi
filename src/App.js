@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import './App.css';
-import Navbar from './Navbar'
+import './assets/styles/App.css';
+import Navbar from './components/Navbar'
 import LeftContentBar from './components/LeftContentBar'
 import RightContentBar from './components/RightContentBar'
-
+import Footer from './components/Footer'
 
 function App() {
 
@@ -31,6 +31,8 @@ function App() {
 
               />
       </div>
+
+      <Footer />
 
     </div>
   );

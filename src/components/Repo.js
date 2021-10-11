@@ -1,6 +1,6 @@
 import '../assets/styles/Repo.css'
 
-const Repo = () => {
+const Repo = ({project, priv, about, language}) => {
 
     return (
         <>
@@ -8,20 +8,20 @@ const Repo = () => {
                 <div className="repo__top">
                     <div className="title">
                         <div className="project">
-                            Deep Learning
+                            {project}
                         </div>
                         <div className="public">
-                            <p className="publicity">Public</p>
+                            <p className="publicity">{priv}</p>
                         </div>
                     </div>
                     <div className="about">
-                        <small>Forked from James</small>
+                        <small>{about}</small>
                     </div>
                 </div>
 
                 <div className="repo__bottom">
                     <div className="language">
-                        <small>Python</small>
+                        <small>{language}</small>
                     </div>
                 </div>
 

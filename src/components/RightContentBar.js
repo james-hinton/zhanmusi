@@ -1,4 +1,5 @@
 import Overview from './Overview';
+import About from './About'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -12,10 +13,10 @@ const RightContentBar = ({}) => {
         <div className="content__right">
             <Tabs>
                 <TabList>
-                    <Tab>Overview</Tab>
-                    <Tab>Repositories</Tab>
-                    <Tab>Projects</Tab>
-                    <Tab>Packages</Tab>
+                    <Tab>Portfolio</Tab>
+                    <Tab>About Me</Tab>
+                    <Tab>Technical Skills</Tab>
+                    <Tab>Experience</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -25,15 +26,15 @@ const RightContentBar = ({}) => {
                 </TabPanel>
 
                 <TabPanel>
-                    <h2>Repositories</h2>
+                    <About />
                 </TabPanel>
 
                 <TabPanel>
-                    <h2>Projects</h2>
+                    <About />
                 </TabPanel>
 
                 <TabPanel>
-                    <h2>Packages</h2>
+                    <About />
                 </TabPanel>
             </Tabs>
         </div>

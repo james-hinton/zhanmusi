@@ -1,0 +1,35 @@
+.footer {
+    margin-top:3em;
+    display:flex;
+    height:5em;
+    justify-content: center;
+
+}
+
+.footer__content {
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+    border-top-style:solid;
+    border-top-width:1px;
+    border-top-color:rgb(221, 221, 221);
+    width:80%;
+}
+
+.footer__content-left {
+    display:flex;
+    width:350px;
+}
+
+.footer__content-left--item {
+    margin-right:2em;
+}
+
+.footer__content-right {
+    display:flex;
+    width:350px;
+}
+
+.footer__content-right--item {
+    margin-right:2em;
+}

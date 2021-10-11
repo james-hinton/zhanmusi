@@ -1,3 +1,13 @@
 .content__right {
+    width:70%;
     margin-left:2em;
+}
+
+ul.react-tabs__tab-list {
+    color: rgb(109, 109, 109);
+}
+
+.react-tabs__tab:hover {
+    color:rgb(12, 12, 12);
+    font-weight:400;
 }

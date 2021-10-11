@@ -4,8 +4,18 @@
     margin-left:1em;
 }
 
+.repo__box h4 {
+    margin-bottom:1em;
+}
+
 .repo__box--row {
     display:flex;
     flex-direction: row;
     width:100%;
+}
+
+.repo__box--subtitle {
+    font-size:0.8em;
+    text-decoration: wavy;
+    color:gray;
 }

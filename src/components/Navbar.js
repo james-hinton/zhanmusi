@@ -1,9 +1,9 @@
-import Image from './components/Image'
-import Search from './components/Search'
-import NavLink from './components/NavLink'
-import GitHub from './assets/github.png'
+import Image from './Image'
+import Search from './Search'
+import NavLink from './NavLink'
+import GitHub from '../assets/github.png'
 
-import './assets/styles/Navbar.css'
+import '../assets/styles/Navbar.css'
 
 const Navbar = ({setBackground}) => {
 
