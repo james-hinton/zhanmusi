@@ -3,6 +3,10 @@
     margin-right:2em;
 }
 
+.content__left--image {
+    margin:10%;
+}
+
 @media only screen and (max-width: 1000px) {
     .content__left {
         max-width:100%;

@@ -34,11 +34,14 @@ const LeftContentBar = ({pokeData}) => {
     return (
         <>  
         <div className="content__left">
-            <Image 
-                image={image} //https://media-exp1.licdn.com/dms/image/C4E03AQHAr70_C9qu6w/profile-displayphoto-shrink_800_800/0/1631627034390?e=1639612800&v=beta&t=iEPV9Yiw05DHksthq9cvj-4Re8AVvRW8wrjWsddLptc
-                circle
-                margin={true}
-            />
+            <div className="content__left--image">
+                <Image 
+                    image={image} //https://media-exp1.licdn.com/dms/image/C4E03AQHAr70_C9qu6w/profile-displayphoto-shrink_800_800/0/1631627034390?e=1639612800&v=beta&t=iEPV9Yiw05DHksthq9cvj-4Re8AVvRW8wrjWsddLptc
+                    circle
+                    margin={true}
+                />
+
+            </div>
 
             <h1>{name}</h1>
             <h3>james-hinton</h3>
