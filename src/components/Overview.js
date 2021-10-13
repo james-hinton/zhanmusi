@@ -1,6 +1,8 @@
 import Repo from './Repo.js'
 import Contributions from './Contributions.js'
 
+import Projects from '../constants/Projects'
+
 import '../assets/styles/Overview.css'
 
 const Overview = () => {
@@ -9,37 +11,18 @@ const Overview = () => {
         <>
             <div className="repo__box">
                 
-
-
-                <div className="repo__box--row">
-                    <Repo 
-                        project='Whoovr'
-                        priv='Private'
-                        about='Company searcher'
-                        language='Python'
-                    />
-                    <Repo 
-                        project='Requiem'
-                        priv='Private'
-                        about='Cemetery Management System'
-                        language='Python'
-                    />
-                </div>
-
-                <div className="repo__box--row">
-                    <Repo 
-                        project='LinkedIn Clone'
-                        priv='Public'
-                        about='Static clone of LinkedIn'
-                        language='ReactJS'
-                    />
-                    <Repo 
-                        project='Twitter Clone'
-                        priv='Public'
-                        about='Static clone of Twitter'
-                        language='ReactJS'
-                    />
-                </div>
+                {Projects.map((project) => {
+                    return (
+                        <Repo 
+                            project={project.title}
+                            priv={project.public ? 'Public' : 'Private'}
+                            about={project.description}
+                            language={project.language}
+                            image={project.image}
+                        />
+                    )
+                })
+                }
 
                 <div className="repo__box--subtitle">
                     <i>View projects tab for more...</i>

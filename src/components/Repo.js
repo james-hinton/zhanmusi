@@ -1,10 +1,29 @@
+import classNames from 'classnames'
+import {useEffect, useState} from 'react'
+
 import '../assets/styles/Repo.css'
 
-const Repo = ({project, priv, about, language}) => {
+const Repo = ({project, priv, about, language, image}) => {
+
+    const [background, setBackground] = useState(null)
+
+    const [bgImage, setbgImage] = useState(null)
+
+    useEffect(() => {
+        setbgImage()
+        if (background) {
+            setbgImage("url(" + image + ")")
+        }
+
+    }, [background])
 
     return (
         <>
-            <div className="repo">
+            <div  style={{backgroundImage: bgImage}} className={classNames({
+                'repo':'repo',
+                'background':background,
+
+            })} onMouseEnter={()=>{setBackground(project)}} onMouseLeave={()=>{setBackground(null)}}>
                 <div className="repo__top">
                     <div className="title">
                         <div className="project">

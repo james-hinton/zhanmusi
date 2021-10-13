@@ -1,18 +1,13 @@
 .repo__box {
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom:2em;
     margin-top:2em;
+    flex-wrap:wrap;
 }
 
 .repo__box h4 {
     margin-bottom:1em;
-}
-
-.repo__box--row {
-    display:flex;
-    flex-direction: row;
-    width:100%;
 }
 
 .repo__box--subtitle {

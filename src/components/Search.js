@@ -42,7 +42,7 @@ const Search = ({setBackground, setpokeData}) => {
 
     return (
         <>
-            <input type="text" onChange={handleChange} placeholder="Search or jump to..."></input>
+            <input type="text" onChange={handleChange} placeholder="Enter a pokemon..."></input>
             
             {showDropdown && (
                 <Dropdown 

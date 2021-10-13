@@ -6,8 +6,8 @@ export default function poke(query, setpokeData, setShowDropdown) {
     if (query && query.length > 3) {
     // Make a request for a user with a given ID
 
-        if (pokemon.includes(query)) {
-            axios.get('https://pokeapi.co/api/v2/pokemon/'+query)
+        if (pokemon.includes(query.toLowerCase())) {
+            axios.get('https://pokeapi.co/api/v2/pokemon/'+query.toLowerCase())
             .then(function (response) {
                 setpokeData(response)
                 setShowDropdown(false)
