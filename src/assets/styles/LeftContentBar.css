@@ -7,6 +7,11 @@
     margin:10%;
 }
 
+.button {
+    background-color:#24292F;
+    color:white;
+}
+
 @media only screen and (max-width: 1000px) {
     .content__left {
         max-width:100%;

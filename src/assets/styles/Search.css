@@ -1,4 +1,4 @@
-input {
+input.searchBox {
     border-radius:4px;
     background-color:#24292F;
     color:white;
@@ -14,8 +14,6 @@ input {
 
 }
 
-input:focus {
-    
+input.searchBox:focus {
     width: 30em;
-
 }

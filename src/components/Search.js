@@ -51,7 +51,7 @@ const Search = ({setBackground, setpokeData}) => {
 
     return (
         <>
-            <input type="text" onFocus={handleFocus} onChange={handleChange} value={searchText && searchText} placeholder="Enter a pokemon..."></input>
+            <input type="text" onFocus={handleFocus} onChange={handleChange} value={searchText && searchText} className="searchBox" placeholder="Enter a pokemon..."></input>
             
             {showDropdown && (
                 <Dropdown 
