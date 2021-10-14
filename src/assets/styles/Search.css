@@ -4,4 +4,18 @@ input {
     color:white;
     padding:5px;
     border-radius:1px;
+    width:20em;
+
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    transition: all 0.8s;
+
+
+}
+
+input:focus {
+    
+    width: 30em;
+
 }

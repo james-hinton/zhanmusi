@@ -4,6 +4,7 @@
     margin-bottom:2em;
     margin-top:2em;
     flex-wrap:wrap;
+    margin-bottom:4em;
 }
 
 .repo__box h4 {
@@ -15,4 +16,8 @@
     text-decoration: wavy;
     color:gray;
     text-align: right;
+}
+
+.contributions {
+    width:100%;
 }

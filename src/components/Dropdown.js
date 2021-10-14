@@ -1,20 +1,45 @@
 import DropdownItem from './DropdownItem.js'
 
 import '../assets/styles/Dropdown.css'
+import { useEffect, useState } from 'react'
 
-const Dropdown = ({searchText}) => {
+import Pokemon from '../constants/Pokemon'
+
+
+    
+const Dropdown = ({searchText, setSearchText}) => {
+
+    const [dropdownItems, setDropdownItems] = useState([])
+
+    useEffect(() => {
+
+        var pokemonResults = []
+
+        Pokemon.findIndex((poke) => {    
+            if (poke.startsWith(searchText.toLowerCase()) === true) {
+                pokemonResults.push(poke.charAt(0).toUpperCase() + poke.slice(1))
+            }
+        }, searchText)
+
+        setDropdownItems(pokemonResults.slice(0,5))
+    }, [searchText])
 
     return (
         <>
-            <div className="dropdown">
-                <DropdownItem 
-                    title={searchText}
-                />
-                <DropdownItem />
-                <DropdownItem />
-                <DropdownItem />
-                <DropdownItem />
-            </div>
+            {dropdownItems.length && (
+                <div className="dropdown">
+                    {dropdownItems.map((item) => {
+                        return (
+                            <>
+                                <DropdownItem 
+                                    title={item}
+                                    setSearchText={setSearchText}
+                                />
+                            </>
+                        )
+                    })}
+                </div>
+            )}
         </>
     )
 }

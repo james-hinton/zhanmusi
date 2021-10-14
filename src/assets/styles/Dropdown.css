@@ -15,13 +15,31 @@
     width:100%;
     background-color:#24292F;
     color:white;
-    padding-bottom:1em;
+
     border-style:solid;
     border-width:1px;
     border-color:rgb(63, 63, 63);
-    align-items: center;
+
+    align-items:center;
+
+    font-weight:900;
+    padding:0.2em;
+}
+
+.dropdown__item-image-container {
+    margin-right:2em;
+    height:1.6em;
+    padding:0.3em;
+
 }
 
 .dropdown__item-image {
-    margin-right:2em;
+    height:100%;
+
+}
+
+.dropdown__item:hover {
+    background-color:gray;
+    cursor:pointer;
+    color:rgb(61, 60, 60);
 }
