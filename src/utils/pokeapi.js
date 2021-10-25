@@ -9,6 +9,7 @@ export default function poke(query, setpokeData, setShowDropdown) {
         if (pokemon.includes(query.toLowerCase())) {
             axios.get('https://pokeapi.co/api/v2/pokemon/'+query.toLowerCase())
             .then(function (response) {
+                console.log(response)
                 setpokeData(response)
                 setShowDropdown(false)
             })

@@ -1,5 +1,6 @@
 import Overview from './Overview';
 import Experience from './Experience'
+import About from  './About'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -14,8 +15,8 @@ const RightContentBar = ({}) => {
                 <TabList>
                     <Tab>Portfolio</Tab>
                     <Tab>About Me</Tab>
-                    <Tab>Technical Skills</Tab>
-                    <Tab>Experience</Tab>
+                    <Tab>Skills & Experience</Tab>
+                    <Tab>Play Chess With Me</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -25,7 +26,7 @@ const RightContentBar = ({}) => {
                 </TabPanel>
 
                 <TabPanel>
-                    <Experience />
+                    <About />
                 </TabPanel>
 
                 <TabPanel>
@@ -33,7 +34,10 @@ const RightContentBar = ({}) => {
                 </TabPanel>
 
                 <TabPanel>
-                    <Experience />
+                    Chess board here that any user can play with me. 
+                    Allow email notifications with PGN.
+
+                    Your turn / My Turn
                 </TabPanel>
             </Tabs>
         </div>

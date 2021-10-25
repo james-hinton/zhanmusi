@@ -9,8 +9,6 @@ const Contributions = ({}) => {
       }
       var until = '2021-06-30';
 
-
-
       const selectLastHalfYear = contributions => {
         const currentYear = new Date().getFullYear();
         const currentMonth = new Date().getMonth();
