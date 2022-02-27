@@ -17,6 +17,7 @@ const Overview = () => {
               about={project.description}
               language={project.language}
               image={project.image}
+              link={project.link}
             />
           );
         })}

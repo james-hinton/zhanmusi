@@ -44,6 +44,21 @@ const LeftContentBar = ({ pokeData }) => {
         <h1>{name}</h1>
         <h3>james-hinton</h3>
 
+        <div className="content__left--socials">
+          <Image
+            height={"30px"}
+            image={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
+            link={"https://github.com/james-hinton"}
+          />
+          <Image
+            height={"30px"}
+            image={
+              "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
+            }
+            link={"https://www.linkedin.com/in/james-hinton-54bb87197/"}
+          />
+        </div>
+
         <Button text="Contact Me" />
 
         <div className="info">
@@ -58,7 +73,7 @@ const LeftContentBar = ({ pokeData }) => {
 
           <InfoPanel
             title={"Current Position"}
-            value={"Software Developer, Spatial Days Ltd"}
+            value={"Full Stack Software Developer, Spatial Days Ltd"}
           />
 
           <InfoPanel title="Nationality" value="British" />
@@ -71,7 +86,7 @@ const LeftContentBar = ({ pokeData }) => {
 
           <InfoPanel
             title="Development Software/Tools:"
-            value="Python, HTML5, CSS3, Javascript, JQuery, Bootstrap,  React, TypeScript, WordPress, Tensorflow, Redis, RabbitMQ, Celery, SQLAlchemy, Dojo, Jinja2, Linux, Docker"
+            value="Python, HTML5, CSS3, Javascript, JQuery, Bootstrap,  React, TypeScript, AWS (EC2, RDS, S3, Boto3, EB), WordPress, Tensorflow, Redis, RabbitMQ, Celery, SQLAlchemy, Dojo, Jinja2, Linux, Docker"
           />
 
           <InfoPanel

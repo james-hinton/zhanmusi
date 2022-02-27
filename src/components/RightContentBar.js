@@ -15,7 +15,6 @@ const RightContentBar = ({}) => {
             <Tab>Portfolio</Tab>
             <Tab>About Me</Tab>
             <Tab>Skills & Experience</Tab>
-            <Tab>Play Chess With Me</Tab>
           </TabList>
 
           <TabPanel>

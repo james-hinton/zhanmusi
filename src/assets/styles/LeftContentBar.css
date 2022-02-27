@@ -7,6 +7,16 @@
   margin: 10%;
 }
 
+.content__left--socials {
+  display: flex;
+}
+
+.content__left--socials img {
+  margin-bottom:0.6em;
+  margin:0.8em;
+  cursor:pointer;
+}
+
 .button {
   background-color: #24292f;
   color: white;

@@ -17,6 +17,7 @@
 
 .dream {
   background: -webkit-linear-gradient(rgb(42, 155, 184), rgb(45, 6, 87));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

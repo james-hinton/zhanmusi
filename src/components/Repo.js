@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import "../assets/styles/Repo.css";
 
-const Repo = ({ project, priv, about, language, image }) => {
+const Repo = ({ project, priv, about, language, image, link }) => {
   const [background, setBackground] = useState(null);
   const [bgImage, setbgImage] = useState(null);
 
@@ -17,7 +17,7 @@ const Repo = ({ project, priv, about, language, image }) => {
   return (
     <>
       <div
-        style={{ backgroundImage: bgImage }}
+        style={{ backgroundImage: bgImage, cursor:'pointer' }}
         className={classNames({
           repo: "repo",
           background: background,
@@ -27,6 +27,11 @@ const Repo = ({ project, priv, about, language, image }) => {
         }}
         onMouseLeave={() => {
           setBackground(null);
+        }}
+        onClick={() => {
+          if (link) {
+            window.open(link, "_blank");
+          }
         }}
       >
         <div className="repo__top">

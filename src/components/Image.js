@@ -1,9 +1,10 @@
 import "../assets/styles/Image.css";
 import classNames from "classnames";
 
-const Image = ({ image, circle, logo, height, margin }) => {
+const Image = ({ image, circle, logo, height, margin, link }) => {
   return (
     <>
+
       <img
         src={image}
         height={height}
@@ -12,6 +13,7 @@ const Image = ({ image, circle, logo, height, margin }) => {
           logo: logo,
           margin: margin,
         })}
+        onClick={link ? () => window.open(link) : null}
       />
     </>
   );
