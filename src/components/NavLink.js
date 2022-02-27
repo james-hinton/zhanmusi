@@ -1,21 +1,22 @@
-import classNames from 'classnames'
-import '../assets/styles/NavLink.css'
+import classNames from "classnames";
+import "../assets/styles/NavLink.css";
 
-const Navlink = ({text, link, dark, border}) => {
+const Navlink = ({ text, link, dark, border }) => {
+  return (
+    <>
+      <div
+        className={classNames({
+          navlink: "navlink",
+          dark: "dark",
+          border,
+        })}
+      >
+        <a href={link}>
+          <p className={dark && "dark"}>{text}</p>
+        </a>
+      </div>
+    </>
+  );
+};
 
-    return (
-        <>  
-            <div className={classNames({
-                navlink: 'navlink',
-                dark: 'dark',
-                border
-            })} >
-                <a href={link}>
-                    <p className={dark && 'dark'}>{text}</p>
-                </a>
-            </div>
-        </>
-    )
-}
-
-export default Navlink
+export default Navlink;

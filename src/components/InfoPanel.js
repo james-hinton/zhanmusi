@@ -1,16 +1,14 @@
-import '../assets/styles/InfoPanel.css'
+import "../assets/styles/InfoPanel.css";
 
-const InfoPanel = ({title, value}) => {
+const InfoPanel = ({ title, value }) => {
+  return (
+    <>
+      <div className="infopanel">
+        <p className="infopanel--title">{title}</p>
+        <p className="infopanel--value">{value}</p>
+      </div>
+    </>
+  );
+};
 
-    return (
-        <>
-            <div className="infopanel">
-                <p className="infopanel--title">{title}</p>
-                <p className="infopanel--value">{value}</p>
-            </div>
-        </>
-    )
-}
-
-
-export default InfoPanel
+export default InfoPanel;

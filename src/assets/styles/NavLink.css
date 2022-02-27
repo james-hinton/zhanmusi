@@ -1,18 +1,18 @@
 a {
-    text-decoration: none;
-    color:#ebebeb;
+  text-decoration: none;
+  color: #ebebeb;
 }
 
 a:hover {
-    color:gray;
+  color: gray;
 }
 
 .navlink {
-    font-weight:600;
-    text-align:center;
+  font-weight: 600;
+  text-align: center;
 }
 
 .dark {
-    color:black!important;
-    font-size:0.9em;
+  color: black !important;
+  font-size: 0.9em;
 }

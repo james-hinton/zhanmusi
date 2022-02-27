@@ -1,3 +1,3 @@
-var colours = ['red', 'white', 'blue', 'green', 'purple', 'black']
+var colours = ["red", "white", "blue", "green", "purple", "black"];
 
-export default colours
+export default colours;

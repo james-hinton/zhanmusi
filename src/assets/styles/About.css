@@ -12,11 +12,11 @@
 */
 
 #canvas-container {
-    height:100vh;
+  height: 100vh;
 }
 
 .dream {
-    background: -webkit-linear-gradient(rgb(42, 155, 184), rgb(45, 6, 87));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(rgb(42, 155, 184), rgb(45, 6, 87));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

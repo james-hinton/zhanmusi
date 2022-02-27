@@ -1,47 +1,38 @@
-import DropdownItem from './DropdownItem.js'
+import DropdownItem from "./DropdownItem.js";
+import "../assets/styles/Dropdown.css";
+import { useEffect, useState } from "react";
+import Pokemon from "../constants/Pokemon";
 
-import '../assets/styles/Dropdown.css'
-import { useEffect, useState } from 'react'
+const Dropdown = ({ searchText, setSearchText }) => {
+  const [dropdownItems, setDropdownItems] = useState([]);
 
-import Pokemon from '../constants/Pokemon'
+  useEffect(() => {
+    var pokemonResults = [];
 
+    Pokemon.findIndex((poke) => {
+      if (poke.startsWith(searchText.toLowerCase()) === true) {
+        pokemonResults.push(poke.charAt(0).toUpperCase() + poke.slice(1));
+      }
+    }, searchText);
 
-    
-const Dropdown = ({searchText, setSearchText}) => {
+    setDropdownItems(pokemonResults.slice(0, 5));
+  }, [searchText]);
 
-    const [dropdownItems, setDropdownItems] = useState([])
+  return (
+    <>
+      {dropdownItems.length && (
+        <div className="dropdown">
+          {dropdownItems.map((item) => {
+            return (
+              <>
+                <DropdownItem title={item} setSearchText={setSearchText} />
+              </>
+            );
+          })}
+        </div>
+      )}
+    </>
+  );
+};
 
-    useEffect(() => {
-
-        var pokemonResults = []
-
-        Pokemon.findIndex((poke) => {    
-            if (poke.startsWith(searchText.toLowerCase()) === true) {
-                pokemonResults.push(poke.charAt(0).toUpperCase() + poke.slice(1))
-            }
-        }, searchText)
-
-        setDropdownItems(pokemonResults.slice(0,5))
-    }, [searchText])
-
-    return (
-        <>
-            {dropdownItems.length && (
-                <div className="dropdown">
-                    {dropdownItems.map((item) => {
-                        return (
-                            <>
-                                <DropdownItem 
-                                    title={item}
-                                    setSearchText={setSearchText}
-                                />
-                            </>
-                        )
-                    })}
-                </div>
-            )}
-        </>
-    )
-}
-
-export default Dropdown
+export default Dropdown;

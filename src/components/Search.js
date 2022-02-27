@@ -1,67 +1,69 @@
-import { useState, useEffect } from 'react'
-import colours from '../constants/colours'
-import Dropdown from './Dropdown.js'
+import { useState, useEffect } from "react";
+import colours from "../constants/colours";
+import Dropdown from "./Dropdown.js";
 
-import poke from '../utils/pokeapi'
+import poke from "../utils/pokeapi";
 
-import '../assets/styles/Search.css'
+import "../assets/styles/Search.css";
 
-const Search = ({setBackground, setpokeData}) => {
+const Search = ({ setBackground, setpokeData }) => {
+  const [searchText, setSearchText] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
 
-    const [searchText, setSearchText] = useState(null)
-    const [showDropdown, setShowDropdown] = useState(false)
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) {
+        setShowDropdown(false);
+      }
+    };
+    window.addEventListener("keydown", handleEsc);
 
-    useEffect(() => {
-        const handleEsc = (event) => {
-           if (event.keyCode === 27) {
-            setShowDropdown(false)
-          }
-        };
-        window.addEventListener('keydown', handleEsc);
-    
-        return () => {
-          window.removeEventListener('keydown', handleEsc);
-        };
-      }, []);
-    
-    const handleChange = (e) => {
-        setSearchText(e.target.value)
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
+
+  const handleChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleFocus = () => {
+    if (searchText) setShowDropdown(true);
+  };
+
+  // Show dropdown
+  useEffect(() => {
+    if (searchText) setShowDropdown(true);
+    else setShowDropdown(false);
+    poke(searchText, setpokeData, setShowDropdown);
+  }, [searchText]);
+
+  // Random thing to change background colour
+  useEffect(() => {
+    if (colours.includes(searchText)) {
+      setBackground(searchText);
     }
-
-    const handleFocus = ()=> {
-        if (searchText) setShowDropdown(true)
+    if (!searchText) {
+      setBackground("white");
     }
+  }, [searchText]);
 
-    // Show dropdown
-    useEffect(() => {
-        if (searchText) setShowDropdown(true)
-        else setShowDropdown(false)
-        poke(searchText, setpokeData, setShowDropdown)
-    }, [searchText])
+  return (
+    <>
+      <input
+        type="text"
+        onFocus={handleFocus}
+        onChange={handleChange}
+        value={searchText && searchText}
+        className="searchBox"
+        placeholder="Enter a pokemon..."
+      ></input>
 
-    // Random thing to change background colour
-    useEffect(() => {
-        if (colours.includes(searchText)) {
-            setBackground(searchText)
-        }
-        if (!searchText) {
-            setBackground('white')
-        }
-    }, [searchText])
+      {showDropdown && (
+        <Dropdown searchText={searchText} setSearchText={setSearchText} />
+      )}
+    </>
+  );
+};
 
-    return (
-        <>
-            <input type="text" onFocus={handleFocus} onChange={handleChange} value={searchText && searchText} className="searchBox" placeholder="Enter a pokemon..."></input>
-            
-            {showDropdown && (
-                <Dropdown 
-                    searchText={searchText}    
-                    setSearchText={setSearchText}
-                />
-            )}
-        </>
-    )
-}
-
-
-export default Search
+export default Search;
