@@ -4,7 +4,6 @@ import classNames from "classnames";
 const Image = ({ image, circle, logo, height, margin, link }) => {
   return (
     <>
-
       <img
         src={image}
         height={height}

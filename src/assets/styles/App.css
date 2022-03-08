@@ -19,6 +19,53 @@
   min-width: 700px;
 }
 
+.bottom-right-modal {
+  cursor:pointer;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+
+  background-color: white;
+  border-radius: 2%;
+  padding: 2em;
+  box-shadow: 0px 0px 30px #88888854;
+  border: 1px solid #88888854;
+
+  margin: 2em;
+}
+
+.bottom-right-modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0.5em;
+  cursor: pointer;
+  border-radius: 20%;
+}
+
+.bottom-right-arrow {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  position: fixed;
+  bottom: 0;
+  height:20px;
+  width:20px;
+  right: 0;
+  z-index: 10;
+
+  background-color: white;
+  border-radius: 50%;
+  padding: 1em;
+  box-shadow: 0px 0px 30px #88888854;
+  border: 1px solid #88888854;
+
+  margin: 2em;
+}
+
 @media only screen and (max-width: 1000px) {
   .content {
     margin: 0;

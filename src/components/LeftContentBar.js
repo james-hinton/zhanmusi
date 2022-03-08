@@ -9,6 +9,9 @@ const LeftContentBar = ({ pokeData }) => {
   const [image, setImage] = useState(
     "https://avatars.githubusercontent.com/u/63542818?v=4"
   );
+  const [emoji, setEmoji] = useState("😎");
+  const [showEmojiSelector, setShowEmojiSelector] = useState(false);
+
   const [name, setName] = useState("James Hinton");
   const [abilities, setAbilities] = useState(null);
 
@@ -34,11 +37,38 @@ const LeftContentBar = ({ pokeData }) => {
     <>
       <div className="content__left">
         <div className="content__left--image">
-          <Image
-            image={image} //https://media-exp1.licdn.com/dms/image/C4E03AQHAr70_C9qu6w/profile-displayphoto-shrink_800_800/0/1631627034390?e=1639612800&v=beta&t=iEPV9Yiw05DHksthq9cvj-4Re8AVvRW8wrjWsddLptc
-            circle
-            margin={true}
-          />
+          <Image image={image} circle margin={true} />
+
+          <div
+            className="content__left--emoji"
+            onClick={() => {
+              if (showEmojiSelector) {
+                setShowEmojiSelector(false);
+              } else {
+                setShowEmojiSelector(true);
+              }
+            }}
+          >
+            {emoji}
+          </div>
+          {showEmojiSelector && (
+            <div className="content__left--emoji-selector">
+              {["😁", "😎", "🤓", "😙", "😀"].map((e, i) => {
+                return (
+                  <div
+                    className="content__left--emoji-selector--emoji"
+                    key={i}
+                    onClick={() => {
+                      setEmoji(e);
+                      setShowEmojiSelector(false);
+                    }}
+                  >
+                    {e}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         <h1>{name}</h1>
