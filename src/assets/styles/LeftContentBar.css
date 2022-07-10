@@ -17,7 +17,7 @@
   background-color: white;
   border-radius: 100%;
   border: 1px solid #ccc;
-  cursor: pointer;
+  
 }
 
 .content__left--emoji-selector {
@@ -37,7 +37,7 @@
 .content__left--emoji-selector--emoji {
   margin-right: 0.25em;
   margin-left: 0.25em;
-  cursor: pointer;
+  
 }
 
 .content__left--socials {
@@ -47,7 +47,7 @@
 .content__left--socials img {
   margin-bottom: 0.6em;
   margin: 0.8em;
-  cursor: pointer;
+  
 }
 
 .button {

@@ -1,7 +1,14 @@
 import "../assets/styles/Image.css";
 import classNames from "classnames";
 
-const Image = ({ image, circle, logo, height, margin, link }) => {
+import { useContext, useCallback } from "react";
+import { CursorContext } from "./CursorContextProvider";
+
+const Image = ({ image, circle, logo, height, margin, link, mood }) => {
+  const [cursor, setCursor] = useContext(CursorContext);
+  const toggleCursor = useCallback((mood) => {
+    setCursor(({ active }) => ({ active: !active, mood: mood }));
+  });
   return (
     <>
       <img
@@ -12,6 +19,10 @@ const Image = ({ image, circle, logo, height, margin, link }) => {
           logo: logo,
           margin: margin,
         })}
+        // if mood 
+        onMouseEnter={mood ? () => toggleCursor(mood) : null}
+        onMouseLeave={mood ? () => toggleCursor() : null}
+
         onClick={link ? () => window.open(link) : null}
       />
     </>

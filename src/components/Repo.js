@@ -1,11 +1,15 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useContext, useCallback } from "react";
+import { CursorContext } from "./CursorContextProvider";
 import "../assets/styles/Repo.css";
 
 const Repo = ({ project, priv, about, language, image, link }) => {
   const [background, setBackground] = useState(null);
   const [bgImage, setbgImage] = useState(null);
+  const [cursor, setCursor] = useContext(CursorContext);
+  const toggleCursor = useCallback((mood) => {
+    setCursor(({ active }) => ({ active: !active, mood: mood }));
+  });
 
   useEffect(() => {
     setbgImage();
@@ -17,16 +21,18 @@ const Repo = ({ project, priv, about, language, image, link }) => {
   return (
     <>
       <div
-        style={{ backgroundImage: bgImage, cursor:'pointer' }}
+        style={{ backgroundImage: bgImage, cursor: "pointer" }}
         className={classNames({
           repo: "repo",
           background: background,
         })}
         onMouseEnter={() => {
           setBackground(project);
+          toggleCursor("shock");
         }}
         onMouseLeave={() => {
           setBackground(null);
+          toggleCursor();
         }}
         onClick={() => {
           if (link) {

@@ -2,10 +2,15 @@ import Image from "./Image";
 import Search from "./Search";
 import NavLink from "./NavLink";
 import GitHub from "../assets/github.png";
+import startBounce from "../utils/bounce";
+
+import DropdownText from "./DropdownText";
+
+import { useState } from "react";
 
 import "../assets/styles/Navbar.css";
 
-const Navbar = ({ setBackground, pokeData, setpokeData }) => {
+const Navbar = ({ setBackground, pokeData, setpokeData, activeCursor, setActiveCursor }) => {
   return (
     <>
       <div className="navbar">
@@ -26,15 +31,29 @@ const Navbar = ({ setBackground, pokeData, setpokeData }) => {
         </div>
 
         <div className="navbar__item">
-          <NavLink text="Issues" link="#" />
+          <NavLink
+            text="Issues"
+            link="#"
+            Dropdown="I have no idea what I'm doing"
+          />
         </div>
 
         <div className="navbar__item">
-          <NavLink text="Marketplace" link="#" />
+          <NavLink text="Cat Cursor" link="#" onCustomClick={
+            () => {
+              setActiveCursor(!activeCursor);
+            }
+          } />
         </div>
 
         <div className="navbar__item">
-          <NavLink text="Explore" link="#" />
+          <NavLink
+            text="Useless Button"
+            link="#"
+            onCustomClick={(e) => {
+              startBounce(e);
+            }}
+          />
         </div>
 
         <div className="navbar__item right">

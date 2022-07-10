@@ -8,7 +8,7 @@
   padding-bottom: 1em;
   padding: 1em;
 
-  z-index:10;
+  z-index: 10;
 }
 
 .dropdown__item {
@@ -23,7 +23,7 @@
 
   align-items: center;
 
-  font-weight: 900;
+  font-weight: 600;
   padding: 0.2em;
 }
 
@@ -39,6 +39,14 @@
 
 .dropdown__item:hover {
   background-color: gray;
-  cursor: pointer;
+  
   color: rgb(61, 60, 60);
+}
+
+.noborder {
+  border-style: none;
+}
+
+.autowidth {
+  width: auto;
 }

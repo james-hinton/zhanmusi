@@ -79,6 +79,14 @@ const LeftContentBar = ({ pokeData }) => {
             height={"30px"}
             image={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
             link={"https://github.com/james-hinton"}
+            mood={'cool'}
+          />
+          <Image
+            height={"30px"}
+            image={
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+            }
+            
           />
           <Image
             height={"30px"}
@@ -86,6 +94,7 @@ const LeftContentBar = ({ pokeData }) => {
               "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
             }
             link={"https://www.linkedin.com/in/james-hinton-54bb87197/"}
+            mood={'cool'}
           />
         </div>
 
@@ -116,7 +125,7 @@ const LeftContentBar = ({ pokeData }) => {
 
           <InfoPanel
             title="Development Software/Tools:"
-            value="Python, HTML5, CSS3, Javascript, JQuery, Bootstrap,  React, TypeScript, AWS (EC2, RDS, S3, Boto3, EB), WordPress, Tensorflow, Redis, RabbitMQ, Celery, SQLAlchemy, Dojo, Jinja2, Linux, Docker"
+            value="Python, Javascript, C#, HTML5, CSS3, JQuery, Bootstrap,  React, TypeScript, AWS (EC2, RDS, S3, Boto3, EB), WordPress, Tensorflow, Redis, RabbitMQ, Celery, SQLAlchemy, Dojo, Jinja2, Linux, Docker"
           />
 
           <InfoPanel
