@@ -3,18 +3,28 @@ import Search from "../Search/Search";
 import NavLink from "./NavLink";
 import startBounce from "../../../utils/bounce";
 
-import "./Navbar.css";
+import "./Navbar.scss";
+import { useEffect, useState } from "react";
 
 const Navbar = ({
   setBackground,
-  pokeData,
   setpokeData,
   activeCursor,
   setActiveCursor,
 }) => {
+  const [theme, setTheme] = useState("default");
+
+  // Check the URL path and set the theme
+  useEffect(() => {
+    if (window.location.pathname === "/zhongwen") {
+      setTheme("chinese");
+    }
+  }, []);
+
+  
   return (
     <>
-      <div className="navbar">
+      <div className={`navbar navbar-${theme}`}>
         <div className="navbar__item">
           <Image logo image={"/github.png"} link={"/"} />
         </div>
@@ -22,8 +32,8 @@ const Navbar = ({
         <div className="navbar__item">
           <Search
             setBackground={setBackground}
-            pokeData={pokeData}
             setpokeData={setpokeData}
+            setTheme={setTheme}
           />
         </div>
 

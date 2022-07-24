@@ -17,21 +17,20 @@ const Zhongwen = () => {
 
       <div className="content flex-col">
         <div className="zhongwen-title">
-          <h1>Your Saved Words</h1>
-        </div>
-        <SavedWords />
-      </div>
-
-      <div className="content flex-col">
-        <div className="zhongwen-heading-multiple">
-          <div className="create-word-bank-container">
-            <button>
-              <ModeIcon />
-            </button>
+          <div className="zhongwen-heading-multiple">
+            <div className="create-word-bank-container">
+              <button>
+                <ModeIcon />
+              </button>
+            </div>
+            <div className="content-subtitle flex-col">
+              <h1>保存的单词</h1>
+              <small>Bǎocún de dāncí</small>
+            </div>
           </div>
-          <h3>Word Banks</h3>
         </div>
-        <WordBanks />
+
+        <SavedWords />
       </div>
     </>
   );

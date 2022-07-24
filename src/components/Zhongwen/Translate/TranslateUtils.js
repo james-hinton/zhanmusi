@@ -1,30 +1,92 @@
-export const translate = async (query) => {
-  // Split query into words
-  const words = query.split(" ");
-  // Translate each word
-  const translatedWords = await Promise.all(
-    words.map(async (word) => {
-      console.log('Word: ', word);
-      const url = `https://www.google.com/inputtools/request?ime=pinyin&ie=utf-8&oe=utf-8&app=translate&uv&text=${word}&num=10&cb=_callbacks_.loadWords&_=1658179190396`;
-      const response = await fetch(url);
-      // Response is NOT json
-      let text = await response.text();
-      let parsedText = text.split("loadWords(")[1].split(")")[0];
-      let json = JSON.parse(parsedText);
+import cedict from "./cedict_ts.json";
 
-      console.log(json)
-      // Get the first translation
-      return 
+const getPinyin = async (query) => {
+  // split the queyr into its chinese characters
+  const queryChars = query.split("");
+
+  // get the pinyin of each character
+  const pinyinChars = await Promise.all(
+    queryChars.map(async (char) => {
+      const pinyin = await getPinyinOfChar(char);
+      return pinyin;
     })
   );
 
-  console.log(translatedWords);
+  // join the pinyin characters together
+  const pinyin = pinyinChars.join(" ");
+  return pinyin;
+};
 
-  return {
-    chinese: "詹姆斯是最酷的人",
-    english: "james is the coolest person",
-    pinyin: "Zhānmǔsī shì zuì kù de rén",
-    date: new Date().toLocaleString(),
-    query: query,
+const getPinyinOfChar = async (char) => {
+  const pinyin = cedict.find(
+    (entry) => entry.traditional === char || entry.simplified === char
+  );
+
+  if (pinyin) {
+    return pinyin.pinyin;
+  }
+
+  console.log("Could not find pinyin for char: ", char);
+  return "";
+};
+
+export const addToSavedWords = async (word, group) => {
+  // Make a request to the server to add the word to the saved words
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+  const URL = `${BASE_URL}/saved-words`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      word,
+      group,
+    }),
   };
+
+  const response = await fetch(URL, options);
+  const data = await response.json();
+  console.log('Returned data from server: ', data);
+  return data;
+};
+
+export const translater = async (query) => {
+  let API_KEY = process.env.REACT_APP_RAPID_TRANSLATE_API_KEY;
+  let API_URL = "https://deep-translate1.p.rapidapi.com/language/translate/v2";
+
+  let headers = {
+    "content-type": "application/json",
+    "X-RapidAPI-Key": API_KEY,
+    "X-RapidAPI-Host": "deep-translate1.p.rapidapi.com",
+  };
+
+  let payload = {
+    q: query,
+    source: "en",
+    target: "zh",
+  };
+
+  // POST request to API
+  let response = await fetch(API_URL, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(payload),
+  });
+
+  // Get response as JSON
+  let json = await response.json();
+
+  // Return translated text
+  let translatedText = json["data"]["translations"]["translatedText"];
+  let translation = {
+    chinese: translatedText,
+    english: query,
+    pinyin: await getPinyin(translatedText),
+    date: new Date().toLocaleDateString().split("/").join("-"),
+  };
+
+  console.log(translation);
+
+  return translation;
 };

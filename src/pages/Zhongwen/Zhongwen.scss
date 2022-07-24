@@ -1,31 +1,38 @@
-
 // variable for color
-$color_primary : '#AA381E';
-
+$color_primary: "#AA381E";
 
 .flex-col {
-  flex-direction: column!important;
+  flex-direction: column !important;
 }
 
 .zhongwen {
-
   &-title {
-    width:100%;
-    display:flex;
-    justify-content:center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 
 .zhongwen-heading-multiple {
-  display:flex;
-  flex-direction:row;
-  justify-content:space-between;
-  align-items:center;
-  width:100%;
-  margin-bottom:1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1em;
 
   & h3 {
-    width : 100%;
+    width: 100%;
   }
-  
+}
+
+.content-subtitle {
+  h1 {
+    margin: 0!important;
+  }
+
+  small {
+    font-size: 0.8em;
+    color: #666;
+  }
 }

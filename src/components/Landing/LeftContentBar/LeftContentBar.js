@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Image from "../../Generic/Image/Image";
 import Button from "../../Generic/Button/Button";
 import InfoPanel from "../InfoPanel/InfoPanel";
-import capitalizeFirstLetter from "../../../utils/utils";
+import { capitalizeFirstLetter } from "../../../utils/utils";
 import "./LeftContentBar.css";
 
 const LeftContentBar = ({ pokeData }) => {
@@ -79,14 +79,13 @@ const LeftContentBar = ({ pokeData }) => {
             height={"30px"}
             image={"https://cdn-icons-png.flaticon.com/512/25/25231.png"}
             link={"https://github.com/james-hinton"}
-            mood={'cool'}
+            mood={"cool"}
           />
           <Image
             height={"30px"}
             image={
               "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
             }
-            
           />
           <Image
             height={"30px"}
@@ -94,7 +93,7 @@ const LeftContentBar = ({ pokeData }) => {
               "https://content.linkedin.com/content/dam/me/business/en-us/amp/brand-site/v2/bg/LI-Bug.svg.original.svg"
             }
             link={"https://www.linkedin.com/in/james-hinton-54bb87197/"}
-            mood={'cool'}
+            mood={"cool"}
           />
         </div>
 

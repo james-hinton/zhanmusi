@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import colours from "../../../constants/colours";
-import Dropdown from "../Dropdown/Dropdown"
+import Dropdown from "../Dropdown/Dropdown";
 
 import poke from "../../../utils/pokeapi";
 
 import "./Search.css";
 
-const Search = ({ setBackground, setpokeData }) => {
+const Search = ({ setBackground, setpokeData, setTheme }) => {
   const [searchText, setSearchText] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -50,9 +50,10 @@ const Search = ({ setBackground, setpokeData }) => {
 
   // Check for Chinese
   useEffect(() => {
-    if (["china", "taiwan", "台灣", "中國"].includes(searchText)) {
-      setBackground("#AA381E");
-      window.location.href = "/zhongwen";
+    if (window.location.pathname !== "/zhongwen") {
+      if (["china", "taiwan", "台灣", "中國"].includes(searchText)) {
+        window.location.href = "/zhongwen";
+      }
     }
   }, [searchText]);
 

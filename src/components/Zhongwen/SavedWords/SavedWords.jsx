@@ -1,58 +1,26 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import "./SavedWords.scss";
 
+import { getSavedWords } from "./SavedWordsUtils";
+
 const SavedWords = () => {
-  // Table of Saved Words
-
-  let words = [
-    {
-      chinese: "詹姆斯是最酷的人",
-      english: "james is the coolest person",
-      pinyin: "Zhānmǔsī shì zuì kù de rén",
-      date: new Date().toLocaleDateString().split("/").join("-"),
-    },
-    {
-      chinese: "我是最酷的人",
-      english: "I am the coolest person",
-      pinyin: "Wǒ shì zuì kù de rén",
-      date: new Date().toLocaleDateString().split("/").join("-"),
-    },
-    {
-      english: "where are you?",
-      chinese: "你在哪里？",
-      pinyin: "Nǐ zài nǎlǐ?",
-      // date with format "DD/MM/YYYY"
-      date: new Date().toLocaleDateString().split("/").join("-"),
-    },
-    {
-      english: "Okay, lets see if this actually works. I'll have one steak for dinner.",
-      chinese: "好，让我们看看这个是不是真的好用。我会把一个牛排给你吃。",
-      pinyin: "Hǎo, ràng wǒmen kàn kàn zhège shì bùshì zhēng de hǎo yòng. Wǒ huì bǎ yī gè niúpái gùi nǐ chī.",
-      date: new Date().toLocaleDateString().split("/").join("-"),
-    },
-    {
-      english: "I'm going to go to the store.",
-      chinese: "我要去商店。",
-      pinyin: "Wǒ yào qù shāngdiàn.",
-      date: new Date().toLocaleDateString().split("/").join("-"),
-    }
-    ,
-    {
-      english: "Wow, I had no idea that copilot was so cool.",
-      chinese: "哇，我以前没有想过这个是不是真的好用。",
-      pinyin: "Wā, yǐqián méiyǒu xiǎngguò zhège shì bùshì zhēng de hǎo yòng.",
-      date: new Date().toLocaleDateString().split("/").join("-"),
-    }
-  ];
-
-  
-
   const [activeColumns, setActiveColumns] = useState([
     "english",
     "pinyin",
     "date",
     "chinese",
   ]);
+
+  const [savedWords, setSavedWords] = useState([]);
+
+  useEffect(() => {
+    getSavedWords().then((words) => {
+      setSavedWords(words);
+    });
+  }, []);
+
+  console.log(savedWords)
 
   return (
     <div className="saved-words">
@@ -137,14 +105,14 @@ const SavedWords = () => {
         <thead>
           <tr>
             {activeColumns.map((column) => (
-              <th key={column}>{
-                 column.charAt(0).toUpperCase() + column.slice(1)
-              }</th>
+              <th key={column}>
+                {column.charAt(0).toUpperCase() + column.slice(1)}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {words.map((word, index) => {
+          {savedWords.map((word, index) => {
             // loop through activeColumns and create a td for each
             const columns = activeColumns.map((column) => {
               return <td key={column}>{word[column]}</td>;
