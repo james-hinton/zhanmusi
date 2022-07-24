@@ -4,23 +4,17 @@ import "./SavedWords.scss";
 
 import { getSavedWords } from "./SavedWordsUtils";
 
-const SavedWords = () => {
+const SavedWords = ({ savedWords, setSavedWords }) => {
   const [activeColumns, setActiveColumns] = useState([
     "english",
     "pinyin",
-    "date",
     "chinese",
   ]);
 
-  const [savedWords, setSavedWords] = useState([]);
-
-  useEffect(() => {
-    getSavedWords().then((words) => {
-      setSavedWords(words);
-    });
+  useEffect(async () => {
+    const words = await getSavedWords();
+    await setSavedWords(words);
   }, []);
-
-  console.log(savedWords)
 
   return (
     <div className="saved-words">
@@ -112,15 +106,25 @@ const SavedWords = () => {
           </tr>
         </thead>
         <tbody>
-          {savedWords.map((word, index) => {
-            // loop through activeColumns and create a td for each
-            const columns = activeColumns.map((column) => {
-              return <td key={column}>{word[column]}</td>;
-            });
+          {savedWords &&
+            savedWords.length > 0 &&
+            savedWords.map((word, index) => {
+              // loop through activeColumns and create a td for each
+              const columns = activeColumns.map((column) => {
+                if (column === "date") {
+                  return (
+                    <td key={column}>
+                      {new Date(word[column]).toLocaleDateString()}
+                    </td>
+                  );
+                } else {
+                  return <td key={column}>{word[column]}</td>;
+                }
+              });
 
-            // return a tr for each word
-            return <tr key={index}>{columns}</tr>;
-          })}
+              // return a tr for each word
+              return <tr key={index}>{columns}</tr>;
+            })}
         </tbody>
       </table>
     </div>

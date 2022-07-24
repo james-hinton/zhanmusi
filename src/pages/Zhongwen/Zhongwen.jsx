@@ -1,10 +1,12 @@
 import TranslateInput from "../../components/Zhongwen/Translate/TranslateInput";
-import WordBanks from "../../components/Zhongwen/WordBanks/WordBanks";
 import SavedWords from "../../components/Zhongwen/SavedWords/SavedWords";
 import ModeIcon from "@mui/icons-material/Mode";
 import "./Zhongwen.scss";
+import { useState } from "react";
 
 const Zhongwen = () => {
+  const [savedWords, setSavedWords] = useState([]);
+
   return (
     <>
       <div className="content flex-col">
@@ -12,14 +14,16 @@ const Zhongwen = () => {
           <h1>你好，詹姆斯。</h1>
         </div>
 
-        <TranslateInput />
+        <TranslateInput setSavedWords={setSavedWords} />
       </div>
 
       <div className="content flex-col">
         <div className="zhongwen-title">
           <div className="zhongwen-heading-multiple">
             <div className="create-word-bank-container">
-              <button>
+              <button className="
+                create-word-bank-button
+              ">
                 <ModeIcon />
               </button>
             </div>
@@ -30,7 +34,7 @@ const Zhongwen = () => {
           </div>
         </div>
 
-        <SavedWords />
+        <SavedWords savedWords={savedWords} setSavedWords={setSavedWords} />
       </div>
     </>
   );

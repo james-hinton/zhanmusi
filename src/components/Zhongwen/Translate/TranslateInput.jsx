@@ -1,12 +1,18 @@
 import { translater, addToSavedWords } from "./TranslateUtils.js";
 import "./TranslateInput.scss";
 
-const TranslateInput = () => {
+import { getSavedWords } from "../SavedWords/SavedWordsUtils";
+
+const TranslateInput = ({ setSavedWords }) => {
   const handleTranslate = async (e) => {
-    console.log("Translating...", e);
-    let translation = await translater(e);
-    await addToSavedWords(translation, 1);
-    console.log("Translation:", translation);
+    if (e.length > 0) {
+      let translation = await translater(e);
+      await addToSavedWords(translation, 1);
+      setSavedWords(await getSavedWords());
+
+      // clear input
+      document.getElementById("translate-input").value = "";
+    }
   };
   return (
     <>
@@ -14,6 +20,7 @@ const TranslateInput = () => {
         type="text"
         placeholder="Translate English to 中文"
         className="translate-input"
+        id="translate-input"
         onKeyPress={async (e) => {
           if (e.key === "Enter") {
             await handleTranslate(e.target.value);
