@@ -1,0 +1,31 @@
+
+// variable for color
+$color_primary : '#AA381E';
+
+
+.flex-col {
+  flex-direction: column!important;
+}
+
+.zhongwen {
+
+  &-title {
+    width:100%;
+    display:flex;
+    justify-content:center;
+  }
+}
+
+.zhongwen-heading-multiple {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  margin-bottom:1em;
+
+  & h3 {
+    width : 100%;
+  }
+  
+}
