@@ -1,8 +1,14 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import "./SavedWords.scss";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
 
 import { getSavedWords } from "./SavedWordsUtils";
+import {
+  getPinyinOfChar,
+  getDefinitionOfChar,
+} from "../Translate/TranslateUtils";
 
 const SavedWords = ({ savedWords, setSavedWords }) => {
   const [activeColumns, setActiveColumns] = useState([
@@ -10,6 +16,8 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
     "pinyin",
     "chinese",
   ]);
+
+  const [hover, setHover] = useState("");
 
   useEffect(async () => {
     const words = await getSavedWords();
@@ -117,13 +125,100 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
                       {new Date(word[column]).toLocaleDateString()}
                     </td>
                   );
+                } else if (column === "chinese") {
+                  return (
+                    <td key={column}>
+                      {/* split the word into characters */}
+                      {word[column].split("").map((character, index) => (
+                        <Tippy content={hover}>
+                          <span
+                            key={index}
+                            onMouseOver={async (event) => {
+                              let pinyin = await getPinyinOfChar(character);
+                              let defintion = await getDefinitionOfChar(
+                                character
+                              );
+
+                              setHover(
+                                `${character} - ${pinyin} - ${defintion}`
+                              );
+                            }}
+                          >
+                            {character}
+                          </span>
+                        </Tippy>
+                      ))}
+                    </td>
+                  );
+                } else if (column === "pinyin") {
+                  let pinyin = word[column];
+                  // split the pinyin into characters
+                  let pinyinCharacters = pinyin.split(" ");
+
+                  return (
+                    <td key={column}>
+                      {word.chinese.split("").map((character, index) => (
+                        <Tippy content={hover}>
+                          <span
+                            key={index}
+                            onMouseOver={async (event) => {
+                              let pinyin = await getPinyinOfChar(character);
+                              let defintion = await getDefinitionOfChar(
+                                character
+                              );
+
+                              setHover(
+                                `${character} - ${pinyin} - ${defintion}`
+                              );
+                            }}
+                          >
+                            {pinyinCharacters[index]}{" "}
+                          </span>
+                        </Tippy>
+                      ))}
+                    </td>
+                  );
                 } else {
                   return <td key={column}>{word[column]}</td>;
                 }
               });
 
               // return a tr for each word
-              return <tr key={index}>{columns}</tr>;
+              return (
+                <>
+                  <tr
+                    key={index}
+                    onClick={() => {
+                      savedWords[index].showMore = !savedWords[index].showMore;
+                      setSavedWords([...savedWords]);
+                    }}
+                    className={
+                      savedWords[index].showMore ? "show-more-title" : ""
+                    }
+                  >
+                    {columns}
+                  </tr>
+                  {savedWords[index].showMore && (
+                    <div className="show-more">
+                      {word.chinese.split("").map((character, index) => {
+                        let definition = word.definition[index];
+
+                        return (
+                          <div key={index} className="show-more--row">
+                            <span className="show-more-char">{character}</span>
+                            <span className="show-more-pinyin">
+                              {word.pinyin.split(" ")[index]}
+                            </span>
+                            <span className="show-more-definition">
+                              {definition}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </>
+              );
             })}
         </tbody>
       </table>
