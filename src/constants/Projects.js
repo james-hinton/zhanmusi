@@ -46,14 +46,14 @@ var Projects = [
       "https://images.unsplash.com/photo-1567878151693-c0493e064199?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhdmV5YXJkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
   },
   {
-    title: "CommonSensing Proxy and Authentication",
+    title: "STAC Management Backend",
     description:
-      "Building climate resilience and enhance decision making through the use of satellite remote sensing technology.",
-    language: "Python, Flask, HTML, CSS, JQuery, Javascript",
+      "A backend for the STAC specification that allows for the storage and retrieval of STAC items.",
+    language: "Python, Flask, HTML, CSS",
     public: true,
     image:
-      "https://media.istockphoto.com/photos/satellite-orbiting-the-earth-picture-id1339097795?b=1&k=20&m=1339097795&s=170667a&w=0&h=a8Zt4X6rvXyxPW7o1MqaOBwKELPLGX9xjWTlSIPJvWc=",
-    link: "https://github.com/SatelliteApplicationsCatapult/csopenportal",
+      "https://images.unsplash.com/photo-1518577589972-ad2d4f44eae9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    link: "https://github.com/SpatialDays/stac-portal-backend",
   },
 ];
 
