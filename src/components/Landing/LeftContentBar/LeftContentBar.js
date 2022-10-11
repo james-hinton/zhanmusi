@@ -86,6 +86,9 @@ const LeftContentBar = ({ pokeData }) => {
             image={
               "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
             }
+            link={
+              "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+            }
           />
           <Image
             height={"30px"}
@@ -97,7 +100,7 @@ const LeftContentBar = ({ pokeData }) => {
           />
         </div>
 
-        <Button text="Contact Me" />
+        <Button text="Contact Me" contact />
 
         <div className="info">
           {abilities && (

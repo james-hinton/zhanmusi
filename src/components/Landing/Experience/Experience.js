@@ -4,6 +4,16 @@ const About = () => {
   return (
     <>
       <p>
+        <h4>PDM Project</h4>
+        STAC Asset Catalog management platoform for Satellite Applications
+        Catapult. Worked on creating a number of backend API-s and microservices
+        running on Django and Flask, deploying and integrating them togather
+        using Terraform. Usage of various Azure services such as Applicaton
+        Gateways, App Services, ACI, ACR… Also built a user friendly frontend
+        using React which enables users to manage their assets and create
+        workflows.
+        <br />
+        <br />
         <h4>ConspiraSea </h4>Software Developer for the ConspiraSea information,
         engagement and lobbying platform. This platform is to be used by the
         public to lobby Government, large organisations, fishing companies and
@@ -22,6 +32,12 @@ const About = () => {
         software development using Python, Javascript, Redis, Dojo and Jinja2.
         It also included deployment on Linux distribution servers and the use of
         Docker.
+        <br />
+        <br />
+        <h4>Google Scraper Project</h4> Software Developer for a Google Scraper
+        Project called Searcher Ninja. Software development work involved using
+        Python Flask, NodeJS, AWS EC2, React, HTML, CSS. It also included
+        deployment on Linux distribution servers and use of Docker.
         <br />
         <br />
         <h4>Whoovr </h4> Software Developer for the new Whoovr company

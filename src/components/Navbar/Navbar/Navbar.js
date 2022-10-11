@@ -2,6 +2,7 @@ import Image from "../../Generic/Image/Image";
 import Search from "../Search/Search";
 import NavLink from "./NavLink";
 import startBounce from "../../../utils/bounce";
+import Contact from "../../Contact";
 
 import "./Navbar.scss";
 import { useEffect, useState } from "react";
@@ -13,6 +14,7 @@ const Navbar = ({
   setActiveCursor,
 }) => {
   const [theme, setTheme] = useState("default");
+  const [showModal, setShowModal] = useState(false);
 
   // Check the URL path and set the theme
   useEffect(() => {
@@ -21,7 +23,6 @@ const Navbar = ({
     }
   }, []);
 
-  
   return (
     <>
       <div className={`navbar navbar-${theme}`}>
@@ -58,7 +59,7 @@ const Navbar = ({
             }}
           />
         </div>
-
+        {/* 
         <div className="navbar__item">
           <NavLink
             text="Useless Button"
@@ -67,11 +68,19 @@ const Navbar = ({
               startBounce(e);
             }}
           />
-        </div>
+        </div> */}
 
         <div className="navbar__item right">
-          <NavLink text="Contact" link="#" border />
+          <NavLink
+            text="Contact"
+            link="#"
+            border
+            onCustomClick={() => {
+              setShowModal(true);
+            }}
+          />
         </div>
+        <Contact showModal={showModal} setShowModal={setShowModal} />
       </div>
     </>
   );

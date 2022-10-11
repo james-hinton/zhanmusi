@@ -19,11 +19,10 @@ const Image = ({ image, circle, logo, height, margin, link, mood }) => {
           logo: logo,
           margin: margin,
         })}
-        // if mood 
+        // if mood
         onMouseEnter={mood ? () => toggleCursor(mood) : null}
         onMouseLeave={mood ? () => toggleCursor() : null}
-
-        onClick={link ? () => window.location.href = link : null}
+        onClick={link ? () => window.open(link, "_blank") : null}
       />
     </>
   );

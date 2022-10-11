@@ -2,5 +2,6 @@
   width: 100%;
   border-radius: 7px;
   height: 2em;
+  cursor: pointer;
   margin-bottom: 1em;
 }
