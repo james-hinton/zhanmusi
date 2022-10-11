@@ -6,6 +6,10 @@
   cursor: none;
 }
 
+.app {
+  min-width: 900px;
+}
+
 .content {
   display: flex;
 

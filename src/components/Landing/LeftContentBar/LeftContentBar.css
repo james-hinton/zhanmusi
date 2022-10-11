@@ -56,10 +56,23 @@
 }
 
 @media only screen and (max-width: 1000px) {
+  h3 {
+    padding: 0;
+    margin: 0;
+  }
   .content__left {
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .content__left--image {
+    margin: 0;
+  }
+
+  .content__left--button {
+    width: 200px;
+    margin-bottom: 2em;
   }
 }
