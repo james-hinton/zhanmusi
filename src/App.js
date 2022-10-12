@@ -6,7 +6,7 @@ import "./assets/styles/App.css";
 import Navbar from "./components/Navbar/Navbar/Navbar";
 import Landing from "./pages/Landing/Landing";
 import Zhongwen from "./pages/Zhongwen/Zhongwen";
-
+import Mountains from "./pages/Mountains/Mountains";
 
 import CursorContextProvider from "./components/Generic/Cursor/CursorContextProvider";
 
@@ -34,12 +34,18 @@ const App = () => {
         />
 
         <Routes>
-          <Route path="/" element={<Landing pokeData={pokeData} activeCursor={activeCursor} />} />
+          <Route
+            path="/"
+            element={
+              <Landing pokeData={pokeData} activeCursor={activeCursor} />
+            }
+          />
           <Route path="/zhongwen" element={<Zhongwen />} />
+          <Route path="/mountains" element={<Mountains />} />
         </Routes>
       </div>
     </CursorContextProvider>
   );
-}
+};
 
 export default App;
