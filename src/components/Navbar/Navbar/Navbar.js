@@ -30,7 +30,7 @@ const Navbar = ({
           <Image logo image={"/github.png"} link={"/"} />
         </div>
 
-        <div className="navbar__item">
+        <div className="navbar__item search">
           <Search
             setBackground={setBackground}
             setpokeData={setpokeData}
@@ -38,11 +38,11 @@ const Navbar = ({
           />
         </div>
 
-        <div className="navbar__item">
+        <div className="navbar__item throw">
           <NavLink text="Pull requests" link="#" />
         </div>
 
-        <div className="navbar__item">
+        <div className="navbar__item throw">
           <NavLink
             text="Issues"
             link="#"
@@ -50,7 +50,7 @@ const Navbar = ({
           />
         </div>
 
-        <div className="navbar__item">
+        <div className="navbar__item throw">
           <NavLink
             text="Cat Cursor"
             link="#"

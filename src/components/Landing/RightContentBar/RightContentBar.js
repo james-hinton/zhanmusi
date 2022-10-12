@@ -1,6 +1,6 @@
 import Overview from "../Overview/Overview";
 import Experience from "../Experience/Experience";
-import About from "../About/About"
+import About from "../About/About";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -27,11 +27,6 @@ const RightContentBar = ({}) => {
 
           <TabPanel>
             <Experience />
-          </TabPanel>
-
-          <TabPanel>
-            Chess board here that any user can play with me. Allow email
-            notifications with PGN. Your turn / My Turn
           </TabPanel>
         </Tabs>
       </div>

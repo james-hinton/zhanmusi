@@ -12,6 +12,7 @@ const Overview = () => {
         {Projects.map((project) => {
           return (
             <Repo
+              key={project.title}
               project={project.title}
               priv={project.public ? "Public" : "Private"}
               about={project.description}

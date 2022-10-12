@@ -101,7 +101,6 @@ const LeftContentBar = ({ pokeData }) => {
         </div>
 
         <Button text="Contact Me" contact className="content__left--button" />
-
         <div className="info">
           {abilities && (
             <InfoPanel

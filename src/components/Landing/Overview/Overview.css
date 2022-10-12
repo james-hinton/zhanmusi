@@ -21,3 +21,20 @@
 .contributions {
   width: 100%;
 }
+
+@media only screen and (max-width: 1000px) {
+  .repo {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .repo__box {
+    margin-top: 0;
+  }
+
+  .contributions {
+    display: flex;
+
+    justify-content: center;
+  }
+}

@@ -3,3 +3,13 @@ h4 {
   color: rgb(44, 44, 44);
   font-weight: 900;
 }
+
+@media (max-width: 1000px) {
+  .experience {
+    margin-top: 2em;
+  }
+  .experience p {
+    font-size: 0.9em!important;
+    
+  }
+}

@@ -2,7 +2,7 @@ import "./Experience.css";
 
 const About = () => {
   return (
-    <>
+    <div className="experience">
       <p>
         <h4>PDM Project</h4>
         STAC Asset Catalog management platoform for Satellite Applications
@@ -78,7 +78,7 @@ const About = () => {
         records quantitative opinion data from live social media posts
         containing any chosen keyword over time.
       </p>
-    </>
+    </div>
   );
 };
 

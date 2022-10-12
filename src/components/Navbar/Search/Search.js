@@ -63,7 +63,7 @@ const Search = ({ setBackground, setpokeData, setTheme }) => {
         type="text"
         onFocus={handleFocus}
         onChange={handleChange}
-        value={searchText && searchText}
+        value={searchText ? searchText : ""}
         className="searchBox"
         placeholder="Enter a pokemon..."
       ></input>

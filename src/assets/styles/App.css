@@ -7,7 +7,6 @@
 }
 
 .app {
-  min-width: 900px;
 }
 
 .content {
@@ -24,7 +23,6 @@
   box-shadow: 0px 0px 30px #88888854;
   border-radius: 2em;
 
-  min-width: 700px;
 }
 
 .bottom-right-modal {

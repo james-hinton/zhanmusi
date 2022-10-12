@@ -9,7 +9,7 @@
   margin-left: 0;
 
   background-color: #24292f;
-  min-width: 900px;
+  min-width: 500px;
 
   &-default {
     background-color: #24292f;
@@ -49,7 +49,34 @@
 }
 
 @media only screen and (max-width: 1000px) {
+  .navbar {
+    justify-content: space-between;
+    width: 100%;
+    height: 3em;
+    align-items: center;
+  }
+
+  .navbar img {
+    height: 2em;
+    width: 2em;
+  }
   .right {
     position: static;
+    margin-right: 2em;
+  }
+
+  .throw {
+    display: none;
+  }
+
+  .search {
+    width: 60%;
+  }
+
+  .searchBox {
+    width: 100% !important;
+    font-size: 1.2em;
+
+    padding: 2em;
   }
 }
