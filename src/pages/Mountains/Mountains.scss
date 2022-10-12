@@ -4,16 +4,19 @@
   background-color: rgb(21, 17, 17);
   max-height: 1000px;
   overflow: hidden;
+  position: relative;
+
+
 
   // Max height is 120vh and there is no overflow
-  max-height: 80vh;
+  max-height: 100vh;
   overflow: hidden;
 
   background-image: url(../../../public/mountains/backdrop.jpg);
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: top;
 
   & img {
     object-fit: cover;
@@ -25,11 +28,13 @@
   position: absolute;
   width: 100%;
   overflow: hidden;
-}
 
-.eagle {
-  object-fit: contain !important;
-  width: 100% !important;
+  // Cool image effect
+  transition: filter 0.5s ease-in-out;
+
+  &:hover {
+    //filter: blur(0px)!important;
+  }
 }
 
 .mountain-text {
@@ -45,10 +50,35 @@
   letter-spacing: 0.2rem;
 }
 
+// Custom assets
+.eagle {
+  object-fit: contain !important;
+  width: 100% !important;
+}
+
+.landscape {
+  object-fit: unset !important;
+  width: 100% !important;
+  // Position to the bottom of the screen
+  position: absolute;
+  bottom: 0!important;
+
+  // Make it smaller
+  height: 50vh !important;
+}
+
+.dark {
+  position: absolute;
+  // Above the landscape
+  object-fit: unset!important;
+  bottom: 5%;
+  height:50%;
+}
+
 #ocean-container {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(113, 28, 28);
+  background-color: rgb(9, 8, 49);
 
   // Dont allow overflow
   overflow: hidden;
