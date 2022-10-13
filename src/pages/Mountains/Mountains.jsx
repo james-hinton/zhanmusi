@@ -23,7 +23,7 @@ const Mountains = () => {
       alt: "mountain dark",
       moveSpeed: -0.25,
       zIndex: 2,
-      className: "dark",
+      className: "dark-landscape",
       blurSpeed: -0.1,
       blur: 4,
     },
