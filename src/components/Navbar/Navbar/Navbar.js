@@ -27,7 +27,7 @@ const Navbar = ({
     <>
       <div className={`navbar navbar-${theme}`}>
         <div className="navbar__item">
-          <Image logo image={"/github.png"} link={"/"} />
+          <Image logo image={"/github.png"} link={"/"} sameTab />
         </div>
 
         <div className="navbar__item search">

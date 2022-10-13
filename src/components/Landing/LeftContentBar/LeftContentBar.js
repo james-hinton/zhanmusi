@@ -53,7 +53,7 @@ const LeftContentBar = ({ pokeData }) => {
           </div>
           {showEmojiSelector && (
             <div className="content__left--emoji-selector">
-              {["😁", "😎", "🤓", "😙", "😀"].map((e, i) => {
+              {["😁", "😎", "🤓", "😙", "😀", "🌄"].map((e, i) => {
                 return (
                   <div
                     className="content__left--emoji-selector--emoji"
@@ -61,6 +61,10 @@ const LeftContentBar = ({ pokeData }) => {
                     onClick={() => {
                       setEmoji(e);
                       setShowEmojiSelector(false);
+                      // If its 🌄 then navigate to /mountains/
+                      if (e === "🌄") {
+                        window.location.href = "/mountains/";
+                      }
                     }}
                   >
                     {e}
@@ -116,7 +120,7 @@ const LeftContentBar = ({ pokeData }) => {
             value={"Full Stack Software Developer, Spatial Days Ltd"}
           />
 
-          <InfoPanel title="Nationality" value="British" />
+          <InfoPanel title="Nationality" value="British" link="/zhongwen/" />
 
           <InfoPanel
             title="Qualifications"

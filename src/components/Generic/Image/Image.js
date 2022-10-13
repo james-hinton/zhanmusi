@@ -4,7 +4,16 @@ import classNames from "classnames";
 import { useContext, useCallback } from "react";
 import { CursorContext } from "../Cursor/CursorContextProvider";
 
-const Image = ({ image, circle, logo, height, margin, link, mood }) => {
+const Image = ({
+  image,
+  circle,
+  logo,
+  height,
+  margin,
+  link,
+  mood,
+  sameTab,
+}) => {
   const [cursor, setCursor] = useContext(CursorContext);
   const toggleCursor = useCallback((mood) => {
     setCursor(({ active }) => ({ active: !active, mood: mood }));
@@ -22,7 +31,9 @@ const Image = ({ image, circle, logo, height, margin, link, mood }) => {
         // if mood
         onMouseEnter={mood ? () => toggleCursor(mood) : null}
         onMouseLeave={mood ? () => toggleCursor() : null}
-        onClick={link ? () => window.open(link, "_blank") : null}
+        onClick={
+          link ? () => window.open(link, sameTab ? "_self" : "_blank") : null
+        }
       />
     </>
   );
