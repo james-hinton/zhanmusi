@@ -34,7 +34,7 @@ const Mountains = () => {
       moveSpeed: 0.8,
       moveLeft: true,
       zIndex: 3,
-      height: "30vh",
+      height: "18vh",
       right: "-30%",
       className: "eagle",
     },
