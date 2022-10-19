@@ -34,7 +34,6 @@ export const getDefinitionOfChar = async (char) => {
     (entry) => entry.traditional === char || entry.simplified === char
   );
 
-
   if (definition) {
     return definition.definition;
   }
@@ -63,16 +62,9 @@ export const addToSavedWords = async (word, group) => {
 };
 
 export const translater = async (query) => {
-  let API_KEY = process.env.REACT_APP_RAPID_TRANSLATE_API_KEY;
-  let API_URL = "https://deep-translate1.p.rapidapi.com/language/translate/v2";
+  const API_URL = "http://jameshinton.pythonanywhere.com/translate"; // TODO: Move to env
 
-  let headers = {
-    "content-type": "application/json",
-    "X-RapidAPI-Key": API_KEY,
-    "X-RapidAPI-Host": "deep-translate1.p.rapidapi.com",
-  };
-
-  let payload = {
+  const payload = {
     q: query,
     source: "en",
     target: "zh",
@@ -81,7 +73,9 @@ export const translater = async (query) => {
   // POST request to API
   let response = await fetch(API_URL, {
     method: "POST",
-    headers: headers,
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
   });
 
@@ -96,7 +90,6 @@ export const translater = async (query) => {
     pinyin: await getPinyin(translatedText),
     date: new Date().toLocaleDateString().split("/").join("-"),
   };
-
 
   return translation;
 };
