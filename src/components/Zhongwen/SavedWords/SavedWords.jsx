@@ -81,12 +81,12 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
           );
         },
       },
-      {
-        Header: "Date",
-        accessor: (row) => {
-          return new Date(row.date).toLocaleDateString();
-        },
-      },
+      // {
+      //   Header: "Date",
+      //   accessor: (row) => {
+      //     return new Date(row.date).toLocaleDateString();
+      //   },
+      // },
     ],
     []
   );

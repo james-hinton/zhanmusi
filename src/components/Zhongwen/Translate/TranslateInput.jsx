@@ -18,6 +18,12 @@ const TranslateInput = ({ setSavedWords }) => {
       setLoading(false);
     }
   };
+
+  // Listen for any key press and focus on the input
+  document.addEventListener("keydown", (e) => {
+    document.getElementById("translate-input").focus();
+  });
+
   return (
     <>
       {!loading ? (
@@ -47,11 +53,7 @@ const TranslateInput = ({ setSavedWords }) => {
         <div className="loading-container">
           {/* Swirly */}
           {/* Show /duck.gif */}
-          <img
-            src="/duck.gif"
-            alt="Loading..."
-            className="loading-image"
-          />
+          <img src="/duck.gif" alt="Loading..." className="loading-image" />
         </div>
       )}
     </>
