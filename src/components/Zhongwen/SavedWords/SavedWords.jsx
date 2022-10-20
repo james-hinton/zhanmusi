@@ -9,12 +9,11 @@ import {
 
 import { getSavedWords } from "./SavedWordsUtils";
 
-import WordRow from "./components/WordRow";
-
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 
 import { useTable, usePagination } from "react-table";
+import { useExpanded } from "react-table";
 
 const SavedWords = ({ savedWords, setSavedWords }) => {
   useEffect(() => {
@@ -26,6 +25,18 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
     getSavedWordsFromStorage();
   }, []);
 
+  const onHover = (character) => {
+    // TODO: Make full list of special characters
+    if (character === " " || character === "，" || character === "。") {
+      return "Punctuation";
+    }
+
+    let pinyin = getPinyinOfChar(character);
+    let defintion = getDefinitionOfChar(character);
+    const tooltipText = `${character} - ${pinyin} - ${defintion}`;
+    return tooltipText;
+  };
+
   const columns = useMemo(
     () => [
       {
@@ -34,35 +45,45 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
       },
       {
         Header: "Pinyin",
-        accessor: "pinyin",
+        accessor: ({ pinyin, hanzi }) => {
+          const characters = hanzi.split("");
+          return (
+            <div className="hanzi-container">
+              {characters.map((character, index) => {
+                return (
+                  <span key={index}>
+                    <Tippy content={onHover(character)} placement="bottom">
+                      <span>{pinyin.split(" ")[index]} </span>
+                    </Tippy>
+                  </span>
+                );
+              })}
+            </div>
+          );
+        },
       },
       {
         Header: "Hanzi",
         accessor: ({ hanzi }) => {
-          const output = [];
-          hanzi.split("").map(async (character) => {
-            let pinyin = await getPinyinOfChar(character);
-            let defintion = await getDefinitionOfChar(character);
-
-            // Set the hover text within the saved words table
-            const hoverText = `${character} - ${pinyin} - ${defintion}`;
-
-            output.push(
-              <Tippy content={hoverText}>
-                <span className="saved-words__character">{character}</span>
-              </Tippy>
-            );
-          });
-
-          return "yo";
+          const characters = hanzi.split("");
+          return (
+            <div className="hanzi-container">
+              {characters.map((character, index) => {
+                return (
+                  <span key={index}>
+                    <Tippy content={onHover(character)} placement="bottom">
+                      <span>{character}</span>
+                    </Tippy>
+                  </span>
+                );
+              })}
+            </div>
+          );
         },
       },
       {
         Header: "Date",
         accessor: (row) => {
-          // Convert to YY-MM-DD
-          const date = new Date(row.date).toLocaleDateString();
-          console.log(date);
           return new Date(row.date).toLocaleDateString();
         },
       },
@@ -75,10 +96,7 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -87,20 +105,26 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
     nextPage,
     previousPage,
     setPageSize,
-    state: { pageIndex, pageSize },
+    state: { pageIndex, pageSize, expanded },
   } = useTable(
     {
       columns,
       data: savedWords,
       initialState: { pageIndex: 0 },
     },
+    useExpanded,
     usePagination
   );
 
   return (
     <div className="saved-words">
       {/* Table */}
-      <table {...getTableProps()}>
+      <table
+        {...getTableProps()}
+        style={{
+          width: "100%",
+        }}
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>

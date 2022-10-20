@@ -17,7 +17,7 @@ const getPinyin = async (query) => {
   return pinyin;
 };
 
-export const getPinyinOfChar = async (char) => {
+export const getPinyinOfChar = (char) => {
   const pinyin = cedict.find(
     (entry) => entry.traditional === char || entry.simplified === char
   );
@@ -29,7 +29,7 @@ export const getPinyinOfChar = async (char) => {
   return "";
 };
 
-export const getDefinitionOfChar = async (char) => {
+export const getDefinitionOfChar = (char) => {
   const definition = cedict.find(
     (entry) => entry.traditional === char || entry.simplified === char
   );
@@ -56,9 +56,8 @@ export const addToSavedWords = async (word, group) => {
     }),
   };
 
-  const response = await fetch(URL, options);
-  const data = await response.json();
-  return data;
+  await fetch(URL, options);
+  return 'success';
 };
 
 export const translater = async (query) => {

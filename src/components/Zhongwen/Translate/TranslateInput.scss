@@ -34,12 +34,24 @@
     line-height: 1.5;
     letter-spacing: normal;
     color: #fff;
-    background-color: #23282E;
+    background-color: #23282e;
 
-    cursor:pointer;
+    cursor: pointer;
 
     &:hover {
-      background-color: #AA381E;
+      background-color: #aa381e;
     }
   }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-image {
+  width: 100px;
+  height: 130px;
 }

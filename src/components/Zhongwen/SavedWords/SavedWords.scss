@@ -1,3 +1,8 @@
+.saved-words {
+  margin-top: 1em;
+  width: 100%;
+}
+
 .checkbox-container {
   width: 100%;
   display: flex;
@@ -13,35 +18,26 @@
 }
 
 tr {
+  // Bold
   &:hover {
     background-color: #f5f5f5;
     cursor: pointer;
   }
 }
 
-.show-more {
-  // take full width of the table
-  width: 100%;
+td {
+  padding: 0.8rem;
+  text-align: center;
+}
 
-  position: inherit;
-  &-title {
-    font-weight: 700;
-  }
-  &--row {
-    background-color: #f5f5f5;
-    width: 100%;
-    display: flex;
-  }
-  &-char {
-    font-weight: 700;
-    width: 100px;
-  }
-  &-pinyin {
-    margin-left: 1em;
-    width: 100px;
-  }
-  &-definition {
-    margin-left: 1em;
-    width: 300px;
-  }
+.hanzi {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  margin-top:1.5em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }

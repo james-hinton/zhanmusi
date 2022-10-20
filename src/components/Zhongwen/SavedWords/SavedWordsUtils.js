@@ -1,8 +1,3 @@
-import {
-  getPinyinOfChar,
-  getDefinitionOfChar,
-} from "../Translate/TranslateUtils";
-
 export const getSavedWords = async () => {
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const URL = `${BASE_URL}/saved-words`;
@@ -21,20 +16,8 @@ export const getSavedWords = async () => {
     word.showMore = false;
   });
 
-  // add a definition property to the data
-  data.forEach((word) => {
-    // split the word.characters into an array of characters
-    const characters = word.hanzi.split("");
-
-    word.definition = [];
-    // loop through the characters of the word
-    characters.forEach(async (character) => {
-      // get the definition of the character
-      const definition = await getDefinitionOfChar(character);
-      // add the definition to the character
-      word.definition.push(definition);
-    });
-  });
+  // Reverse the array so that the most recently added words are at the top
+  data.reverse();
 
   return data;
 };
