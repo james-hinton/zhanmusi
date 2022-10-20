@@ -24,7 +24,7 @@ export const getSavedWords = async () => {
   // add a definition property to the data
   data.forEach((word) => {
     // split the word.characters into an array of characters
-    const characters = word.chinese.split("");
+    const characters = word.hanzi.split("");
 
     word.definition = [];
     // loop through the characters of the word

@@ -62,7 +62,7 @@ export const addToSavedWords = async (word, group) => {
 };
 
 export const translater = async (query) => {
-  const API_URL = "http://jameshinton.pythonanywhere.com/translate"; // TODO: Move to env
+  const TRANSLATE_URL = process.env.REACT_APP_BACKEND_URL + "/translate";
 
   const payload = {
     q: query,
@@ -71,7 +71,7 @@ export const translater = async (query) => {
   };
 
   // POST request to API
-  let response = await fetch(API_URL, {
+  let response = await fetch(TRANSLATE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

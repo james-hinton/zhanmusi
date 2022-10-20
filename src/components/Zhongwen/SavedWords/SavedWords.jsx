@@ -1,227 +1,202 @@
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import "./SavedWords.scss";
-import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css"; // optional
 
-import { getSavedWords } from "./SavedWordsUtils";
 import {
   getPinyinOfChar,
   getDefinitionOfChar,
 } from "../Translate/TranslateUtils";
 
+import { getSavedWords } from "./SavedWordsUtils";
+
+import WordRow from "./components/WordRow";
+
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
+
+import { useTable, usePagination } from "react-table";
+
 const SavedWords = ({ savedWords, setSavedWords }) => {
-  const [activeColumns, setActiveColumns] = useState([
-    "english",
-    "pinyin",
-    "chinese",
-  ]);
+  useEffect(() => {
+    const getSavedWordsFromStorage = async () => {
+      const words = await getSavedWords();
+      setSavedWords(words);
+    };
 
-  const [hover, setHover] = useState("");
-
-  useEffect(async () => {
-    const words = await getSavedWords();
-    await setSavedWords(words);
+    getSavedWordsFromStorage();
   }, []);
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: "English",
+        accessor: "english",
+      },
+      {
+        Header: "Pinyin",
+        accessor: "pinyin",
+      },
+      {
+        Header: "Hanzi",
+        accessor: ({ hanzi }) => {
+          const output = [];
+          hanzi.split("").map(async (character) => {
+            let pinyin = await getPinyinOfChar(character);
+            let defintion = await getDefinitionOfChar(character);
+
+            // Set the hover text within the saved words table
+            const hoverText = `${character} - ${pinyin} - ${defintion}`;
+
+            output.push(
+              <Tippy content={hoverText}>
+                <span className="saved-words__character">{character}</span>
+              </Tippy>
+            );
+          });
+
+          return "yo";
+        },
+      },
+      {
+        Header: "Date",
+        accessor: (row) => {
+          // Convert to YY-MM-DD
+          const date = new Date(row.date).toLocaleDateString();
+          console.log(date);
+          return new Date(row.date).toLocaleDateString();
+        },
+      },
+    ],
+    []
+  );
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    prepareRow,
+    page, // Instead of using 'rows', we'll use page,
+    // which has only the rows for the active page
+
+    // The rest of these things are super handy, too ;)
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: { pageIndex, pageSize },
+  } = useTable(
+    {
+      columns,
+      data: savedWords,
+      initialState: { pageIndex: 0 },
+    },
+    usePagination
+  );
 
   return (
     <div className="saved-words">
-      <div className="checkbox-container">
-        <div className="active-columns">
-          <div className="active-columns--checkbox">
-            <input
-              type="checkbox"
-              id="english"
-              name="english"
-              checked={activeColumns.includes("english")}
-              onChange={() => {
-                if (activeColumns.includes("english")) {
-                  setActiveColumns(
-                    activeColumns.filter((column) => column !== "english")
+      {/* Table */}
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {page.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
-                } else {
-                  setActiveColumns([...activeColumns, "english"]);
-                }
-              }}
-            />
-            <label htmlFor="english">English</label>
-          </div>
-          <div className="active-columns--checkbox">
-            <input
-              type="checkbox"
-              id="pinyin"
-              name="pinyin"
-              checked={activeColumns.includes("pinyin")}
-              onChange={() => {
-                if (activeColumns.includes("pinyin")) {
-                  setActiveColumns(
-                    activeColumns.filter((column) => column !== "pinyin")
-                  );
-                } else {
-                  setActiveColumns([...activeColumns, "pinyin"]);
-                }
-              }}
-            />
-            <label htmlFor="pinyin">Pinyin</label>
-          </div>
-          <div className="active-columns--checkbox">
-            <input
-              type="checkbox"
-              id="date"
-              name="date"
-              checked={activeColumns.includes("date")}
-              onChange={() => {
-                if (activeColumns.includes("date")) {
-                  setActiveColumns(
-                    activeColumns.filter((column) => column !== "date")
-                  );
-                } else {
-                  setActiveColumns([...activeColumns, "date"]);
-                }
-              }}
-            />
-            <label htmlFor="date">Date</label>
-          </div>
-          <div className="active-columns--checkbox">
-            <input
-              type="checkbox"
-              id="chinese"
-              name="chinese"
-              checked={activeColumns.includes("chinese")}
-              onChange={() => {
-                if (activeColumns.includes("chinese")) {
-                  setActiveColumns(
-                    activeColumns.filter((column) => column !== "chinese")
-                  );
-                } else {
-                  setActiveColumns([...activeColumns, "chinese"]);
-                }
-              }}
-            />
-            <label htmlFor="chinese">Chinese</label>
-          </div>
-        </div>
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {/* 
+        Pagination can be built however you'd like. 
+        This is just a very basic UI implementation:
+      */}
+      <div className="pagination">
+        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          {"<<"}
+        </button>{" "}
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {"<"}
+        </button>{" "}
+        <button onClick={() => nextPage()} disabled={!canNextPage}>
+          {">"}
+        </button>{" "}
+        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          {">>"}
+        </button>{" "}
+        <span>
+          Page{" "}
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>{" "}
+        </span>
+        <span>
+          | Go to page:{" "}
+          <input
+            type="number"
+            defaultValue={pageIndex + 1}
+            onChange={(e) => {
+              const page = e.target.value ? Number(e.target.value) - 1 : 0;
+              gotoPage(page);
+            }}
+            style={{ width: "100px" }}
+          />
+        </span>{" "}
+        <select
+          value={pageSize}
+          onChange={(e) => {
+            setPageSize(Number(e.target.value));
+          }}
+        >
+          {[10, 20, 30, 40, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <table className="saved-words-table">
-        <thead>
-          <tr>
-            {activeColumns.map((column) => (
-              <th key={column}>
-                {column.charAt(0).toUpperCase() + column.slice(1)}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
+      {/* Table */}
+      {/* <div className="saved-words-table">
+        <div className="saved-words-header">
+          {activeColumns.map((column) => (
+            <th key={column}>
+              {column.charAt(0).toUpperCase() + column.slice(1)}
+            </th>
+          ))}
+        </div>
+        <div className="saved-words-body">
           {savedWords &&
             savedWords.length > 0 &&
             savedWords.map((word, index) => {
-              // loop through activeColumns and create a td for each
-              const columns = activeColumns.map((column) => {
-                if (column === "date") {
-                  return (
-                    <td key={column}>
-                      {new Date(word[column]).toLocaleDateString()}
-                    </td>
-                  );
-                } else if (column === "chinese") {
-                  return (
-                    <td key={column}>
-                      {/* split the word into characters */}
-                      {word[column].split("").map((character, index) => (
-                        <Tippy content={hover}>
-                          <span
-                            key={index}
-                            onMouseOver={async (event) => {
-                              let pinyin = await getPinyinOfChar(character);
-                              let defintion = await getDefinitionOfChar(
-                                character
-                              );
-
-                              setHover(
-                                `${character} - ${pinyin} - ${defintion}`
-                              );
-                            }}
-                          >
-                            {character}
-                          </span>
-                        </Tippy>
-                      ))}
-                    </td>
-                  );
-                } else if (column === "pinyin") {
-                  let pinyin = word[column];
-                  // split the pinyin into characters
-                  let pinyinCharacters = pinyin.split(" ");
-
-                  return (
-                    <td key={column}>
-                      {word.chinese.split("").map((character, index) => (
-                        <Tippy content={hover}>
-                          <span
-                            key={index}
-                            onMouseOver={async (event) => {
-                              let pinyin = await getPinyinOfChar(character);
-                              let defintion = await getDefinitionOfChar(
-                                character
-                              );
-
-                              setHover(
-                                `${character} - ${pinyin} - ${defintion}`
-                              );
-                            }}
-                          >
-                            {pinyinCharacters[index]}{" "}
-                          </span>
-                        </Tippy>
-                      ))}
-                    </td>
-                  );
-                } else {
-                  return <td key={column}>{word[column]}</td>;
-                }
-              });
-
-              // return a tr for each word
               return (
-                <>
-                  <tr
-                    key={index}
-                    onClick={() => {
-                      savedWords[index].showMore = !savedWords[index].showMore;
-                      setSavedWords([...savedWords]);
-                    }}
-                    className={
-                      savedWords[index].showMore ? "show-more-title" : ""
-                    }
-                  >
-                    {columns}
-                  </tr>
-                  {savedWords[index].showMore && (
-                    <div className="show-more">
-                      {word.chinese.split("").map((character, index) => {
-                        let definition = word.definition[index];
-
-                        return (
-                          <div key={index} className="show-more--row">
-                            <span className="show-more-char">{character}</span>
-                            <span className="show-more-pinyin">
-                              {word.pinyin.split(" ")[index]}
-                            </span>
-                            <span className="show-more-definition">
-                              {definition}
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </>
+                <WordRow
+                  key={index}
+                  word={word}
+                  activeColumns={activeColumns}
+                />
               );
             })}
-        </tbody>
-      </table>
+        </div>
+      </div> */}
     </div>
   );
 };
