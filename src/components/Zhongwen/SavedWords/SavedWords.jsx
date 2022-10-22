@@ -14,8 +14,12 @@ import "tippy.js/dist/tippy.css"; // optional
 
 import { useTable, usePagination } from "react-table";
 import { useExpanded } from "react-table";
+import Modal from './components/Modal';
 
 const SavedWords = ({ savedWords, setSavedWords }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedRowData, setSelectedRowData] = useState({});
+
   useEffect(() => {
     const getSavedWordsFromStorage = async () => {
       const words = await getSavedWords();
@@ -138,7 +142,13 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps()}
+                onClick={() => {
+                  setSelectedRowData(row.original);
+                  setOpenModal(true);
+                }}
+              >
                 {row.cells.map((cell) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
@@ -149,10 +159,7 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
           })}
         </tbody>
       </table>
-      {/* 
-        Pagination can be built however you'd like. 
-        This is just a very basic UI implementation:
-      */}
+
       <div className="pagination">
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {"<<"}
@@ -198,29 +205,13 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
         </select>
       </div>
 
-      {/* Table */}
-      {/* <div className="saved-words-table">
-        <div className="saved-words-header">
-          {activeColumns.map((column) => (
-            <th key={column}>
-              {column.charAt(0).toUpperCase() + column.slice(1)}
-            </th>
-          ))}
-        </div>
-        <div className="saved-words-body">
-          {savedWords &&
-            savedWords.length > 0 &&
-            savedWords.map((word, index) => {
-              return (
-                <WordRow
-                  key={index}
-                  word={word}
-                  activeColumns={activeColumns}
-                />
-              );
-            })}
-        </div>
-      </div> */}
+      {/* Modal */}
+      <Modal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        data={selectedRowData}
+      />
+
     </div>
   );
 };
