@@ -1,7 +1,6 @@
 import Image from "../../Generic/Image/Image";
 import Search from "../Search/Search";
 import NavLink from "./NavLink";
-import startBounce from "../../../utils/bounce";
 import Contact from "../../Contact";
 
 import "./Navbar.scss";
@@ -18,7 +17,7 @@ const Navbar = ({
 
   // Check the URL path and set the theme
   useEffect(() => {
-    if (window.location.pathname === "/zhongwen") {
+    if (window.location.pathname.includes("zhongwen")) {
       setTheme("chinese");
     }
   }, []);
@@ -29,36 +28,39 @@ const Navbar = ({
         <div className="navbar__item">
           <Image logo image={"/github.png"} link={"/"} sameTab />
         </div>
+        {theme === "default" && (
+          <>
+            <div className="navbar__item search">
+              <Search
+                setBackground={setBackground}
+                setpokeData={setpokeData}
+                setTheme={setTheme}
+              />
+            </div>
 
-        <div className="navbar__item search">
-          <Search
-            setBackground={setBackground}
-            setpokeData={setpokeData}
-            setTheme={setTheme}
-          />
-        </div>
+            <div className="navbar__item throw">
+              <NavLink text="Pull requests" link="#" />
+            </div>
 
-        <div className="navbar__item throw">
-          <NavLink text="Pull requests" link="#" />
-        </div>
+            <div className="navbar__item throw">
+              <NavLink
+                text="Issues"
+                link="#"
+                Dropdown="I have no idea what I'm doing"
+              />
+            </div>
 
-        <div className="navbar__item throw">
-          <NavLink
-            text="Issues"
-            link="#"
-            Dropdown="I have no idea what I'm doing"
-          />
-        </div>
-
-        <div className="navbar__item throw">
-          <NavLink
-            text="Cat Cursor"
-            link="#"
-            onCustomClick={() => {
-              setActiveCursor(!activeCursor);
-            }}
-          />
-        </div>
+            <div className="navbar__item throw">
+              <NavLink
+                text="Cat Cursor"
+                link="#"
+                onCustomClick={() => {
+                  setActiveCursor(!activeCursor);
+                }}
+              />
+            </div>
+          </>
+        )}
         {/* 
         <div className="navbar__item">
           <NavLink

@@ -14,7 +14,6 @@ const TranslateInput = ({ setSavedWords }) => {
       await addToSavedWords(translation, 1);
       const words = await getSavedWords();
       setSavedWords(words);
-      //document.getElementById("translate-input").value = "";
       setLoading(false);
     }
   };
