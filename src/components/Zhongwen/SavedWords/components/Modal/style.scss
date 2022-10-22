@@ -1,0 +1,108 @@
+.zhongwen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+
+  &-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    overflow: auto;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+
+      &-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 2rem;
+
+        &-label {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 0.5rem;
+          // Italic and gray
+          color: #666;
+          font-style: italic;
+        }
+
+        &-value {
+          width: 100%;
+          text-align: center;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  &-audio-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  &-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      padding: 0.5rem;
+    }
+
+    td {
+      border-top: 1px solid #ccc;
+      padding: 0.5rem;
+
+    }
+  }
+
+  &-character {
+    &:hover {
+      cursor: pointer;
+      color: red;
+      padding: 0.5rem;
+    }
+  }
+}
