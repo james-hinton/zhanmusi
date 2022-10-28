@@ -10,20 +10,21 @@ const Modal = ({ openModal, setOpenModal, data }) => {
     // Capitalize first letter of definition
     return definition.charAt(0).toUpperCase() + definition.slice(1);
   };
-  const getAudioFile = (pinyin) => {
-    const audioFile = `https://www.mdbg.net/chinese/rsc/audio/voice_pinyin_pz/${pinyin}.mp3`;
-    return audioFile;
+
+  const playAudio = async (pinyin) => {
+    // Make a request to backend/speak/zhongwen/pinyin to get audio
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/speak/zhongwen/${pinyin}`
+    );
+
+    // This returns a blob of an mp3 file
+    const blob = await response.blob();
+
+    // Create an audio object
+    const audio = new Audio(URL.createObjectURL(blob));
+    audio.play();
   };
-  const getFullAudioFile = async (pinyin) => {
-    // Loop through each pinyin and get audio file
-    const pinyinArray = pinyin.split(" ");
-    const audioFiles = [];
-    for (let i = 0; i < pinyinArray.length; i++) {
-      const audioFile = getAudioFile(pinyinArray[i]);
-      audioFiles.push(audioFile);
-    }
-    return audioFiles;
-  };
+
   return (
     <>
       {openModal && (
@@ -48,19 +49,7 @@ const Modal = ({ openModal, setOpenModal, data }) => {
                       cursor: "pointer",
                     }}
                     onClick={async (e) => {
-                      // Get array of audio files
-                      const audioFile = await getFullAudioFile(data.pinyin);
-                      // Loop through each audio file and play
-                      for (let i = 0; i < audioFile.length; i++) {
-                        const audio = new Audio(audioFile[i]);
-                        audio.play();
-
-                        // Wait for audio to finish playing before playing next audio file
-                        await new Promise((resolve) =>
-                          audio.addEventListener("ended", resolve)
-                        );
-                        
-                      }
+                      await playAudio(data.pinyin);
                     }}
                   >
                     {data.pinyin}
@@ -95,11 +84,8 @@ const Modal = ({ openModal, setOpenModal, data }) => {
                       {data.hanzi.split("").map((character, index) => {
                         return (
                           <tr
-                            onClick={() => {
-                              const audio = new Audio(
-                                getAudioFile(data.pinyin.split(" ")[index])
-                              );
-                              audio.play();
+                            onClick={async () => {
+                              playAudio(data.pinyin.split(" ")[index]);
                             }}
                           >
                             <td

@@ -43,6 +43,9 @@ const Search = ({ setBackground, setpokeData, setTheme }) => {
     if (colours.includes(searchText)) {
       setBackground(searchText);
     }
+    if (searchText === "stripe") {
+      setBackground("stripe");
+    }
     if (!searchText) {
       setBackground("white");
     }

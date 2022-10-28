@@ -8,13 +8,9 @@ import Cursor from "../../components/Generic/Cursor/Cursor";
 import detectCountryUserIsFrom from "../../utils/country";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
-
-const Landing = ({
-  pokeData, activeCursor
-}) => {
+const Landing = ({ pokeData, activeCursor, showContent }) => {
   const [showBottomRightModal, setShowBottomRightModal] = useState(true);
   const [country, setCountry] = useState(null);
-
 
   useEffect(() => {
     setShowBottomRightModal(false);
@@ -25,8 +21,8 @@ const Landing = ({
   }, []);
 
   return (
-    <>
-      <div className="content">
+    <div className={`${showContent ? "show" : "hide"}`}>
+      <div className={`content ${showContent}`}>
         <LeftContentBar pokeData={pokeData} />
 
         <RightContentBar />
@@ -65,7 +61,7 @@ const Landing = ({
           <ArrowUpwardIcon />
         </div>
       )}
-    </>
+    </div>
   );
 };
 
