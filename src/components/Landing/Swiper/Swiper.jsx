@@ -7,6 +7,7 @@ import HappyImg from "../../../assets/images/swipey/happy.png";
 import SuperSadImg from "../../../assets/images/swipey/supersad.png";
 import SuperHappyImg from "../../../assets/images/swipey/superhappy.png";
 import "./style.scss";
+import Cross from "../../../assets/images/swipey/cross.png";
 import Draggable from "react-draggable";
 // Swiper is a tinder clone
 const Swiper = () => {
@@ -63,7 +64,7 @@ const Swiper = () => {
                 className="swiper__card__icon"
               />
               <img
-                src={Dislike}
+                src={Cross}
                 alt="cross"
                 id="cross"
                 draggable="false"
