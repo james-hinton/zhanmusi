@@ -1,4 +1,5 @@
 import Image from "../../Generic/Image/Image";
+import Letter from "../../../assets/images/letter.png";
 import Search from "../Search/Search";
 import NavLink from "./NavLink";
 import Contact from "../../Contact";
@@ -62,23 +63,13 @@ const Navbar = ({
             </div>
           </>
         )}
-        {/* 
-        <div className="navbar__item">
-          <NavLink
-            text="Useless Button"
-            link="#"
-            onCustomClick={(e) => {
-              startBounce(e);
-            }}
-          />
-        </div> */}
-
         <div className="navbar__item right">
-          <NavLink
-            text="Contact"
-            link="#"
-            border
-            onCustomClick={() => {
+          {/* Contact Icon */}
+          <img
+            src={Letter}
+            alt="letter"
+            className="letter"
+            onClick={() => {
               setShowModal(true);
             }}
           />

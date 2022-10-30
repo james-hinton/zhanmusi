@@ -168,6 +168,7 @@ p {
   }
 
   .active {
+  
     transition: 0.1s;
     // transition all 0.1
     // transition all 0.1s
@@ -179,6 +180,6 @@ p {
     text-shadow: 1px 1px rgb(0, 0, 0);
     
     // increase size
-    font-size: 1.8em;
+    font-size: 1.8em!important;
   }
 }

@@ -10,7 +10,7 @@ const Modal = ({ setShowModal, showModal }) => {
   };
 
   return (
-    <div className={showModal ? "modal active" : "modal"} onClick={handleClick}>
+    <div className={showModal ? "modal modal-active" : "modal"} onClick={handleClick}>
       <div className="modal-content">
         <div className="modal-header">
           <h2>Contact</h2>
