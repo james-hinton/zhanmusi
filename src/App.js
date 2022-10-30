@@ -81,7 +81,7 @@ const App = () => {
       setShowContent(true);
       document.body.style.background = background;
     }
-  }, [background]);
+  }, [background, stripeSpeed]);
 
   return (
     <CursorContextProvider>
@@ -95,7 +95,7 @@ const App = () => {
               <input
                 type="range"
                 min="0.01"
-                max="10"
+                max="3"
                 step="0.01"
                 value={stripeSpeed}
                 onChange={(e) => setStripeSpeed(parseFloat(e.target.value))}

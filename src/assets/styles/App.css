@@ -6,6 +6,7 @@
   /* background-color: red; */
   /* Layer over existing background */
   position: absolute;
+  display: hidden;
   /* Position the canvas */
   top: 0;
   left: 0;
@@ -26,15 +27,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 .stripe-speed {
-  display:flex;
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;  
-
+  align-items: center;
 }
 .stripe-speed input {
   width: 100%;
@@ -42,23 +41,31 @@
 
 .stripe-speed p {
   /* Gradient text color */
-  background: -webkit-linear-gradient(#ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+  background: -webkit-linear-gradient(
+    #ff0000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #ff00ff,
+    #ff0000
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
   font-weight: 900;
-  font-size: 1.5rem;  
+  font-size: 1.5rem;
 }
 .hide-cursor * {
   cursor: none;
 }
 
 .show {
-  display: block!important;
+  display: block !important;
 }
 
 .hide {
-  display: none!important;
+  display: none !important;
 }
 
 .content {

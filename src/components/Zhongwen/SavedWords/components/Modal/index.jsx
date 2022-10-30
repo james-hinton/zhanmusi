@@ -109,6 +109,28 @@ const Modal = ({ openModal, setOpenModal, data }) => {
                     </table>
                   </div>
                 </div>
+                {/* Delete button */}
+                <div className="zhongwen-modal-body-content-row">
+                  <div className="zhongwen-modal-body-content-row-value">
+                    <button
+                      className="zhongwen-modal-delete-button"
+                      onClick={() => {
+                        // Delete the word from the database
+                        fetch(
+                          `${process.env.REACT_APP_BACKEND_URL}/saved-words/${data.id}`,
+                          {
+                            method: "DELETE",
+                          }
+                        ).then(() => {
+                          // Refresh the page
+                          window.location.reload();
+                        });
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
