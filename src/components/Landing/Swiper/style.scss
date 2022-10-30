@@ -1,5 +1,8 @@
 // Tinder clone swipe cards
-
+.swiper-container {
+  // Dont show overflow
+  overflow: hidden;
+}
 .swiper {
   position: relative;
   width: 100%;
@@ -9,10 +12,7 @@
   border-top-left-radius: 5%;
   border-top-right-radius: 5%;
   border: 4px solid #e6e6e6;
-  
-  // Big box shadow
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
 
   &__card {
     &__top {
@@ -53,11 +53,11 @@
         font-size: 1.9em;
         color: #999;
         background: #fff;
-        padding:1.3em;
+        padding: 1.3em;
         color: black;
         border-radius: 1em;
         border: 1px solid #cdcdcd;
-        
+
         &__key {
           color: rgb(68, 68, 68);
           // italics
