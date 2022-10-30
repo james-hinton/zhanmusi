@@ -2,59 +2,50 @@ import ProfileImg from "../../../assets/images/profile.jpeg";
 import Like from "../../../assets/images/swipey/like.png";
 import Dislike from "../../../assets/images/swipey/dislike.png";
 import Heart from "../../../assets/images/swipey/heart.png";
-
 import SadImg from "../../../assets/images/swipey/sad.png";
 import HappyImg from "../../../assets/images/swipey/happy.png";
-
+import SuperSadImg from "../../../assets/images/swipey/supersad.png";
+import SuperHappyImg from "../../../assets/images/swipey/superhappy.png";
 import "./style.scss";
-
 import Draggable from "react-draggable";
 // Swiper is a tinder clone
 const Swiper = () => {
   const onStart = (e) => {
     //console.log("onStart", e);
   };
-
   const onStop = (e, position) => {
-    //  If x is smaller than 100 log left swipe
-    if (position.x < -100) {
+    //  If x is smaller than -100 but bigger than -500
+    if (position.x < -100 && position.x > -500) {
       document.getElementById("profile").src = SadImg;
-    } else if (position.x > 100) {
+    } else if (position.x < -500) {
+      document.getElementById("profile").src = SuperSadImg;
+    } else if (position.x > 100 && position.x < 500) {
       document.getElementById("profile").src = HappyImg;
+    } else if (position.x > 500) {
+      document.getElementById("profile").src = SuperHappyImg;
     } else {
       document.getElementById("profile").src = ProfileImg;
     }
-
-    // If position y has gone up more than 100 log up swipe
-    if (position.y < -100) {
-      // Navigate to tag #rightbar slowly and take 2 seconds
-      document.getElementById("rightbar").scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-
-    // any y scrolling just normally do
-
     const heart = document.getElementById("heart");
     const cross = document.getElementById("cross");
     heart.style.opacity = 0;
     cross.style.opacity = 0;
   };
-
   const onDrag = (e, position) => {
     const heart = document.getElementById("heart");
     const cross = document.getElementById("cross");
-
     heart.style.opacity = position.x / 250;
     cross.style.opacity = position.x / -250;
   };
-
   const dragHandlers = { onStart: onStart, onStop: onStop, onDrag: onDrag };
-
   return (
     <div className="swiper-container">
-      <Draggable {...dragHandlers} position={{ x: 0, y: 0 }} handle="#handle">
+      <Draggable
+        {...dragHandlers}
+        position={{ x: 0, y: 0 }}
+        handle="#handle"
+        axis="x"
+      >
         <div id="swiper" className="swiper">
           <div className="swiper__card">
             <div className="swiper__card__top" id="handle">
@@ -111,7 +102,12 @@ const Swiper = () => {
                 src={Dislike}
                 alt="dislike"
                 onClick={() => {
-                  document.getElementById("profile").src = SadImg;
+                  const profile = document.getElementById("profile");
+                  if (profile.src.includes(SadImg)) {
+                    profile.src = SuperSadImg;
+                  } else {
+                    profile.src = SadImg;
+                  }
                 }}
               />
             </div>
@@ -120,7 +116,12 @@ const Swiper = () => {
                 src={Like}
                 alt="like"
                 onClick={() => {
-                  document.getElementById("profile").src = HappyImg;
+                  const profile = document.getElementById("profile");
+                  if (profile.src.includes(HappyImg)) {
+                    profile.src = SuperHappyImg;
+                  } else {
+                    profile.src = HappyImg;
+                  }
                 }}
               />
             </div>
@@ -130,5 +131,4 @@ const Swiper = () => {
     </div>
   );
 };
-
 export default Swiper;
