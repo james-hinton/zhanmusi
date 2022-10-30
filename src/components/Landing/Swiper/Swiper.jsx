@@ -25,6 +25,17 @@ const Swiper = () => {
       document.getElementById("profile").src = ProfileImg;
     }
 
+    // If position y has gone up more than 100 log up swipe
+    if (position.y < -100) {
+      // Navigate to tag #rightbar slowly and take 2 seconds
+      document.getElementById("rightbar").scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
+    // any y scrolling just normally do
+
     const heart = document.getElementById("heart");
     const cross = document.getElementById("cross");
     heart.style.opacity = 0;
@@ -43,10 +54,10 @@ const Swiper = () => {
 
   return (
     <div className="swiper-container">
-      <Draggable axis={"x"} {...dragHandlers} position={{ x: 0, y: 0 }}>
+      <Draggable {...dragHandlers} position={{ x: 0, y: 0 }} handle="#handle">
         <div id="swiper" className="swiper">
           <div className="swiper__card">
-            <div className="swiper__card__top">
+            <div className="swiper__card__top" id="handle">
               <img src={ProfileImg} alt="profile" id="profile" />
               <img
                 src={Heart}
@@ -96,10 +107,22 @@ const Swiper = () => {
           </div>
           <div className="swiper__buttons">
             <div className="swiper__button">
-              <img src={Dislike} alt="dislike" />
+              <img
+                src={Dislike}
+                alt="dislike"
+                onClick={() => {
+                  document.getElementById("profile").src = SadImg;
+                }}
+              />
             </div>
             <div className="swiper__button">
-              <img src={Like} alt="like" />
+              <img
+                src={Like}
+                alt="like"
+                onClick={() => {
+                  document.getElementById("profile").src = HappyImg;
+                }}
+              />
             </div>
           </div>
         </div>

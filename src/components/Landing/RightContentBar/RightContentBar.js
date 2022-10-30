@@ -9,7 +9,7 @@ import "./RightContentBar.css";
 const RightContentBar = ({}) => {
   return (
     <>
-      <div className="content__right">
+      <div className="content__right" id="rightbar">
         <Tabs>
           <TabList>
             <Tab>Portfolio</Tab>
