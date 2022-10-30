@@ -6,7 +6,6 @@
   /* background-color: red; */
   /* Layer over existing background */
   position: absolute;
-  display: hidden;
   /* Position the canvas */
   top: 0;
   left: 0;
