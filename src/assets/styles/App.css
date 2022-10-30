@@ -69,6 +69,7 @@
 }
 
 .content {
+  user-select: none;
   display: flex;
 
   /* Margin */

@@ -4,21 +4,22 @@ import { Canvas } from "@react-three/fiber";
 import "./About.css";
 
 import Model from "../Model/Model";
-import Loader from "../Loader/Loader"
+import Loader from "../Loader/Loader";
 
 import { Environment, OrbitControls } from "@react-three/drei";
 
 const About = () => {
   useEffect(() => {
     localStorage.setItem("Cabin", "found");
-  })
+  });
   return (
     <>
-      <h4>
-        Check out my <i className="dream">dream</i> room{" "}
-        <small> - filled up with all my hobbies/interests</small>
-      </h4>
       <div id="canvas-container">
+        <div className="about-header">
+          <h4>
+            <i className="dream">James' Cabin</i>{" "}
+          </h4>
+        </div>
         <Canvas camera={{ rotation: [1, 9, 5], position: [-45, 45, 80] }}>
           <Suspense fallback={<Loader />}>
             <Environment preset="forest" background />
