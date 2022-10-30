@@ -63,26 +63,7 @@ const Navbar = ({
             </div>
           </>
         )}
-        {/* 
-        <div className="navbar__item">
-          <NavLink
-            text="Useless Button"
-            link="#"
-            onCustomClick={(e) => {
-              startBounce(e);
-            }}
-          />
-        </div> */}
-
         <div className="navbar__item right">
-          {/* <NavLink
-            text="Contact"
-            link="#"
-            border
-            onCustomClick={() => {
-              setShowModal(true);
-            }}
-          /> */}
           {/* Contact Icon */}
           <img
             src={Letter}

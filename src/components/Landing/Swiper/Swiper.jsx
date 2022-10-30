@@ -22,6 +22,27 @@ const Swiper = () => {
           <span className="swiper__card__bottom__location">
             Software Developer Based in Hampshire
           </span>
+          <span className="swiper__card__bottom__bio">
+            <strong>Hello!</strong>
+            <br />
+            <br />
+            Hi! I'm a Full Stack Software Developer for Spatial Days Ltd based
+            in Hampshire.
+            <br />
+            <br />
+            <div className="swiper__card__bottom__bio__key">Nationality</div>
+            <div className="swiper__card__bottom__bio__value">British</div>
+            <br />
+            <div className="swiper__card__bottom__bio__key">
+              Languages and Tools{" "}
+            </div>
+            <div className="swiper__card__bottom__bio__value">
+              Python, Javascript, C#, HTML5, CSS3, JQuery, Bootstrap, React,
+              TypeScript, AWS (EC2, RDS, S3, Boto3, EB), WordPress, Tensorflow,
+              Redis, RabbitMQ, Celery, SQLAlchemy, Dojo, Jinja2, Linux, Docker,
+              PostgreSQL/PostGIS
+            </div>
+          </span>
         </div>
       </div>
       <div className="swiper__buttons">

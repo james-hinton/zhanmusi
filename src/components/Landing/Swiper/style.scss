@@ -47,11 +47,33 @@
         color: #999;
         margin-bottom: 1rem;
       }
+
+      &__bio {
+        margin-top: 1em;
+        font-size: 1.9em;
+        color: #999;
+        background: #fff;
+        padding:1.3em;
+        color: black;
+        border-radius: 1em;
+        border: 1px solid #cdcdcd;
+        
+        &__key {
+          color: rgb(68, 68, 68);
+          // italics
+          font-style: italic;
+          font-weight: 600;
+        }
+
+        &__value {
+          font-weight: 300;
+          color: rgb(23, 22, 22);
+        }
+      }
     }
   }
 
   &__buttons {
-    margin-top: 1em;
     display: flex;
     justify-content: space-around;
     width: 100%;
