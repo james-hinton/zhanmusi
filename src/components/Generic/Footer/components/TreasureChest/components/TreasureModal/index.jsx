@@ -13,25 +13,28 @@ const TreasureModal = ({
   const [allFound, setAllFound] = useState(false);
 
   const restartTreasureHunt = () => {
-    // Clear all the local storage
     localStorage.clear();
-    // Set the treasuresFound to 0
     setTreasuresFound([]);
-    // Set the allFound to false
     setAllFound(false);
   };
 
   useEffect(() => {
-    if (treasuresFound === allHints.length) {
+    if (treasuresFound.length === allHints.length) {
       setAllFound(true);
     }
   }, [treasuresFound]);
 
   const generateHint = () => {
-    const randomHint = allHints[Math.floor(Math.random() * allHints.length)];
-    if (hint === randomHint.hint) {
-      generateHint();
-    }
+    // Create a new array of all the hints that have not been found
+    const hintsNotFound = allHints.filter((hint) => {
+      return !treasuresFound.includes(hint.title);
+    });
+
+    // Get a random hint from the hintsNotFound array
+    const randomHint =
+      hintsNotFound[Math.floor(Math.random() * hintsNotFound.length)];
+
+    // Set the hint to the randomHint
     setHint(randomHint.hint);
   };
 
@@ -126,19 +129,15 @@ const TreasureModal = ({
                 Need a hint?
               </div>
               {hint && (
-                <div className="treasure-modal__body__hint-hint">
+                <div
+                  className="treasure-modal__body__hint-hint"
+                  onClick={() => {
+                    generateHint();
+                  }}
+                >
                   {hint && `${hint}`}
                 </div>
               )}
-
-              <button
-                className="treasure-modal__body__button"
-                onClick={() => {
-                  restartTreasureHunt();
-                }}
-              >
-                Jab me t' restart
-              </button>
             </>
           )}
         </div>

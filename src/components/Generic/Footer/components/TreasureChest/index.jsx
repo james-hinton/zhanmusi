@@ -22,7 +22,6 @@ const TreasureChest = () => {
   };
 
   useEffect(() => {
-    console.log("Checking for found treasures");
     checkFoundTreasures();
   });
 
