@@ -1,5 +1,6 @@
 #root {
   background-color: rgba(228, 228, 228, 0.042);
+  user-select: none;
 }
 
 #canv {

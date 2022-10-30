@@ -1,6 +1,7 @@
-import Image from '../Image/Image'
-import NavLink from "../../Navbar/Navbar/NavLink"
-
+import Image from "../Image/Image";
+import NavLink from "../../Navbar/Navbar/NavLink";
+import WorkAvailable from "./components/WorkAvailable";
+import TreasureChest from "./components/TreasureChest";
 import "./Footer.css";
 
 const Footer = () => {
@@ -41,6 +42,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <TreasureChest />
+        <WorkAvailable />
       </div>
     </>
   );

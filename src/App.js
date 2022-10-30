@@ -14,9 +14,9 @@ import CursorContextProvider from "./components/Generic/Cursor/CursorContextProv
 const App = () => {
   const [background, setBackground] = useState("");
   const [activeCursor, setActiveCursor] = useState(false);
+
   const [pokeData, setpokeData] = useState([]);
   const [showContent, setShowContent] = useState(true);
-
   const [showToad, setShowToad] = useState(false);
 
   useEffect(() => {
