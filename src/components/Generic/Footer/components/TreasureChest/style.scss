@@ -165,3 +165,10 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 1000px) {
+  .treasure-chest {
+    display: none;
+  }
+}

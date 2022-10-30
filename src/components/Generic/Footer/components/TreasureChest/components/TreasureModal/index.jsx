@@ -97,7 +97,7 @@ const TreasureModal = ({
           ) : (
             <>
               <div className="treasure-modal__body__subtitle">
-                <b>Listen up!</b> <br />
+                <b>Ahoy, Listen up!</b> <br />
                 This might be the most important message ye'll ever read,
                 <br />
                 'tis no mear normal website!
