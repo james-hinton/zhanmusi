@@ -1,6 +1,10 @@
 import ProfileImg from "../../../assets/images/profile.jpeg";
 import Like from "../../../assets/images/swipey/like.png";
 import Dislike from "../../../assets/images/swipey/dislike.png";
+import Heart from "../../../assets/images/swipey/heart.png";
+
+import SadImg from "../../../assets/images/swipey/sad.png";
+import HappyImg from "../../../assets/images/swipey/happy.png";
 
 import "./style.scss";
 
@@ -12,21 +16,30 @@ const Swiper = () => {
   };
 
   const onStop = (e, position) => {
-    console.log(position);
     //  If x is smaller than 100 log left swipe
     if (position.x < -100) {
-      console.log("left swipe");
+      document.getElementById("profile").src = SadImg;
+    } else if (position.x > 100) {
+      document.getElementById("profile").src = HappyImg;
+    } else {
+      document.getElementById("profile").src = ProfileImg;
     }
 
-    //  If x is bigger than 100 log right swipe
-    if (position.x > 100) {
-      console.log("right swipe");
-    }
-
-    // Reset position
+    const heart = document.getElementById("heart");
+    const cross = document.getElementById("cross");
+    heart.style.opacity = 0;
+    cross.style.opacity = 0;
   };
 
-  const dragHandlers = { onStart: onStart, onStop: onStop };
+  const onDrag = (e, position) => {
+    const heart = document.getElementById("heart");
+    const cross = document.getElementById("cross");
+
+    heart.style.opacity = position.x / 250;
+    cross.style.opacity = position.x / -250;
+  };
+
+  const dragHandlers = { onStart: onStart, onStop: onStop, onDrag: onDrag };
 
   return (
     <div className="swiper-container">
@@ -34,7 +47,19 @@ const Swiper = () => {
         <div id="swiper" className="swiper">
           <div className="swiper__card">
             <div className="swiper__card__top">
-              <img src={ProfileImg} alt="profile" />
+              <img src={ProfileImg} alt="profile" id="profile" />
+              <img
+                src={Heart}
+                alt="heart"
+                id="heart"
+                className="swiper__card__icon"
+              />
+              <img
+                src={Dislike}
+                alt="cross"
+                id="cross"
+                className="swiper__card__icon"
+              />
             </div>
             <div className="swiper__card__bottom">
               <span>
