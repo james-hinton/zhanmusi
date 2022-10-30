@@ -20,6 +20,14 @@
   border: 1px solid #ccc;
 }
 
+.content__left--button {
+  font-weight: 900;
+}
+
+.content__left--button:hover {
+  background-color: rgb(64, 64, 64);
+}
+
 .content__left--emoji-selector {
   position: absolute;
   bottom: 0%;

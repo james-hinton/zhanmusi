@@ -40,10 +40,6 @@ const Navbar = ({
             </div>
 
             <div className="navbar__item throw">
-              <NavLink text="Pull requests" link="#" />
-            </div>
-
-            <div className="navbar__item throw">
               <NavLink
                 text="Issues"
                 link="#"
