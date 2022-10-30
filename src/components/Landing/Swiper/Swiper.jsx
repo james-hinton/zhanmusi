@@ -35,8 +35,12 @@ const Swiper = () => {
   const onDrag = (e, position) => {
     const heart = document.getElementById("heart");
     const cross = document.getElementById("cross");
-    heart.style.opacity = position.x / 250;
-    cross.style.opacity = position.x / -250;
+    if (heart.style.opacity < 0.6) {
+      heart.style.opacity = position.x / 250;
+    }
+    if (cross.style.opacity < 0.6) {
+      cross.style.opacity = position.x / -250;
+    }
   };
   const dragHandlers = { onStart: onStart, onStop: onStop, onDrag: onDrag };
   return (
