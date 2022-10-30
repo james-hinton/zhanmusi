@@ -2,10 +2,14 @@ import TranslateInput from "../../components/Zhongwen/Translate/TranslateInput";
 import SavedWords from "../../components/Zhongwen/SavedWords/SavedWords";
 import ModeIcon from "@mui/icons-material/Mode";
 import "./Zhongwen.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Zhongwen = () => {
   const [savedWords, setSavedWords] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("Zhongwen", "found");
+  }, []);
 
   return (
     <>
@@ -21,9 +25,11 @@ const Zhongwen = () => {
         <div className="zhongwen-title">
           <div className="zhongwen-heading-multiple">
             <div className="create-word-bank-container">
-              <button className="
+              <button
+                className="
                 create-word-bank-button
-              ">
+              "
+              >
                 <ModeIcon />
               </button>
             </div>

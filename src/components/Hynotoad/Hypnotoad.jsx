@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import hypnotoad from "../../assets/images/hypnotoad.gif";
 
-
 const Hypnotoad = () => {
   const [stripeSpeed, setStripeSpeed] = useState(0.15);
+
+  useEffect(() => {
+    localStorage.setItem("Hypnotoad", "found");
+  }, []);
 
   const animation = () => {
     var c = document.getElementById("canv");
@@ -54,7 +57,6 @@ const Hypnotoad = () => {
   useEffect(() => {
     animation();
   }, [stripeSpeed]);
-
 
   return (
     <>

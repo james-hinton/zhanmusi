@@ -93,6 +93,7 @@ const LeftContentBar = ({ pokeData }) => {
             link={
               "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
             }
+            treasure={"Facebook"}
           />
           <Image
             height={"30px"}

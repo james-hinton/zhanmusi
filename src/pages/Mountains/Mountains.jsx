@@ -1,10 +1,14 @@
 // this will be a nice page with mountains on it :)
 import { blue } from "@mui/material/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Mountains.scss";
 
 const Mountains = () => {
   // As we scroll down the page, the mountains will move
+
+  useEffect(() => {
+    localStorage.setItem("Mountains", "found");
+  }, []);
 
   const [mountains, setMountains] = useState([
     {

@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import "./About.css";
@@ -9,6 +9,9 @@ import Loader from "../Loader/Loader"
 import { Environment, OrbitControls } from "@react-three/drei";
 
 const About = () => {
+  useEffect(() => {
+    localStorage.setItem("Cabin", "found");
+  })
   return (
     <>
       <h4>

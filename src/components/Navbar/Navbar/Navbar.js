@@ -55,6 +55,7 @@ const Navbar = ({
                 text="Cat Cursor"
                 link="#"
                 onCustomClick={() => {
+                  window.localStorage.setItem("Cat", "found");
                   setActiveCursor(!activeCursor);
                 }}
               />

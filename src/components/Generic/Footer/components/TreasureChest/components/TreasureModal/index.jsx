@@ -1,52 +1,31 @@
 import { Icon } from "@mui/material";
+import { useEffect } from "react";
 import { useState } from "react";
+import { allHints } from "./consts";
 
-const TreasureModal = ({ setOpenModal }) => {
-  const [treasuresFound, setTreasuresFound] = useState(0);
+const TreasureModal = ({
+  setOpenModal,
+  checkFoundTreasures,
+  treasuresFound,
+  setTreasuresFound,
+}) => {
   const [hint, setHint] = useState("");
+  const [allFound, setAllFound] = useState(false);
 
-  const allHints = [
-    {
-      id: 21891289,
-      title: "Pokemon",
-      hint: "Use the search bar t' find yer favourite pokemon",
-    },
-    {
-      id: 48393498,
-      title: "Background",
-      hint: "Use the search bar 'n put a colour in",
-    },
-    {
-      id: 28912981,
-      title: "Chinese",
-      hint: "Skewer me nationality on the port side panel",
-    },
-    {
-      id: 12091201,
-      title: "Facebook",
-      hint: "Try t' visit me Facebook page ye raucous scallywag",
-    },
-    {
-      id: 93093293,
-      title: "Location",
-      hint: "Jab the bottom right button, I know where ye lay",
-    },
-    {
-      id: 12312312,
-      title: "Mountains",
-      hint: "Change me emoji t' the mountains. Aye, that's the one",
-    },
-    {
-      id: 62322823,
-      title: "Stripe",
-      hint: "Ready t' feel sick? Type 'stripe' into the search bar",
-    },
-    {
-      id: 73832782,
-      title: "Cabin",
-      hint: "Visit the about me page t' see me cabin",
-    },
-  ];
+  const restartTreasureHunt = () => {
+    // Clear all the local storage
+    localStorage.clear();
+    // Set the treasuresFound to 0
+    setTreasuresFound([]);
+    // Set the allFound to false
+    setAllFound(false);
+  };
+
+  useEffect(() => {
+    if (treasuresFound === allHints.length) {
+      setAllFound(true);
+    }
+  }, [treasuresFound]);
 
   const generateHint = () => {
     const randomHint = allHints[Math.floor(Math.random() * allHints.length)];
@@ -55,6 +34,11 @@ const TreasureModal = ({ setOpenModal }) => {
     }
     setHint(randomHint.hint);
   };
+
+  // Check local storage for found treasures
+  useEffect(() => {
+    checkFoundTreasures();
+  }, [window.localStorage]);
 
   return (
     <div
@@ -85,38 +69,77 @@ const TreasureModal = ({ setOpenModal }) => {
 
         {/* Body */}
         <div className="treasure-modal__body">
-          <div className="treasure-modal__body__subtitle">
-            <b>Listen up!</b> <br />
-            This might be the most important message ye'll ever read.
-            <br />
-            'tis no mear normal website!
-            <br />
-            <br />
-            Scattered throughout the site are hidden secrets.
-            <br /> Find 'em all 'n ye'll be rewarded wit' a special prize.
-          </div>
-          <div className="treasure-modal__body__counter">
-            <div className="treasure-modal__body__counter__title">
-              Treasures found:
-            </div>
-            <div className="treasure-modal__body__counter__number">
-              {treasuresFound} / {allHints.length}
-            </div>
-          </div>
+          {allFound ? (
+            <>
+              <div className="treasure-modal__body__subtitle">
+                <strong>Blisterin' barnacles!</strong> Ye've found all me secret
+                booty.
+                <br /> I was ne'er expectin' anyone t' find this. <br />
+                <br />
+                Anyway, about that prize...
+                <br />
+                well... <br />
+                it doesn't exist. Me bad.
+              </div>
+              {/* Button to reset */}
+              <button
+                className="treasure-modal__body__button"
+                onClick={() => {
+                  restartTreasureHunt();
+                }}
+              >
+                Jab me t' restart
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="treasure-modal__body__subtitle">
+                <b>Listen up!</b> <br />
+                This might be the most important message ye'll ever read,
+                <br />
+                'tis no mear normal website!
+                <br />
+                <br />
+                Scattered throughout the site are hidden secrets.
+                <br /> Find 'em all 'n ye'll be rewarded wit' a special prize.
+              </div>
+              <div className="treasure-modal__body__counter">
+                <div className="treasure-modal__body__counter__title">
+                  Treasures found:
+                </div>
+                <div className="treasure-modal__body__counter__number">
+                  {
+                    // Check if the treasuresFound is 0, if so then check the local storage for the treasures
+                    treasuresFound.length
+                  }{" "}
+                  / {allHints.length}
+                </div>
+              </div>
 
-          {/* Hint */}
-          <div
-            className="treasure-modal__body__hint"
-            onClick={() => {
-              generateHint();
-            }}
-          >
-            Need a hint?
-          </div>
-          {hint && (
-            <div className="treasure-modal__body__hint-hint">
-              {hint && `${hint}`}
-            </div>
+              {/* Hint */}
+              <div
+                className="treasure-modal__body__hint"
+                onClick={() => {
+                  generateHint();
+                }}
+              >
+                Need a hint?
+              </div>
+              {hint && (
+                <div className="treasure-modal__body__hint-hint">
+                  {hint && `${hint}`}
+                </div>
+              )}
+
+              <button
+                className="treasure-modal__body__button"
+                onClick={() => {
+                  restartTreasureHunt();
+                }}
+              >
+                Jab me t' restart
+              </button>
+            </>
           )}
         </div>
       </div>

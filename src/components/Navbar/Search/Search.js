@@ -41,6 +41,7 @@ const Search = ({ setBackground, setpokeData, setTheme }) => {
   // Random thing to change background colour
   useEffect(() => {
     if (colours.includes(searchText)) {
+      localStorage.setItem("Background", "found");
       setBackground(searchText);
     }
     if (searchText === "stripe") {

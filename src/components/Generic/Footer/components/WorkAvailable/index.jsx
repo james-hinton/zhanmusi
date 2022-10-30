@@ -39,6 +39,7 @@ const WorkAvailable = () => {
         <div
           className="bottom-right-arrow"
           onClick={() => {
+            localStorage.setItem("Location", "found");
             setShowBottomRightModal(true);
           }}
         >

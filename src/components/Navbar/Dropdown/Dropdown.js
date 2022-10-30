@@ -15,6 +15,8 @@ const Dropdown = ({ searchText, setSearchText }) => {
       }
     }, searchText);
 
+    // Add pokemon to the local storage
+
     setDropdownItems(pokemonResults.slice(0, 5));
   }, [searchText]);
 

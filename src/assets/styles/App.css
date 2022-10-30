@@ -96,6 +96,7 @@
   border: 1px solid #88888854;
 
   margin: 2em;
+  cursor: pointer;
 }
 
 .bottom-right-modal-close {
@@ -112,6 +113,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   position: fixed;
   bottom: 0;

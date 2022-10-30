@@ -11,6 +11,8 @@ export default function poke(query, setpokeData, setShowDropdown) {
           setpokeData(response);
           setShowDropdown(false);
         });
+
+      localStorage.setItem("Pokemon", "found");
     }
   }
 }

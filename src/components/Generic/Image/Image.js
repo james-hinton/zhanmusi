@@ -13,6 +13,7 @@ const Image = ({
   link,
   mood,
   sameTab,
+  treasure,
 }) => {
   const [cursor, setCursor] = useContext(CursorContext);
   const toggleCursor = useCallback((mood) => {
@@ -32,7 +33,15 @@ const Image = ({
         onMouseEnter={mood ? () => toggleCursor(mood) : null}
         onMouseLeave={mood ? () => toggleCursor() : null}
         onClick={
-          link ? () => window.open(link, sameTab ? "_self" : "_blank") : null
+          // IF treasure is Facebook then add to localstorage
+          link
+            ? () => {
+                if (treasure === "Facebook") {
+                  localStorage.setItem("Facebook", "found");
+                }
+                window.open(link, sameTab ? "_self" : "_blank");
+              }
+            : null
         }
       />
     </>
