@@ -1,4 +1,5 @@
 import Image from "../../Generic/Image/Image";
+import Letter from "../../../assets/images/letter.png";
 import Search from "../Search/Search";
 import NavLink from "./NavLink";
 import Contact from "../../Contact";
@@ -74,11 +75,20 @@ const Navbar = ({
         </div> */}
 
         <div className="navbar__item right">
-          <NavLink
+          {/* <NavLink
             text="Contact"
             link="#"
             border
             onCustomClick={() => {
+              setShowModal(true);
+            }}
+          /> */}
+          {/* Contact Icon */}
+          <img
+            src={Letter}
+            alt="letter"
+            className="letter"
+            onClick={() => {
               setShowModal(true);
             }}
           />

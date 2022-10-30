@@ -48,14 +48,16 @@
   border-width: 1px;
 }
 
+.letter {
+  height: 2em!important;
+}
+
 @media only screen and (max-width: 1000px) {
   .navbar {
     justify-content: space-between;
     width: 100%;
     height: 4.5em;
     align-items: center;
-
-    
   }
 
   .navbar img {
@@ -65,11 +67,11 @@
   .right {
     position: static;
     margin-right: 1em;
-    font-size:2.5em;
+    font-size: 2em;
   }
 
   .border {
-    padding:0.3em;
+    padding: 0.3em;
   }
 
   .throw {
