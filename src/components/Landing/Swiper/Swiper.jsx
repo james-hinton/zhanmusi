@@ -49,17 +49,24 @@ const Swiper = () => {
         <div id="swiper" className="swiper">
           <div className="swiper__card">
             <div className="swiper__card__top" id="handle">
-              <img src={ProfileImg} alt="profile" id="profile" />
+              <img
+                src={ProfileImg}
+                alt="profile"
+                draggable="false"
+                id="profile"
+              />
               <img
                 src={Heart}
                 alt="heart"
                 id="heart"
+                draggable="false"
                 className="swiper__card__icon"
               />
               <img
                 src={Dislike}
                 alt="cross"
                 id="cross"
+                draggable="false"
                 className="swiper__card__icon"
               />
             </div>
