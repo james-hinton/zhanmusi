@@ -7,30 +7,16 @@ import {
   getDefinitionOfChar,
 } from "../Translate/TranslateUtils";
 
-import { getSavedWords } from "./SavedWordsUtils";
-
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 
 import { useTable, usePagination } from "react-table";
 import { useExpanded } from "react-table";
-import Modal from './components/Modal';
+import Modal from "./components/Modal";
 
 const SavedWords = ({ savedWords, setSavedWords }) => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState({});
-
-  useEffect(() => {
-    const getSavedWordsFromStorage = async () => {
-      const words = await getSavedWords();
-      setSavedWords(words);
-    };
-
-    if (!savedWords.length) {
-      getSavedWordsFromStorage();
-    }
-
-  }, []);
 
   const onHover = (character) => {
     // TODO: Make full list of special characters
@@ -214,7 +200,6 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
         setOpenModal={setOpenModal}
         data={selectedRowData}
       />
-
     </div>
   );
 };

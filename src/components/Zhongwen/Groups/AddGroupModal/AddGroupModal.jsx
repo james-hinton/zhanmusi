@@ -4,6 +4,7 @@ const AddGroupModal = ({
   setGroups,
   groups,
   createGroup,
+  fetchGroups,
 }) => {
   return (
     <div
@@ -101,8 +102,19 @@ const AddGroupModal = ({
                 image: groupImage,
               };
 
-              // Add new group to groups
-              createGroup(1, newGroup);
+              const createAndFetch = async () => {
+                // Add new group to groups
+                console.log("Creating group...");
+                await createGroup(1, newGroup);
+                // Fetch groups
+                console.log("Fetching groups...");
+                const groups = await fetchGroups(1);
+                // Set groups
+                console.log("Setting groups...");
+                setGroups(groups);
+              };
+
+              createAndFetch();
 
               // Close modal
               setShowAddGroupModal(false);
