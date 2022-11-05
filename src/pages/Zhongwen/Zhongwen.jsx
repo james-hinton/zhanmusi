@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // Components
 import TranslateInput from "../../components/Zhongwen/Translate/TranslateInput";
 import SavedWords from "../../components/Zhongwen/SavedWords/SavedWords";
+import Groups from "../../components/Zhongwen/Groups/Groups";
 import ModeIcon from "@mui/icons-material/Mode";
 
 // Styles
@@ -11,7 +12,7 @@ import "react-tabs/style/react-tabs.css";
 
 const Zhongwen = () => {
   const [savedWords, setSavedWords] = useState([]);
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(1);
 
   useEffect(() => {
     localStorage.setItem("Zhongwen", "found");
@@ -66,25 +67,34 @@ const Zhongwen = () => {
       </div>
 
       <div className="content flex-col">
-        <div className="zhongwen-title">
-          <div className="zhongwen-heading-multiple">
-            <div className="create-word-bank-container">
-              <button
-                className="
-                create-word-bank-button
-              "
-              >
-                <ModeIcon />
-              </button>
+        {selectedTab === 0 && (
+          <>
+            <div className="zhongwen-title">
+              <div className="zhongwen-heading-multiple">
+                <div className="content-subtitle flex-col">
+                  <h1>保存的单词</h1>
+                  <small>Bǎocún de dāncí</small>
+                </div>
+              </div>
             </div>
-            <div className="content-subtitle flex-col">
-              <h1>保存的单词</h1>
-              <small>Bǎocún de dāncí</small>
-            </div>
-          </div>
-        </div>
 
-        <SavedWords savedWords={savedWords} setSavedWords={setSavedWords} />
+            <SavedWords savedWords={savedWords} setSavedWords={setSavedWords} />
+          </>
+        )}
+
+        {selectedTab === 1 && (
+          <>
+            <div className="zhongwen-title">
+              <div className="zhongwen-heading-multiple">
+                <div className="content-subtitle flex-col">
+                  <h1>管理您的群組</h1>
+                  <small>Guǎnlǐ nín de qún zǔ</small>
+                </div>
+              </div>
+            </div>
+            <Groups />
+          </>
+        )}
       </div>
     </>
   );

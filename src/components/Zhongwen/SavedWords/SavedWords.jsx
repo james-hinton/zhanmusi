@@ -26,7 +26,10 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
       setSavedWords(words);
     };
 
-    getSavedWordsFromStorage();
+    if (!savedWords.length) {
+      getSavedWordsFromStorage();
+    }
+
   }, []);
 
   const onHover = (character) => {
