@@ -4,15 +4,24 @@ import { useEffect, useState } from "react";
 import TranslateInput from "../../components/Zhongwen/Translate/TranslateInput";
 import SavedWords from "../../components/Zhongwen/SavedWords/SavedWords";
 import Groups from "../../components/Zhongwen/Groups/Groups";
-import ModeIcon from "@mui/icons-material/Mode";
+import AddGroupModal from "../../components/Zhongwen/Groups/AddGroupModal";
+
+// Utilities
+import { createGroup } from "../../components/Zhongwen/Groups/GroupsUtils";
+
+// Icons
+import AddIcon from "@mui/icons-material/Add";
 
 // Styles
 import "./Zhongwen.scss";
 import "react-tabs/style/react-tabs.css";
+import "../../components/Zhongwen/Groups/AddGroupModal.scss";
 
 const Zhongwen = () => {
   const [savedWords, setSavedWords] = useState([]);
+  const [groups, setGroups] = useState([]);
   const [selectedTab, setSelectedTab] = useState(1);
+  const [showAddGroupModal, setShowAddGroupModal] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("Zhongwen", "found");
@@ -91,8 +100,26 @@ const Zhongwen = () => {
                   <small>Guǎnlǐ nín de qún zǔ</small>
                 </div>
               </div>
+              {/* Button to add new group */}
+              <div
+                className="zhongwen-add-group"
+                onClick={() => {
+                  setShowAddGroupModal(true);
+                }}
+              >
+                <AddIcon />
+              </div>
             </div>
             <Groups />
+            {showAddGroupModal && (
+              <AddGroupModal
+                showAddGroupModal={showAddGroupModal}
+                setShowAddGroupModal={setShowAddGroupModal}
+                groups={groups}
+                setGroups={setGroups}
+                createGroup={createGroup}
+              />
+            )}
           </>
         )}
       </div>

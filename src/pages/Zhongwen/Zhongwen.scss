@@ -18,6 +18,19 @@
     }
   }
 
+  &-add-group {
+    background-color: #aa381e;
+    border-radius: 0.5em;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5em;
+    cursor: pointer;
+    color: white;
+  }
+
   &-tab {
     &-menu {
       display: flex;

@@ -19,9 +19,9 @@ const TranslateInput = ({ setSavedWords }) => {
   };
 
   // Listen for any key press and focus on the input
-  document.addEventListener("keydown", (e) => {
-    document.getElementById("translate-input").focus();
-  });
+  // document.addEventListener("keydown", (e) => {
+  //   document.getElementById("translate-input").focus();
+  // });
 
   return (
     <>
