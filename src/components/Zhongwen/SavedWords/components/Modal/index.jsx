@@ -35,6 +35,7 @@ const Modal = ({ openModal, setOpenModal, data }) => {
           >
             <div className="zhongwen-modal-header">
               <h2>{data.hanzi}</h2>
+              
             </div>
             <div className="zhongwen-modal-body">
               <div className="zhongwen-modal-body-content">

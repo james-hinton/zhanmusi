@@ -1,4 +1,4 @@
-import { translater, addToSavedWords } from "./TranslateUtils.js";
+import { translater, addToSavedWords } from "./TranslateUtils";
 import "./TranslateInput.scss";
 
 import { getSavedWords } from "../SavedWords/SavedWordsUtils";
@@ -10,18 +10,13 @@ const TranslateInput = ({ setSavedWords }) => {
   const handleTranslate = async (e) => {
     if (e.length > 0) {
       setLoading(true);
-      let translation = await translater(e);
+      const translation = await translater(e);
       await addToSavedWords(translation, 1);
       const words = await getSavedWords();
       setSavedWords(words);
       setLoading(false);
     }
   };
-
-  // Listen for any key press and focus on the input
-  // document.addEventListener("keydown", (e) => {
-  //   document.getElementById("translate-input").focus();
-  // });
 
   return (
     <>

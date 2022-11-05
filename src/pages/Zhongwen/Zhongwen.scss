@@ -45,30 +45,29 @@
         text-align: center;
         margin-right: 1em;
         cursor: pointer;
-        background-color: #aa381e;
+        background-color: #797979;
         color: white !important;
         padding: 0.5em 2em;
         width: 200px;
         font-size: 1.2em;
         font-weight: bold;
         border-radius: 0.5em;
+        opacity: 0.8;
 
         &:hover {
           background-color: #5a2013;
         }
 
         &-selected {
+          opacity: 1;
           background-color: #b73a1e;
           // http://localhost:3000/static/media/chinese_nav.b0da94cba1e24e962a89.png
           background-image: url(../../assets/images/chinese_nav.png);
           background-repeat: no-repeat;
           background-position: 90% 30%;
           box-shadow: 0 0 0 0.2em #c4c2c2af;
-
         }
       }
-
-      
     }
   }
 }

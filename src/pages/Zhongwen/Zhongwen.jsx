@@ -78,7 +78,7 @@ const Zhongwen = () => {
           }`}
           onClick={() => setSelectedTab(1)}
         >
-          <span>Groups</span>
+          <span>My Words</span>
           <br />
           <small
             style={{

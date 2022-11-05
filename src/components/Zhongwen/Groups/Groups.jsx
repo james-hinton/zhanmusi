@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import { createGroup, fetchGroups } from "./GroupsUtils";
 import AddGroupModal from "./AddGroupModal/AddGroupModal";
 import SavedWords from "../SavedWords/SavedWords";
-
-// Utils
-import { getGroupedSavedWords } from "../SavedWords/SavedWordsUtils";
+import Group from "./Group/Group";
 
 // Icons
 import AddIcon from "@mui/icons-material/Add";
@@ -40,25 +38,11 @@ const Groups = ({ groups, setGroups }) => {
       <div className="zhongwen-groups">
         {groups.map((group) => {
           return (
-            <div
-              className="zhongwen-group-card"
-              key={group.id}
-              onClick={() => {
-                const getGroupedWords = async () => {
-                  const groupedWords = await getGroupedSavedWords(group.id);
-                  setGroupWords(groupedWords);
-                };
-                getGroupedWords();
-              }}
-            >
-              <div className="zhongwen-group-card-header">
-                <img src={group.image} alt="group" />
-              </div>
-              <div className="zhongwen-group-card-body">
-                <h2>{group.name}</h2>
-                <p>{group.description}</p>
-              </div>
-            </div>
+            <Group
+              group={group}
+              setGroupWords={setGroupWords}
+              setGroups={setGroups}
+            />
           );
         })}
       </div>
