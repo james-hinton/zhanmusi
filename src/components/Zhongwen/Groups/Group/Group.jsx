@@ -9,7 +9,13 @@ import { getGroupedSavedWords } from "../../SavedWords/SavedWordsUtils";
 // Manage Icon
 import SettingsIcon from "@mui/icons-material/Settings";
 
-const Group = ({ group, setGroupWords, setGroups, setShowGroups }) => {
+const Group = ({
+  group,
+  setGroupWords,
+  setGroups,
+  setShowGroups,
+  setActiveGroup,
+}) => {
   const [showManageGroupModal, setShowManageGroupModal] = useState(false);
 
   return (
@@ -25,8 +31,10 @@ const Group = ({ group, setGroupWords, setGroups, setShowGroups }) => {
             // If grouped words empty, open manage group modal
             if (groupedWords.length === 0) {
               setShowManageGroupModal(true);
+              setActiveGroup(null);
             } else {
               setShowGroups(false);
+              setActiveGroup(group);
             }
           };
           getGroupedWords();

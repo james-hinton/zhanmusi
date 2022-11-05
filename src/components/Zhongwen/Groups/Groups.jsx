@@ -18,6 +18,7 @@ const Groups = ({ groups, setGroups }) => {
   const [showAddGroupModal, setShowAddGroupModal] = useState(false);
   const [groupWords, setGroupWords] = useState([]);
   const [showGroups, setShowGroups] = useState(false);
+  const [activeGroup, setActiveGroup] = useState(null);
 
   useEffect(() => {
     // If group words is empty, show groups
@@ -26,13 +27,23 @@ const Groups = ({ groups, setGroups }) => {
     }
   }, [groupWords]);
 
+  console.log("Active Group: ", activeGroup);
   return (
     <>
       <div className="zhongwen-title">
         <div className="zhongwen-heading-multiple">
           <div className="content-subtitle flex-col">
-            <h1>管理您的群組</h1>
-            <small>Guǎnlǐ nín de qún zǔ</small>
+            {!activeGroup ? (
+              <>
+                <h1>管理您的群組</h1>
+                <small>Guǎnlǐ nín de qún zǔ</small>
+              </>
+            ) : (
+              <>
+                <h1>{activeGroup.name}</h1>
+                <small>{activeGroup.description}</small>
+              </>
+            )}
           </div>
         </div>
         {/* Button to add new group */}
@@ -52,7 +63,12 @@ const Groups = ({ groups, setGroups }) => {
             marginLeft: "3rem",
           }}
           onClick={() => {
-            setShowGroups(!showGroups);
+            // Only hide groups if there are words in the group
+            if (groupWords.length > 0) {
+              setShowGroups(!showGroups);
+            } else {
+              setShowGroups(true);
+            }
           }}
         >
           <TableChartIcon />
@@ -67,6 +83,7 @@ const Groups = ({ groups, setGroups }) => {
                 setGroupWords={setGroupWords}
                 setGroups={setGroups}
                 setShowGroups={setShowGroups}
+                setActiveGroup={setActiveGroup}
               />
             );
           })}

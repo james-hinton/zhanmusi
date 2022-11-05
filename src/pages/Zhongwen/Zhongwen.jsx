@@ -17,7 +17,7 @@ import "../../components/Zhongwen/Groups/AddGroupModal/AddGroupModal.scss";
 const Zhongwen = () => {
   const [savedWords, setSavedWords] = useState([]);
   const [groups, setGroups] = useState([]);
-  const [selectedTab, setSelectedTab] = useState(1);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
     const getSavedWordsFromStorage = async () => {
