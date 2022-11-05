@@ -1,11 +1,17 @@
+import { useEffect, useState } from "react";
+
+// Components
 import TranslateInput from "../../components/Zhongwen/Translate/TranslateInput";
 import SavedWords from "../../components/Zhongwen/SavedWords/SavedWords";
 import ModeIcon from "@mui/icons-material/Mode";
+
+// Styles
 import "./Zhongwen.scss";
-import { useEffect, useState } from "react";
+import "react-tabs/style/react-tabs.css";
 
 const Zhongwen = () => {
   const [savedWords, setSavedWords] = useState([]);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("Zhongwen", "found");
@@ -19,6 +25,44 @@ const Zhongwen = () => {
         </div>
 
         <TranslateInput setSavedWords={setSavedWords} />
+      </div>
+
+      {/* Tab Menu */}
+      <div className="zhongwen-tab-menu">
+        <div
+          onClick={() => setSelectedTab(0)}
+          className={`zhongwen-tab-menu-item ${
+            selectedTab === 0 && "zhongwen-tab-menu-item-selected"
+          }`}
+        >
+          <span>Recently Searched</span>
+          <br />
+          <small
+            style={{
+              fontSize: "0.8rem",
+              color: "lightgray",
+            }}
+          >
+            最近搜索
+          </small>
+        </div>
+        <div
+          className={`zhongwen-tab-menu-item ${
+            selectedTab === 1 && "zhongwen-tab-menu-item-selected"
+          }`}
+          onClick={() => setSelectedTab(1)}
+        >
+          <span>Groups</span>
+          <br />
+          <small
+            style={{
+              fontSize: "0.8rem",
+              color: "lightgray",
+            }}
+          >
+            团体
+          </small>
+        </div>
       </div>
 
       <div className="content flex-col">

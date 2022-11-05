@@ -1,38 +1,76 @@
-// variable for color
-$color_primary: "#AA381E";
-
-.flex-col {
-  flex-direction: column !important;
-}
-
 .zhongwen {
   &-title {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-}
 
-.zhongwen-heading-multiple {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 1em;
-
-  & h3 {
+  &-heading-multiple {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
+    margin-bottom: 1em;
+
+    & h3 {
+      width: 100%;
+    }
+  }
+
+  &-tab {
+    &-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 2em;
+      margin-bottom: 2em;
+
+      &-item {
+        text-align: center;
+        margin-right: 1em;
+        cursor: pointer;
+        background-color: #aa381e;
+        color: white !important;
+        padding: 0.5em 2em;
+        width: 200px;
+        font-size: 1.2em;
+        font-weight: bold;
+        border-radius: 0.5em;
+
+        &:hover {
+          background-color: #5a2013;
+        }
+
+        &-selected {
+          background-color: #b73a1e;
+          // http://localhost:3000/static/media/chinese_nav.b0da94cba1e24e962a89.png
+          background-image: url(../../assets/images/chinese_nav.png);
+          background-repeat: no-repeat;
+          background-position: 90% 30%;
+          box-shadow: 0 0 0 0.2em #c4c2c2af;
+
+        }
+      }
+
+      
+    }
   }
 }
 
+.flex-col {
+  flex-direction: column !important;
+}
+
 .create-word-bank-button {
-  margin-right:4em;
+  margin-right: 4em;
 }
 
 .content-subtitle {
   h1 {
-    margin: 0!important;
+    margin: 0 !important;
   }
 
   small {

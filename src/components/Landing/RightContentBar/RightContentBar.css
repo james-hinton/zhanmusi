@@ -23,8 +23,6 @@ ul.react-tabs__tab-list {
     flex-direction: row;
     justify-content: space-around;
     margin: 0;
-
-
   }
 
   .react-tabs__tab {
@@ -39,11 +37,9 @@ ul.react-tabs__tab-list {
   }
 
   .react-tabs__tab--selected {
-    font-weight: 900!important;
+    font-weight: 900 !important;
 
-    /* Cool background for selected item */
     background-color: rgb(213, 213, 213);
-    /* Top border radius */
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
 
@@ -51,11 +47,15 @@ ul.react-tabs__tab-list {
     background-size: 200% auto;
     box-shadow: 0 0 20px #eee;
     transition: 0.5s;
-    color: white!important;
+    color: white !important;
   }
 
   .react-tabs__tab-panel--selected {
-    background: linear-gradient(to bottom, rgba(215, 215, 215, 0.32) 0%, #e6e6e650 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(215, 215, 215, 0.32) 0%,
+      #e6e6e650 100%
+    );
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset,
       0 1px 5px rgba(0, 0, 0, 0.075);
     border-radius: 10px;
