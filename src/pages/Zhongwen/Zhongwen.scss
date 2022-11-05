@@ -22,13 +22,17 @@
     background-color: #aa381e;
     border-radius: 0.5em;
     height: 30px;
-    width: 30px;
+    width: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 0.5em;
     cursor: pointer;
     color: white;
+
+    &:hover {
+      background-color: #b73a1e;
+    }
   }
 
   &-tab {

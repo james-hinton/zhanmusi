@@ -9,7 +9,7 @@ import { getGroupedSavedWords } from "../../SavedWords/SavedWordsUtils";
 // Manage Icon
 import SettingsIcon from "@mui/icons-material/Settings";
 
-const Group = ({ group, setGroupWords, setGroups }) => {
+const Group = ({ group, setGroupWords, setGroups, setShowGroups }) => {
   const [showManageGroupModal, setShowManageGroupModal] = useState(false);
 
   return (
@@ -21,6 +21,13 @@ const Group = ({ group, setGroupWords, setGroups }) => {
           const getGroupedWords = async () => {
             const groupedWords = await getGroupedSavedWords(group.id);
             setGroupWords(groupedWords);
+
+            // If grouped words empty, open manage group modal
+            if (groupedWords.length === 0) {
+              setShowManageGroupModal(true);
+            } else {
+              setShowGroups(false);
+            }
           };
           getGroupedWords();
         }}
@@ -37,7 +44,9 @@ const Group = ({ group, setGroupWords, setGroups }) => {
 
           <div
             className="zhongwen-group-card-footer-button"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
               setShowManageGroupModal(true);
             }}
           >

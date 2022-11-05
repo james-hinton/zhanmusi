@@ -8,6 +8,8 @@ import Group from "./Group/Group";
 
 // Icons
 import AddIcon from "@mui/icons-material/Add";
+import ViewIcon from "@mui/icons-material/Visibility";
+import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Styles
 import "./Groups.scss";
@@ -15,6 +17,14 @@ import "./Groups.scss";
 const Groups = ({ groups, setGroups }) => {
   const [showAddGroupModal, setShowAddGroupModal] = useState(false);
   const [groupWords, setGroupWords] = useState([]);
+  const [showGroups, setShowGroups] = useState(false);
+
+  useEffect(() => {
+    // If group words is empty, show groups
+    if (groupWords.length === 0) {
+      setShowGroups(true);
+    }
+  }, [groupWords]);
 
   return (
     <>
@@ -34,18 +44,34 @@ const Groups = ({ groups, setGroups }) => {
         >
           <AddIcon />
         </div>
+
+        {/* Button to show ghroups */}
+        <div
+          className="zhongwen-add-group"
+          style={{
+            marginLeft: "3rem",
+          }}
+          onClick={() => {
+            setShowGroups(!showGroups);
+          }}
+        >
+          <TableChartIcon />
+        </div>
       </div>
-      <div className="zhongwen-groups">
-        {groups.map((group) => {
-          return (
-            <Group
-              group={group}
-              setGroupWords={setGroupWords}
-              setGroups={setGroups}
-            />
-          );
-        })}
-      </div>
+      {showGroups && (
+        <div className="zhongwen-groups">
+          {groups.map((group) => {
+            return (
+              <Group
+                group={group}
+                setGroupWords={setGroupWords}
+                setGroups={setGroups}
+                setShowGroups={setShowGroups}
+              />
+            );
+          })}
+        </div>
+      )}
       {showAddGroupModal && (
         <AddGroupModal
           showAddGroupModal={showAddGroupModal}
@@ -56,8 +82,12 @@ const Groups = ({ groups, setGroups }) => {
           fetchGroups={fetchGroups}
         />
       )}
-
-      <SavedWords savedWords={groupWords} setSavedWords={setGroupWords} />
+      {
+        // If group words is not empty, show group words
+        groupWords.length > 0 && (
+          <SavedWords savedWords={groupWords} setSavedWords={setGroupWords} />
+        )
+      }
     </>
   );
 };
