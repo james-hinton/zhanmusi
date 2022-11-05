@@ -8,17 +8,21 @@ import Group from "./Group/Group";
 
 // Icons
 import AddIcon from "@mui/icons-material/Add";
-import ViewIcon from "@mui/icons-material/Visibility";
 import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Styles
 import "./Groups.scss";
 
-const Groups = ({ groups, setGroups }) => {
+const Groups = ({
+  groups,
+  setGroups,
+  activeGroup,
+  setActiveGroup,
+  groupWords,
+  setGroupWords,
+}) => {
   const [showAddGroupModal, setShowAddGroupModal] = useState(false);
-  const [groupWords, setGroupWords] = useState([]);
   const [showGroups, setShowGroups] = useState(false);
-  const [activeGroup, setActiveGroup] = useState(null);
 
   useEffect(() => {
     // If group words is empty, show groups
@@ -27,7 +31,6 @@ const Groups = ({ groups, setGroups }) => {
     }
   }, [groupWords]);
 
-  console.log("Active Group: ", activeGroup);
   return (
     <>
       <div className="zhongwen-title">

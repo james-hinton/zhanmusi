@@ -41,7 +41,7 @@ export const getDefinitionOfChar = (char) => {
   return "";
 };
 
-export const addToSavedWords = async (word, group) => {
+export const addToSavedWords = async (word, group=1) => {
   // Make a request to the server to add the word to the saved words
   const BASE_URL = process.env.REACT_APP_BACKEND_URL;
   const URL = `${BASE_URL}/saved-words`;

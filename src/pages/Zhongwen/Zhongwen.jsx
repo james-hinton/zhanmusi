@@ -18,6 +18,8 @@ const Zhongwen = () => {
   const [savedWords, setSavedWords] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
+  const [activeGroup, setActiveGroup] = useState(null);
+  const [groupWords, setGroupWords] = useState([]);
 
   useEffect(() => {
     const getSavedWordsFromStorage = async () => {
@@ -50,7 +52,11 @@ const Zhongwen = () => {
           <h1>你好，詹姆斯。</h1>
         </div>
 
-        <TranslateInput setSavedWords={setSavedWords} />
+        <TranslateInput
+          setSavedWords={setSavedWords}
+          activeGroup={activeGroup}
+          setGroupWords={setGroupWords}
+        />
       </div>
 
       {/* Tab Menu */}
@@ -109,7 +115,14 @@ const Zhongwen = () => {
 
         {selectedTab === 1 && (
           <>
-            <Groups groups={groups} setGroups={setGroups} />
+            <Groups
+              groups={groups}
+              setGroups={setGroups}
+              activeGroup={activeGroup}
+              setActiveGroup={setActiveGroup}
+              groupWords={groupWords}
+              setGroupWords={setGroupWords}
+            />
           </>
         )}
       </div>
