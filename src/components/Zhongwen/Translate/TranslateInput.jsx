@@ -1,12 +1,18 @@
 import { translater, addToSavedWords } from "./TranslateUtils";
 import "./TranslateInput.scss";
 
-import { getSavedWords } from "../SavedWords/SavedWordsUtils";
+import {
+  getSavedWords,
+  getGroupedSavedWords,
+} from "../SavedWords/SavedWordsUtils";
 import { useState } from "react";
 
-import { getGroupedSavedWords } from "../SavedWords/SavedWordsUtils";
-
-const TranslateInput = ({ setSavedWords, activeGroup, setGroupWords }) => {
+const TranslateInput = ({
+  setSavedWords,
+  activeGroup,
+  setGroupWords,
+  selectedTab,
+}) => {
   const [loading, setLoading] = useState(false);
 
   const handleTranslate = async (e) => {
@@ -14,14 +20,15 @@ const TranslateInput = ({ setSavedWords, activeGroup, setGroupWords }) => {
       setLoading(true);
       const translation = await translater(e);
 
-      await addToSavedWords(translation, activeGroup.id);
+      if (selectedTab === 1) {
+        await addToSavedWords(translation, activeGroup.id);
+        const groupedWords = await getGroupedSavedWords(activeGroup.id);
+        setGroupWords(groupedWords);
+      } else {
+        await addToSavedWords(translation);
+      }
       const words = await getSavedWords();
 
-      if (activeGroup.id) {
-        const groupedWords = await getGroupedSavedWords(activeGroup.id);
-        console.log("This is the grouped words", groupedWords);
-        setGroupWords(groupedWords);
-      }
       setSavedWords(words);
       setLoading(false);
     }
@@ -33,7 +40,11 @@ const TranslateInput = ({ setSavedWords, activeGroup, setGroupWords }) => {
         <>
           <input
             type="text"
-            placeholder="Translate English to 中文"
+            placeholder={
+              selectedTab === 0
+                ? "Translate English to 中文"
+                : "Translate English to 中文 and add to the selected group"
+            }
             className="translate-input"
             autoComplete="off"
             id="translate-input"

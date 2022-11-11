@@ -5,6 +5,7 @@ import { createGroup, fetchGroups } from "./GroupsUtils";
 import AddGroupModal from "./AddGroupModal/AddGroupModal";
 import SavedWords from "../SavedWords/SavedWords";
 import Group from "./Group/Group";
+import Tippy from "@tippyjs/react";
 
 // Icons
 import AddIcon from "@mui/icons-material/Add";
@@ -12,6 +13,7 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 
 // Styles
 import "./Groups.scss";
+import "tippy.js/dist/tippy.css"; // optional
 
 const Groups = ({
   groups,
@@ -30,6 +32,17 @@ const Groups = ({
       setShowGroups(true);
     }
   }, [groupWords]);
+
+  const groupTooltip = () => {
+    // Either show or hide groups, but if no active group selected it should be please select a group
+    if (!activeGroup) {
+      return "Please select a group";
+    }
+    if (showGroups) {
+      return "Hide groups";
+    }
+    return "Show groups";
+  };
 
   return (
     <>
@@ -50,20 +63,31 @@ const Groups = ({
           </div>
         </div>
         {/* Button to add new group */}
-        <div
-          className="zhongwen-add-group"
-          onClick={() => {
-            setShowAddGroupModal(true);
-          }}
-        >
-          <AddIcon />
-        </div>
+        {showGroups && (
+          <div
+            className="zhongwen-add-group"
+            onClick={() => {
+              setShowAddGroupModal(true);
+            }}
+            style={{
+              userSelect: "none",
+            }}
+          >
+            <Tippy content="Create a new group" placement="top">
+              <AddIcon />
+            </Tippy>
+          </div>
+        )}
 
         {/* Button to show ghroups */}
         <div
           className="zhongwen-add-group"
           style={{
             marginLeft: "3rem",
+            userSelect: "none",
+            // If no active group, disable button
+            opacity: !activeGroup ? 0.5 : 1,
+            backgroundColor: !activeGroup && "#e0e0e0",
           }}
           onClick={() => {
             // Only hide groups if there are words in the group
@@ -74,7 +98,9 @@ const Groups = ({
             }
           }}
         >
-          <TableChartIcon />
+          <Tippy content={groupTooltip()} placement="top">
+            <TableChartIcon />
+          </Tippy>
         </div>
       </div>
       {showGroups && (

@@ -56,13 +56,16 @@ const Zhongwen = () => {
           setSavedWords={setSavedWords}
           activeGroup={activeGroup}
           setGroupWords={setGroupWords}
+          selectedTab={selectedTab}
         />
       </div>
 
       {/* Tab Menu */}
       <div className="zhongwen-tab-menu">
         <div
-          onClick={() => setSelectedTab(0)}
+          onClick={() => {
+            setSelectedTab(0);
+          }}
           className={`zhongwen-tab-menu-item ${
             selectedTab === 0 && "zhongwen-tab-menu-item-selected"
           }`}

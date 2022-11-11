@@ -40,4 +40,35 @@ td {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+
+  // All children margin
+  & > * {
+    margin-left: 1em;
+  }
+
+  & button {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5em;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+
+  }
+
+  & select {
+    width: 100%;
+    max-width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5em;
+  }
+}
+
+.row-header:hover {
+  cursor: default;
+  background-color: white;
+
 }

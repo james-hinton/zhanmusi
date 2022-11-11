@@ -15,11 +15,7 @@ const About = () => {
   return (
     <>
       <div id="canvas-container">
-        <div className="about-header">
-          <h4>
-            <i className="dream">James' Cabin</i>{" "}
-          </h4>
-        </div>
+
         <Canvas camera={{ rotation: [1, 9, 5], position: [-45, 45, 80] }}>
           <Suspense fallback={<Loader />}>
             <Environment preset="forest" background />

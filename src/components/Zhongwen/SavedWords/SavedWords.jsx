@@ -10,8 +10,7 @@ import {
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 
-import { useTable, usePagination } from "react-table";
-import { useExpanded } from "react-table";
+import { useTable, usePagination, useExpanded } from "react-table";
 import Modal from "./components/Modal";
 
 const SavedWords = ({ savedWords, setSavedWords }) => {
@@ -74,12 +73,6 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
           );
         },
       },
-      // {
-      //   Header: "Date",
-      //   accessor: (row) => {
-      //     return new Date(row.date).toLocaleDateString();
-      //   },
-      // },
     ],
     []
   );
@@ -120,7 +113,7 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
       >
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr {...headerGroup.getHeaderGroupProps()} className="row-header">
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()}>{column.render("Header")}</th>
               ))}
@@ -168,18 +161,6 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
             {pageIndex + 1} of {pageOptions.length}
           </strong>{" "}
         </span>
-        <span>
-          | Go to page:{" "}
-          <input
-            type="number"
-            defaultValue={pageIndex + 1}
-            onChange={(e) => {
-              const page = e.target.value ? Number(e.target.value) - 1 : 0;
-              gotoPage(page);
-            }}
-            style={{ width: "100px" }}
-          />
-        </span>{" "}
         <select
           value={pageSize}
           onChange={(e) => {
