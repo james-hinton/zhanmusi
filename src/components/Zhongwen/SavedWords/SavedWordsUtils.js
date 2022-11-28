@@ -11,15 +11,15 @@ export const getSavedWords = async () => {
   const response = await fetch(URL, options);
   const data = await response.json();
 
-  // add a show more true/false property to the data
-  data.forEach((word) => {
-    word.showMore = false;
-  });
-
   // Reverse the array so that the most recently added words are at the top
   data.reverse();
 
-  return data;
+  // I will leave this commented out, this should be done from the DB Level
+  // const sorted_data = data.sort((a, b) => {
+  //   return new Date(b.date) - new Date(a.date);
+  // });
+
+  return data
 };
 
 export const getGroupedSavedWords = async (groupId) => {
@@ -34,11 +34,6 @@ export const getGroupedSavedWords = async (groupId) => {
 
   const response = await fetch(URL, options);
   const data = await response.json();
-
-  // add a show more true/false property to the data
-  data.forEach((word) => {
-    word.showMore = false;
-  });
 
   // Reverse the array so that the most recently added words are at the top
   data.reverse();

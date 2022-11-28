@@ -13,7 +13,7 @@ import "tippy.js/dist/tippy.css"; // optional
 import { useTable, usePagination, useExpanded } from "react-table";
 import Modal from "./components/Modal";
 
-const SavedWords = ({ savedWords, setSavedWords }) => {
+const SavedWords = ({ savedWords }) => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState({});
 
@@ -39,13 +39,32 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
         Header: "Pinyin",
         accessor: ({ pinyin, hanzi }) => {
           const characters = hanzi.split("");
+          const pinyins = pinyin.split(" ");
+
+          // Make the number at end of pinyin a subscript
+          const pinyinsWithSubscript = pinyins.map((pinyin) => {
+            const pinyinSplit = pinyin.split("");
+            const lastChar = pinyinSplit[pinyinSplit.length - 1];
+            pinyinSplit[pinyinSplit.length - 1] = `<sub>${lastChar}</sub>`;
+            return pinyinSplit.join("");
+          });
+
           return (
             <div className="hanzi-container">
               {characters.map((character, index) => {
                 return (
                   <span key={index}>
                     <Tippy content={onHover(character)} placement="bottom">
-                      <span>{pinyin.split(" ")[index]} </span>
+                      {/* Pinyin, but render as HTML with whitespace between each */}
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: pinyinsWithSubscript[index],
+                          
+                        }}
+                        style={{
+                          marginRight: "0.3rem",
+                        }}
+                      ></span>
                     </Tippy>
                   </span>
                 );
@@ -91,7 +110,7 @@ const SavedWords = ({ savedWords, setSavedWords }) => {
     nextPage,
     previousPage,
     setPageSize,
-    state: { pageIndex, pageSize, expanded },
+    state: { pageIndex, pageSize },
   } = useTable(
     {
       columns,

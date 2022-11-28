@@ -25,6 +25,11 @@ const Modal = ({ openModal, setOpenModal, data }) => {
     audio.play();
   };
 
+  const removeTones = (pinyin) => {
+    // Remove tones from pinyin
+    return pinyin.replace(/[1-5]/g, "");
+  };
+
   return (
     <>
       {openModal && (
@@ -35,10 +40,19 @@ const Modal = ({ openModal, setOpenModal, data }) => {
           >
             <div className="zhongwen-modal-header">
               <h2>{data.hanzi}</h2>
-              
             </div>
             <div className="zhongwen-modal-body">
               <div className="zhongwen-modal-body-content">
+                {/* English */}
+                <div className="zhongwen-modal-body-content-row">
+                  <div className="zhongwen-modal-body-content-row-label">
+                    English
+                  </div>
+                  <div className="zhongwen-modal-body-content-row-value">
+                    {data.english}
+                  </div>
+                </div>
+
                 {/* Pinyin */}
                 <div className="zhongwen-modal-body-content-row">
                   <div className="zhongwen-modal-body-content-row-label">
@@ -64,15 +78,17 @@ const Modal = ({ openModal, setOpenModal, data }) => {
                     </span>
                   </div>
                 </div>
-                {/* English */}
+
+                {/* Pinyin without numbers */}
                 <div className="zhongwen-modal-body-content-row">
                   <div className="zhongwen-modal-body-content-row-label">
-                    English
+                    Pinyin (no tones)
                   </div>
                   <div className="zhongwen-modal-body-content-row-value">
-                    {data.english}
+                    {removeTones(data.pinyin)}
                   </div>
                 </div>
+
                 {/* A table of the pinyin split */}
                 <div className="zhongwen-modal-body-content-row">
                   <div className="zhongwen-modal-body-content-row-value">
