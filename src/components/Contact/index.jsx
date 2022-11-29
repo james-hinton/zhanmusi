@@ -21,7 +21,7 @@ const Modal = ({ setShowModal, showModal }) => {
         <div className="modal-body">
           <p>
             Email :{" "}
-            <a href="mailto:james.hinton@live.co.uk">james.hinton@live.co.uk</a>
+            <a href="mailto:hello@james-hinton.com">hello@james-hinton.com</a>
           </p>
           <p>
             <small>

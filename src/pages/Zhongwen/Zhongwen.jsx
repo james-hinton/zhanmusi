@@ -100,7 +100,12 @@ const Zhongwen = () => {
         </div>
       </div>
 
-      <div className="content flex-col">
+      <div
+        className="content flex-col"
+        style={{
+          position: "relative",
+        }}
+      >
         {selectedTab === 0 && (
           <>
             <div className="zhongwen-title">

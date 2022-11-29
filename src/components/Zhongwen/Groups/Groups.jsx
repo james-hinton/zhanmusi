@@ -48,7 +48,7 @@ const Groups = ({
     <>
       <div className="zhongwen-title">
         <div className="zhongwen-heading-multiple">
-          <div className="content-subtitle flex-col">
+          <div className="content-subtitle flex-col zhongwen-group-heading">
             {!activeGroup ? (
               <>
                 <h1>管理您的群組</h1>
@@ -62,6 +62,33 @@ const Groups = ({
             )}
           </div>
         </div>
+        {/* Have a background image div  */}
+        <div
+          className="zhongwen-background-image"
+          style={{
+            // The groups image is activeGroup.image
+            backgroundImage: `url(${activeGroup ? activeGroup.image : ""})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            height: "100%",
+
+            opacity: "0.06",
+            filter: "blur(10px)",
+            borderRadius: "10px",
+
+            // Make it cover the entire div
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+
+            // Allow users to click through it
+            pointerEvents: "none",
+
+          }}
+        ></div>
         {/* Button to add new group */}
         {showGroups && (
           <div
