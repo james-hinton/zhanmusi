@@ -43,17 +43,17 @@ var Projects = [
     language: "Python, SQLAlchemy, AWS, Javascript, Flask, HTML, CSS",
     public: false,
     image:
-      "https://images.unsplash.com/photo-1567878151693-c0493e064199?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhdmV5YXJkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "https://images.unsplash.com/photo-1503916066807-f13ceba21b0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80",
   },
   {
-    title: "STAC Management Backend",
+    title: "Mandarin Translator",
     description:
-      "A backend for the STAC specification that allows for the storage and retrieval of STAC items.",
-    language: "Python, Flask, HTML, CSS",
+      "Built to help me learn mandarin, inc. definitions, pinyin and audio. Effective and unique learning tool.",
+    language: "React, Flask, AWS (EC2, S3, RDS, ELB, CM, R53)",
     public: true,
     image:
-      "https://images.unsplash.com/photo-1518577589972-ad2d4f44eae9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    link: "https://github.com/SpatialDays/stac-portal-backend",
+      "https://images.unsplash.com/photo-1517309230475-6736d926b979?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    link: "/zhongwen",
   },
 ];
 
