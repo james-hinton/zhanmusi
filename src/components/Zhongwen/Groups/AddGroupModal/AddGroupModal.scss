@@ -68,6 +68,17 @@
     }
   }
 
+  &-subtext {
+    font-size: 0.8em;
+    // Dark gray
+    color: #666;
+    margin-bottom: 1em;
+
+    & a {
+      color: #AA381E;
+    }
+  }
+
   &-label {
     width: 100%;
     display: flex;

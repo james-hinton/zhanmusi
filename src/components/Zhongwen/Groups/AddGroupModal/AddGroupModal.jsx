@@ -57,7 +57,23 @@ const AddGroupModal = ({
             >
               群組圖片<b>Image</b>{" "}
             </label>
-            <input type="file" id="group-image" />
+            {/* Sub text */}
+            <div className="zhongwen-add-group-modal-subtext">
+              <p>
+                Use an Unsplash image URL
+                <a
+                  href="https://unsplash.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  Click to find an image
+                </a>
+              </p>
+            </div>
+
+            {/* Were using unsplash image url */}
+            <input type="text" id="group-image" />
           </div>
         </div>
         <div className="zhongwen-add-group-modal-footer">

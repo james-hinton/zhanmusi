@@ -109,7 +109,26 @@ const ManageGroupModal = ({
               </div>
               <div className="zhongwen-manage-group-modal-input">
                 <label htmlFor="image">Image</label>
-                <input type="file" name="image" id="image" />
+                {/* Sub text */}
+                <div className="zhongwen-add-group-modal-subtext">
+                  <p>
+                    Use an Unsplash image URL
+                    <a
+                      href="https://unsplash.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      Click to find an image
+                    </a>
+                  </p>
+                </div>
+                <input
+                  type="text"
+                  name="image"
+                  id="image"
+                  defaultValue={group.image}
+                />
               </div>
 
               <div className="zhongwen-manage-group-modal-footer">
@@ -138,15 +157,19 @@ const ManageGroupModal = ({
                       image,
                     };
 
-                    // Update the group
-                    updateGroup(1, updatedGroup);
-                    // Refresh the groups
-                    fetchGroups(1).then((groups) => {
-                      setGroups(groups);
-                    });
+                    const sendData = async () => {
+                      // Update the group
+                      await updateGroup(1, updatedGroup);
+                      // Refresh the groups
+                      await fetchGroups(1).then((groups) => {
+                        setGroups(groups);
+                      });
 
-                    // Close the modal
-                    setShowManageGroupModal(false);
+                      // Close the modal
+                      setShowManageGroupModal(false);
+                    };
+
+                    sendData();
                   }}
                 >
                   取消
@@ -169,15 +192,19 @@ const ManageGroupModal = ({
                     e.preventDefault();
                     e.stopPropagation();
 
-                    // Delete the group
-                    deleteGroup(1, group.id);
-                    // Refresh the groups
-                    fetchGroups(1).then((groups) => {
-                      setGroups(groups);
-                    });
+                    const sendData = async () => {
+                      // Delete the group
+                      await deleteGroup(1, group.id);
+                      // Refresh the groups
+                      await fetchGroups(1).then((groups) => {
+                        setGroups(groups);
+                      });
 
-                    // Close the modal
-                    setShowManageGroupModal(false);
+                      // Close the modal
+                      setShowManageGroupModal(false);
+                    };
+
+                    sendData();
                   }}
                 >
                   删除
@@ -254,12 +281,14 @@ const ManageGroupModal = ({
                   })}
                 </>
               ) : (
-                <div className="zhongwen-manage-group-modal-saved-words" style={
-                {
-                  marginTop: 20,
-                }
-                }>
-                  Nothing in this group, add some phrases using the query bar above
+                <div
+                  className="zhongwen-manage-group-modal-saved-words"
+                  style={{
+                    marginTop: 20,
+                  }}
+                >
+                  Nothing in this group, add some phrases using the query bar
+                  above
                 </div>
               )}
             </div>
