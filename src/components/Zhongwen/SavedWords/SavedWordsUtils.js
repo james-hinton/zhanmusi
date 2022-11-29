@@ -16,9 +16,6 @@ export const getSavedWords = async () => {
     word.showMore = false;
   });
 
-  // Reverse the array so that the most recently added words are at the top
-  data.reverse();
-
   return data;
 };
 
@@ -39,9 +36,6 @@ export const getGroupedSavedWords = async (groupId) => {
   data.forEach((word) => {
     word.showMore = false;
   });
-
-  // Reverse the array so that the most recently added words are at the top
-  data.reverse();
 
   return data;
 };
