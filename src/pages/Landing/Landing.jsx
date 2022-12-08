@@ -7,7 +7,7 @@ import { useMediaQuery } from "@mui/material";
 
 const Landing = ({ pokeData, activeCursor, showContent }) => {
   // Is mobile check if screen is less than 1000px
-  const isMobile = useMediaQuery("(width:1000px)");
+  const isMobile = useMediaQuery("(max-width:1000px)");
 
   return (
     <div className={`${showContent ? "show" : "hide"}`}>
