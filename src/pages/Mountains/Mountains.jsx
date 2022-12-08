@@ -1,5 +1,4 @@
 // this will be a nice page with mountains on it :)
-import { blue } from "@mui/material/colors";
 import { useEffect, useState } from "react";
 import "./Mountains.scss";
 
@@ -13,7 +12,7 @@ const Mountains = () => {
   const [mountains, setMountains] = useState([
     {
       id: 1,
-      src: "/mountains/landscape.png",
+      src: "/mountains/icy.png",
       alt: "mountain landscape",
       moveSpeed: 0.1,
       zIndex: 5,

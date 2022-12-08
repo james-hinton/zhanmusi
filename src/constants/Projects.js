@@ -17,7 +17,7 @@ var Projects = [
     public: true,
     image:
       "https://images.unsplash.com/photo-1460186136353-977e9d6085a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    link: "https://github.com/SpatialDays/stac-portal-frontend",
+    link: "https://github.com/SatelliteApplicationsCatapult/stac-portal-frontend",
   },
   {
     title: "Whoovr",

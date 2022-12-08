@@ -4,34 +4,35 @@ const About = () => {
   return (
     <div className="experience">
       <p>
+        <h4>IPP CommonSensing </h4> As one of the lead developers, I worked on
+        the UKSA-funded IPP CommonSensing project, which is the largest funded
+        project by the UK Space Agency. This project was for government
+        stakeholders in Fiji, Vanuatu, and the Solomon Islands, under the
+        Satellite Applications Catapult. My work involved software development
+        using Python, JavaScript, Redis, Dojo, and Jinja2, as well as deployment
+        on Linux servers and the use of Docker / Kubernetes / Helm.
+        <br />
+        <br />
         <h4>PDM Project</h4>
-        STAC Asset Catalog management platoform for Satellite Applications
-        Catapult. Worked on creating a number of backend API-s and microservices
-        running on Django and Flask, deploying and integrating them togather
-        using Terraform. Usage of various Azure services such as Applicaton
-        Gateways, App Services, ACI, ACR… Also built a user friendly frontend
-        using React which enables users to manage their assets and create
-        workflows.
+        I worked on the STAC Asset Catalog management platform for Satellite
+        Applications Catapult, developing a range of backend API's and
+        microservices using Django and Flask. I deployed and integrated these
+        services using Terraform, and utilized various Azure services such as
+        Application Gateways, App Services, ACI, and ACR. I also built a
+        user-friendly frontend using React, which allows users to easily manage
+        their assets and create workflows.
         <br />
         <br />
-        <h4>ConspiraSea </h4>Software Developer for the ConspiraSea information,
-        engagement and lobbying platform. This platform is to be used by the
-        public to lobby Government, large organisations, fishing companies and
-        other ocean stakeholders to better protect Marine Protected Areas (MPAs)
-        from industrial-scale fishing. A feature of this project is the use of
-        leaderboards to highlight industrial fishing vessels that are fishing in
-        MPAs, the vessel operators, the vessel owners and the company group
-        structure they are part of. ConspiraSea has been submitted as an entry
-        into the Hack the Planet Competition run by the Commonwealth and the
+        <h4>ConspiraSea </h4>I worked as a software developer for the
+        ConspiraSea platform, which is designed to be used by the public to
+        lobby government, large organizations, fishing companies, and other
+        stakeholders to better protect Marine Protected Areas (MPAs) from
+        industrial-scale fishing. One of the standout features of this project
+        is the use of leaderboards to highlight industrial fishing vessels that
+        are fishing in MPAs, along with the vessel operators, owners, and
+        company group structure they are part of. ConspiraSea was entered into
+        the Hack the Planet Competition run by the Commonwealth and the
         Satellite Applications Catapult.
-        <br />
-        <br />
-        <h4>IPP CommonSensing </h4> Software Developer on the UKSA-funded IPP
-        CommonSensing for Government stakeholders in Fiji, Vanuatu and the
-        Solomon Islands for the Satellite Applications Catapult. Work involved
-        software development using Python, Javascript, Redis, Dojo and Jinja2.
-        It also included deployment on Linux distribution servers and the use of
-        Docker.
         <br />
         <br />
         <h4>Google Scraper Project</h4> Software Developer for a Google Scraper
