@@ -1,5 +1,6 @@
 // Components
 import TwitterNavbar from "./components/TwitterNavbar";
+import Tweet from "./components/Tweet";
 
 // Styles
 import "./style.scss";
@@ -15,7 +16,13 @@ const Twitter = () => {
         {/* On the left is the navbar */}
           <TwitterNavbar />
         {/* In the middle is the main content */}
-        <div className="twitter-content">Content</div>
+        <div className="twitter-content">
+          <div className="twitter-content-header">
+            <h4 className="twitter-content-header-title">Home</h4>
+          </div>
+          
+          <Tweet />
+        </div>
         {/* On the right is the sidebar */}
         <div className="twitter-sidebar">Sidebar</div>
       </div>
