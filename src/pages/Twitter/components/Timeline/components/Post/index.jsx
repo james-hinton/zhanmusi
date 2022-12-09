@@ -1,6 +1,6 @@
 import "./style.scss";
 
-const Post = ({ user, tweet }) => {
+const Post = ({ user, tweet, reply, inReply }) => {
   const renderDate = (date) => {
     const dateObj = new Date(date);
     // Say like 4h or 2d or 1w etc.
@@ -35,87 +35,117 @@ const Post = ({ user, tweet }) => {
     }
   };
 
+  const renderText = (text) => {
+    text = text.replace(/@(\w+)/g, '<a href="/">@$1</a>');
+    text = text.replace(/#(\w+)/g, '<a href="/">#$1</a>');
+    return <span dangerouslySetInnerHTML={{ __html: text }} />;
+  };
+
+
   return (
-    <div className="twitter-post">
-      {/* Avatar */}
-      <div className="twitter-post-avatar">
-        <img src={user.avatar} alt="avatar" />
-      </div>
-      {/* Content */}
-      <div className="twitter-post-content">
-        {/* Header */}
-        <div className="twitter-post-content-header">
-          <div className="twitter-post-content-header-name">
-            <h4>{user.name}</h4>
-          </div>
-          {/* Verified */}
-          {user.verified && (
-            <div className="twitter-post-content-header-verified">
-              <img src="/twitter/misc-icons/verified.svg" alt="verified" />
+    <>
+      {/* If reply to, then hide unless */}
+      {(!tweet.replyTo || inReply) && (
+        <>
+          {reply && (
+            <div className="twitter-post-reply">
+              {/* Reply icon */}
+              <img src="/twitter/misc-icons/reply.svg" alt="reply" />
+              {reply.user.name} replied
             </div>
           )}
-          {/* Username */}
-          <div className="twitter-post-content-header-username">
-            <span>@{user.username}</span>
-          </div>
-          {/* Time Posted */}
-          <div className="twitter-post-content-header-date">
-            <span>{renderDate(tweet.createdAt)}</span>
-          </div>
-        </div>
 
-        {/* Body */}
-        <div className="twitter-post-content-body">
-          <p>{tweet.text}</p>
-
-          {/* Image */}
-          {tweet.image && (
-            <div className="twitter-post-content-body-image">
-              <img src={tweet.image} alt="tweet" />
+          <div className={`twitter-post ${reply && "twitter-post-reply-type"}`}>
+            {/* Avatar */}
+            <div className="twitter-post-avatar">
+              <img src={user.avatar} alt="avatar" />
             </div>
-          )}
-        </div>
+            {/* If reply, make a line */}
+            {reply && <div className="twitter-post-reply-line"></div>}
+            {/* Content */}
+            <div className="twitter-post-content">
+              {/* Header */}
+              <div className="twitter-post-content-header">
+                <div className="twitter-post-content-header-name">
+                  <h4>{user.name}</h4>
+                </div>
+                {/* Verified */}
+                {user.verified && (
+                  <div className="twitter-post-content-header-verified">
+                    <img
+                      src="/twitter/misc-icons/verified.svg"
+                      alt="verified"
+                    />
+                  </div>
+                )}
+                {/* Username */}
+                <div className="twitter-post-content-header-username">
+                  <span>@{user.username}</span>
+                </div>
+                {/* Time Posted */}
+                <div className="twitter-post-content-header-date">
+                  <span>{renderDate(tweet.createdAt)}</span>
+                </div>
+              </div>
 
-        {/* Footer */}
-        <div className="twitter-post-content-footer">
-          {/* Reply */}
-          <div className="twitter-post-content-footer-action">
-            <img
-              src="/twitter/misc-icons/reply.svg"
-              alt="reply"
-              className="twitter-post-content-footer-icon"
-            />
-            <span>{renderNumber(tweet.replies)}</span>
+              {/* Body */}
+              <div className="twitter-post-content-body">
+                <p>{renderText(tweet.text)}</p>
+
+                {/* Image */}
+                {tweet.image && (
+                  <div className="twitter-post-content-body-image">
+                    <img src={tweet.image} alt="tweet" />
+                  </div>
+                )}
+              </div>
+
+              {/* Footer */}
+              <div className="twitter-post-content-footer">
+                {/* Reply */}
+                <div className="twitter-post-content-footer-action">
+                  <img
+                    src="/twitter/misc-icons/reply.svg"
+                    alt="reply"
+                    className="twitter-post-content-footer-icon"
+                  />
+                  <span>{renderNumber(tweet.replies)}</span>
+                </div>
+                {/* Retweet */}
+                <div className="twitter-post-content-footer-action">
+                  <img
+                    src="/twitter/misc-icons/retweet.svg"
+                    alt="retweet"
+                    className="twitter-post-content-footer-icon"
+                  />
+                  <span>{renderNumber(tweet.retweets)}</span>
+                </div>
+                {/* Like */}
+                <div className="twitter-post-content-footer-action">
+                  <img
+                    src="/twitter/misc-icons/like.svg"
+                    alt="like"
+                    className="twitter-post-content-footer-icon"
+                  />
+                  <span>{renderNumber(tweet.likes)}</span>
+                </div>
+                {/* Share */}
+                <div className="twitter-post-content-footer-action">
+                  <img
+                    src="/twitter/misc-icons/share.svg"
+                    alt="share"
+                    className="twitter-post-content-footer-icon"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          {/* Retweet */}
-          <div className="twitter-post-content-footer-action">
-            <img
-              src="/twitter/misc-icons/retweet.svg"
-              alt="retweet"
-              className="twitter-post-content-footer-icon"
-            />
-            <span>{renderNumber(tweet.retweets)}</span>
-          </div>
-          {/* Like */}
-          <div className="twitter-post-content-footer-action">
-            <img
-              src="/twitter/misc-icons/like.svg"
-              alt="like"
-              className="twitter-post-content-footer-icon"
-            />
-            <span>{renderNumber(tweet.likes)}</span>
-          </div>
-          {/* Share */}
-          <div className="twitter-post-content-footer-action">
-            <img
-              src="/twitter/misc-icons/share.svg"
-              alt="share"
-              className="twitter-post-content-footer-icon"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+
+          {/* If reply, add that users post too */}
+          {reply && <Post user={reply.user} tweet={reply.tweet} inReply />}
+        </>
+      )}
+    </>
   );
 };
 
