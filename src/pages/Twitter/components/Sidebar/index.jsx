@@ -36,9 +36,9 @@ const whoToFollow = [
     username: "@NASA",
   },
   {
-    avatar: "/twitter/avatars/elon.jpg",
-    name: "Elon Musk",
-    username: "@elonmusk",
+    avatar: "/twitter/avatars/react.png",
+    name: "Javascript",
+    username: "@JSDevs",
   },
 ];
 

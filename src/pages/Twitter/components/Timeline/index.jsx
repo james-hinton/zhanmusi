@@ -1,5 +1,6 @@
 // Components
 import Post from "./components/Post";
+import ProfileImg from "../../../../assets/images/profile.jpeg";
 
 // Styles
 import "./style.scss";
@@ -13,8 +14,7 @@ const users = [
     followers: 100,
     following: 255,
     activelyFollowing: true,
-    avatar:
-      "http://localhost:3000/static/media/profile.4fb5d3dbaa07e588b2e4.jpeg",
+    avatar: ProfileImg,
     verified: false,
   },
   {
@@ -43,12 +43,12 @@ const tweets = [
   {
     id: 1,
     user: 1,
-    text: "This is a particularly long tweet that will showcase that this does in fact wrap, I guess there is still a 140 character limit though. Perhaps I should keep on going, or what? Who will stop me?",
-    likes: 100,
-    retweets: 255,
-    replies: 0,
-    createdAt: "2021-01-01T00:00:00.000Z",
-    image: "/twitter/posts/test.jpeg",
+    text: "Just added a new project to my portfolio: 'Terraforming Mars for Dummies.' The first step is apparently to invent a time machine.",
+    likes: 2331,
+    retweets: 2231,
+    replies: 9,
+    createdAt: "2022-12-03T00:00:00.000Z",
+    image: "https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   },
   {
     id: 2,
@@ -66,7 +66,7 @@ const tweets = [
     likes: 52323,
     retweets: 121,
     replies: 122,
-    createdAt: "2022-12-09T00:00:00.000Z",
+    createdAt: "2022-12-07T00:00:00.000Z",
     replyTo: 2,
   },
   {
