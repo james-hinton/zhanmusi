@@ -48,6 +48,7 @@
       border-left: 1px solid #e6ecf0;
       // Sticky
       position: fixed;
+      z-index: 10000;
 
       &-title {
         font-size: 20px;
