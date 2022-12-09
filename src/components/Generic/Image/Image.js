@@ -33,11 +33,11 @@ const Image = ({
         onMouseEnter={mood ? () => toggleCursor(mood) : null}
         onMouseLeave={mood ? () => toggleCursor() : null}
         onClick={
-          // IF treasure is Facebook then add to localstorage
+          // IF treasure is Twitter then add to localstorage
           link
             ? () => {
-                if (treasure === "Facebook") {
-                  localStorage.setItem("Facebook", "found");
+                if (treasure === "Twitter") {
+                  localStorage.setItem("Twitter", "found");
                 }
                 window.open(link, sameTab ? "_self" : "_blank");
               }

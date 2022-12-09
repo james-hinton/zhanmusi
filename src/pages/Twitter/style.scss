@@ -1,0 +1,47 @@
+#twitter {
+  // Font is the chirp-regular-web in /tiwtter/font/Chirp-Regular-web.woff
+  // Import it
+  @import url('https://fonts.googleapis.com/css2?family=Chirp:wght@400;700&display=swap');
+  font-family: 'Chirp-Regular-web', sans-serif;
+}
+
+.twitter {
+  &-container {
+    display:flex;
+    flex-direction: row;
+  }
+
+
+  &-content {
+    width: 60%;
+
+    // If width is under 1000px make it 100%
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+
+    height: 100vh;
+    background-color: #f5f8fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-sidebar {
+
+    // If width is under 1000px hide
+    @media (max-width: 1000px) {
+      display: none;
+    }
+    width: 20%;
+    height: 100%;
+    background-color: #1da1f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+}

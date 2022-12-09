@@ -88,12 +88,12 @@ const LeftContentBar = ({ pokeData }) => {
           <Image
             height={"30px"}
             image={
-              "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+              "/twitter/logo-blue.png"
             }
             link={
-              "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+              "/twitter/"
             }
-            treasure={"Facebook"}
+            treasure={"Twitter"}
           />
           <Image
             height={"30px"}
