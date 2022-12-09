@@ -7,11 +7,14 @@
   justify-content: flex-start;
   padding: 20px;
   padding-bottom: 0;
-  margin-bottom: 20px;
   box-sizing: border-box;
   flex-direction: column;
   background-color: #fff;
   border-bottom: 1px solid #e6ecf0;
+
+  margin-top: 50px;
+  border-left: 1px solid #e6ecf0;
+
 
   &-container {
     width: 100%;
