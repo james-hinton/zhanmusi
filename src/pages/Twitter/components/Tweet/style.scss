@@ -7,11 +7,14 @@
   justify-content: flex-start;
   padding: 20px;
   padding-bottom: 0;
-  margin-bottom: 20px;
   box-sizing: border-box;
   flex-direction: column;
   background-color: #fff;
   border-bottom: 1px solid #e6ecf0;
+
+  margin-top: 50px;
+  border-left: 1px solid #e6ecf0;
+
 
   &-container {
     width: 100%;
@@ -22,7 +25,7 @@
   &-avatar {
     width: 50px;
     height: 50px;
-    margin-right: 10px;
+    margin-right: 0.3em;
 
     & img {
       width: 100%;
@@ -33,7 +36,7 @@
   }
 
   &-content {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: column;

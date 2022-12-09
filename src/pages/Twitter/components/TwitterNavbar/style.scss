@@ -7,10 +7,8 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    border-right: 1px solid rgba(128, 128, 128, 0.141);
     box-sizing: border-box;
 
-    
     &-expanded {
       max-width: 550px;
       width: 35%;
@@ -27,9 +25,11 @@
       align-items: flex-start;
       flex-direction: column;
       padding-top: 3px;
+      position: fixed;
+
 
       &-expanded {
-        max-width: 500px;
+        max-width: 250px;
         transition: max-width 0.35s ease-in-out;
         justify-content: flex-start;
       }
@@ -43,7 +43,6 @@
 
       &-expanded {
         justify-content: flex-start;
-
       }
 
       & img {

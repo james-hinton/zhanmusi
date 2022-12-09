@@ -36,7 +36,7 @@ const App = () => {
 
   // IF on Twitter, hide the nav
   useEffect(() => {
-    if (window.location.pathname === "/twitter/") {
+    if (window.location.pathname.includes("twitter")) {
       setShowNav(false);
     } else {
       setShowNav(true);
