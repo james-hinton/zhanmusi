@@ -3,17 +3,21 @@ import { Routes, Route } from "react-router-dom";
 
 import "./assets/styles/App.css";
 
+// Pages
 import Navbar from "./components/Navbar/Navbar/Navbar";
 import Landing from "./pages/Landing/Landing";
 import Zhongwen from "./pages/Zhongwen/Zhongwen";
 import Mountains from "./pages/Mountains/Mountains";
-import Hypnotoad from "./components/Hynotoad/Hypnotoad";
+import Twitter from "./pages/Twitter";
 
+// Components
+import Hypnotoad from "./components/Hynotoad/Hypnotoad";
 import CursorContextProvider from "./components/Generic/Cursor/CursorContextProvider";
 
 const App = () => {
   const [background, setBackground] = useState("");
   const [activeCursor, setActiveCursor] = useState(false);
+  const [showNav, setShowNav] = useState(true);
 
   const [pokeData, setpokeData] = useState([]);
   const [showContent, setShowContent] = useState(true);
@@ -30,10 +34,20 @@ const App = () => {
     }
   }, [background]);
 
+  // IF on Twitter, hide the nav
+  useEffect(() => {
+    if (window.location.pathname === "/twitter/") {
+      setShowNav(false);
+    } else {
+      setShowNav(true);
+    }
+  }, []);
+
   return (
     <CursorContextProvider>
       <div className={`app ${activeCursor ? "hide-cursor" : "show-cursor"}`}>
         {showToad && <Hypnotoad />}
+        {showNav && (
         <Navbar
           setBackground={setBackground}
           pokeData={pokeData}
@@ -41,6 +55,7 @@ const App = () => {
           activeCursor={activeCursor}
           setActiveCursor={setActiveCursor}
         />
+        )}
 
         <Routes>
           <Route
@@ -55,6 +70,7 @@ const App = () => {
           />
           <Route path="/zhongwen" element={<Zhongwen />} />
           <Route path="/mountains" element={<Mountains />} />
+          <Route path="/twitter" element={<Twitter />} />
         </Routes>
       </div>
     </CursorContextProvider>

@@ -16,8 +16,8 @@ export let allHints = [
   },
   {
     id: 12091201,
-    title: "Facebook",
-    hint: "Try t' visit me Facebook page ye raucous scallywag",
+    title: "Twitter",
+    hint: "Try t' visit me Twitter page ye raucous scallywag",
   },
   {
     id: 93093293,
