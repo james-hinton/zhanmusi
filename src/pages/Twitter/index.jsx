@@ -1,6 +1,7 @@
 // Components
 import TwitterNavbar from "./components/TwitterNavbar";
 import Tweet from "./components/Tweet";
+import Sidebar from "./components/Sidebar";
 
 // Styles
 import "./style.scss";
@@ -24,7 +25,7 @@ const Twitter = () => {
           <Tweet />
         </div>
         {/* On the right is the sidebar */}
-        <div className="twitter-sidebar">Sidebar</div>
+        <Sidebar />
       </div>
     </div>
   );
