@@ -43,7 +43,7 @@ const Post = ({ user, tweet, reply, inReply }) => {
 
 
   return (
-    <>
+    <div className="twitter-post-container">
       {/* If reply to, then hide unless */}
       {(!tweet.replyTo || inReply) && (
         <>
@@ -145,7 +145,7 @@ const Post = ({ user, tweet, reply, inReply }) => {
           {reply && <Post user={reply.user} tweet={reply.tweet} inReply />}
         </>
       )}
-    </>
+    </div>
   );
 };
 

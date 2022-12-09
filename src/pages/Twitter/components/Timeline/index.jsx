@@ -15,7 +15,7 @@ const users = [
     activelyFollowing: true,
     avatar:
       "http://localhost:3000/static/media/profile.4fb5d3dbaa07e588b2e4.jpeg",
-    verified: true,
+    verified: false,
   },
   {
     id: 2,
@@ -25,6 +25,16 @@ const users = [
     following: 1290129012,
     activelyFollowing: false,
     avatar: "/twitter/avatars/elon.jpg",
+    verified: true,
+  },
+  {
+    id: 3,
+    name: "National Aeronautics and Space Administration",
+    username: "NASA",
+    followers: 8394389433,
+    following: 1290129012,
+    activelyFollowing: false,
+    avatar: "/twitter/avatars/nasa.png",
     verified: true,
   },
 ];
@@ -77,6 +87,17 @@ const tweets = [
     retweets: 25121,
     replies: 121212,
     createdAt: "2022-11-01T00:00:00.000Z",
+  },
+  // Reply to 3 from NASA
+  {
+    id: 5,
+    user: 3,
+    text: "@jameshinton We're looking for a developer too, want to join?",
+    likes: 11221,
+    retweets: 25121,
+    replies: 12,
+    createdAt: "2022-11-01T00:00:00.000Z",
+    replyTo: 3,
   },
 ];
 
