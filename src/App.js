@@ -9,6 +9,7 @@ import Landing from "./pages/Landing/Landing";
 import Zhongwen from "./pages/Zhongwen/Zhongwen";
 import Mountains from "./pages/Mountains/Mountains";
 import Twitter from "./pages/Twitter";
+import Popcorn from "./pages/Popcorn";
 
 // Components
 import Hypnotoad from "./components/Hynotoad/Hypnotoad";
@@ -36,7 +37,7 @@ const App = () => {
 
   // IF on Twitter, hide the nav
   useEffect(() => {
-    if (window.location.pathname.includes("twitter")) {
+    if (window.location.pathname.includes("twitter") || window.location.pathname.includes("popcorn") ) {
       setShowNav(false);
     } else {
       setShowNav(true);
@@ -71,6 +72,8 @@ const App = () => {
           <Route path="/zhongwen" element={<Zhongwen />} />
           <Route path="/mountains" element={<Mountains />} />
           <Route path="/twitter" element={<Twitter />} />
+          <Route path="/popcorn" element={<Popcorn />} />
+          <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>
     </CursorContextProvider>
