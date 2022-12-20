@@ -10,6 +10,7 @@ import Zhongwen from "./pages/Zhongwen/Zhongwen";
 import Mountains from "./pages/Mountains/Mountains";
 import Twitter from "./pages/Twitter";
 import Popcorn from "./pages/Popcorn";
+import Bar from "./pages/Bar";
 
 // Components
 import Hypnotoad from "./components/Hynotoad/Hypnotoad";
@@ -39,7 +40,8 @@ const App = () => {
   useEffect(() => {
     if (
       window.location.pathname.includes("twitter") ||
-      window.location.pathname.includes("popcorn")
+      window.location.pathname.includes("popcorn") ||
+      window.location.pathname.includes("bar")
     ) {
       setShowNav(false);
     } else {
@@ -93,6 +95,7 @@ const App = () => {
           <Route path="/mountains" element={<Mountains />} />
           <Route path="/twitter" element={<Twitter />} />
           <Route path="/popcorn" element={<Popcorn />} />
+          <Route path="/bar" element={<Bar />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>

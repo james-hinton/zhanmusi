@@ -146,12 +146,20 @@ const LeftContentBar = ({ pokeData }) => {
           <InfoPanel
             title="Hobbies"
             value={
-              <a
-                href="/popcorn"
-                style={{ color: "black", textDecoration: "none" }}
-              >
-                Popcorn
-              </a>
+              <>
+                <a
+                  href="/popcorn"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Popcorn, {" "}
+                </a>
+                <a
+                  href="/bar"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Bar
+                </a>
+              </>
             }
           />
         </div>
