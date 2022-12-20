@@ -1,3 +1,7 @@
+// React
+import { useEffect } from "react";
+
+// Styles
 import "./style.scss";
 
 const Post = ({ user, tweet, reply, inReply }) => {
@@ -40,7 +44,6 @@ const Post = ({ user, tweet, reply, inReply }) => {
     text = text.replace(/#(\w+)/g, '<a href="/">#$1</a>');
     return <span dangerouslySetInnerHTML={{ __html: text }} />;
   };
-
 
   return (
     <div className="twitter-post-container">
