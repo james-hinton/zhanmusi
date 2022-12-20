@@ -1,3 +1,6 @@
+// React
+import { useEffect } from "react";
+
 // Components
 import Post from "./components/Post";
 import ProfileImg from "../../../../assets/images/profile.jpeg";
@@ -43,6 +46,21 @@ const Timeline = ({ tweets, setTweets }) => {
   const hasThisTweetGotAReply = (id) => {
     return tweets.find((tweet) => tweet.replyTo === id);
   };
+
+  // Every 3 seconds refresh the tweets
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTweets((tweets) => {
+        return tweets.map((tweet) => {
+          return {
+            ...tweet,
+          };
+        });
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="twitter-timeline">
