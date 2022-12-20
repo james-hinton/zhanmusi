@@ -46,7 +46,8 @@ const Navbar = ({
                 Dropdown="I have no idea what I'm doing"
               />
             </div>
-
+            {/* If on home page */}
+            {window.location.pathname === "/" && (
             <div className="navbar__item throw">
               <NavLink
                 text="Cat Cursor"
@@ -57,6 +58,7 @@ const Navbar = ({
                 }}
               />
             </div>
+            )}
           </>
         )}
         <div className="navbar__item right">

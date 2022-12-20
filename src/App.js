@@ -35,13 +35,33 @@ const App = () => {
     }
   }, [background]);
 
-  // IF on Twitter, hide the nav
+  // Sometimes we hide the navbar too...
   useEffect(() => {
-    if (window.location.pathname.includes("twitter") || window.location.pathname.includes("popcorn") ) {
+    if (
+      window.location.pathname.includes("twitter") ||
+      window.location.pathname.includes("popcorn")
+    ) {
       setShowNav(false);
     } else {
       setShowNav(true);
     }
+  }, []);
+
+  // If user is on a different tab, set the tab message to 'OY! COME BACK!'
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "OY! COME BACK!";
+      } else {
+        document.title = "James Hinton - Github";
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   return (
@@ -49,13 +69,13 @@ const App = () => {
       <div className={`app ${activeCursor ? "hide-cursor" : "show-cursor"}`}>
         {showToad && <Hypnotoad />}
         {showNav && (
-        <Navbar
-          setBackground={setBackground}
-          pokeData={pokeData}
-          setpokeData={setpokeData}
-          activeCursor={activeCursor}
-          setActiveCursor={setActiveCursor}
-        />
+          <Navbar
+            setBackground={setBackground}
+            pokeData={pokeData}
+            setpokeData={setpokeData}
+            activeCursor={activeCursor}
+            setActiveCursor={setActiveCursor}
+          />
         )}
 
         <Routes>
