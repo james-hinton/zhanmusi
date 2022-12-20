@@ -43,5 +43,10 @@ export let allHints = [
     id: 49043394,
     title: "Cat",
     hint: "Nah again, I can nah find me cat! I reckon it's somewhere in the Navbar",
+  },
+  {
+    id: 12891212,
+    title: "Popcoin",
+    hint: "Say pop... pop... say corn... corn... now say popcorn... popcoin",
   }
 ];

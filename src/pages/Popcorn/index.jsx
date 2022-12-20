@@ -1,18 +1,22 @@
 // Components
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Listener from "./components/Listener";
 
 // Styles
 import "./style.scss";
 
 // Icons
-import HouseIcon from '@mui/icons-material/House';
+import HouseIcon from "@mui/icons-material/House";
 
 const Popcorn = () => {
   const [stopPopcorn, setStopPopcorn] = useState(false);
 
   const meta = document.querySelector('meta[name="viewport"]');
   meta.setAttribute("content", "width=device-width, initial-scale=1");
+
+  useEffect(() => {
+    localStorage.setItem("Popcoin", "found");
+  }, []);
 
   return (
     <div id="popcorn" className="popcorn">
@@ -46,12 +50,11 @@ const Popcorn = () => {
                 <br />
                 If you wanna test it out, get a YouTube video of popcorn popping
                 and play it into the microphone. It should work.
-
                 <br />
                 <br />
-                It finds loud noises, and checks the volume and the frequency of 
-                the noise to check if it's a pop. If there's too much of a break between
-                pops, it'll let you know.
+                It finds loud noises, and checks the volume and the frequency of
+                the noise to check if it's a pop. If there's too much of a break
+                between pops, it'll let you know.
               </p>
             </div>
           ) : (
@@ -76,7 +79,7 @@ const Popcorn = () => {
         <a href="/">
           <HouseIcon />
         </a>
-        </div>
+      </div>
     </div>
   );
 };
