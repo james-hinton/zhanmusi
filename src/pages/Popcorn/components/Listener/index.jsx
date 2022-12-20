@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import StopCircleIcon from "@mui/icons-material/StopCircle";
 
-const Listener = () => {
+import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
+const Listener = ({ stopPopcorn, setStopPopcorn }) => {
   // Initialize state variables
   const [isListening, setIsListening] = useState(false);
   const [popTimestamps, setPopTimestamps] = useState([]);
@@ -8,10 +10,10 @@ const Listener = () => {
 
   const startListening = () => {
     setPopTimestamps([]);
+    setStopPopcorn(false);
 
     // Check if the browser supports the Web Audio API
     if (window.AudioContext && isListening === false) {
-      // This listens to the audio, and when it detects a pop, it adds the timestamp to the popTimestamps array
       // Request access to the user's microphone
       navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
         // Create an AudioContext and an audio source from the microphone stream
@@ -24,8 +26,8 @@ const Listener = () => {
         const bufferLength = analyzer.frequencyBinCount;
         const dataArray = new Uint8Array(bufferLength);
 
-        source.connect(analyzer)
-        
+        source.connect(analyzer);
+
         let popTimes = [];
 
         // Create an interval to check the audio data every 100ms
@@ -33,23 +35,41 @@ const Listener = () => {
           analyzer.getByteTimeDomainData(dataArray);
 
           // Check if the audio data is above a certain threshold
-          const isPop = dataArray.some((data) => data > 130);
+          const isLoudNoise = dataArray.some((data) => data > 130);
 
-          if (isPop) {
-            console.log("POP!");
-            // If it is, add the current timestamp to the popTimestamps array
-            popTimes.push(Date.now());
-            setPopTimestamps((prev) => [...prev, Date.now()]);
+          if (isLoudNoise) {
+            // Get frequency
+            analyzer.getByteFrequencyData(dataArray);
+
+            // Find the frequency with the highest amplitude
+            let maxAmplitude = 0;
+            let maxAmplitudeIndex = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+              if (dataArray[i] > maxAmplitude) {
+                maxAmplitude = dataArray[i];
+                maxAmplitudeIndex = i;
+              }
+            }
+
+            // Calculate the pitch of the audio based on the frequency with the highest amplitude
+            const pitch =
+              (audioContext.sampleRate / analyzer.fftSize) * maxAmplitudeIndex;
+
+            // Filter out pitches that are not in the range of a popcorn pop
+            if (pitch > 1000 && pitch < 1850) {
+              // Add the current timestamp to the popTimestamps array
+              popTimes.push(Date.now());
+              setPopTimestamps((prev) => [...prev, Date.now()]);
+            }
           }
           // If its been more than 1 seconds since the last pop, end.
-          if (popTimes.length > 0) {
+          if (popTimes.length > 40) {
             const lastPop = popTimes[popTimes.length - 1];
-            if (Date.now() - lastPop > 1000) {
+            if (Date.now() - lastPop > 3000) {
               // Clear the interval and set the isListening state variable to false
-              console.log("STOPPING DUE TO NO POPS");
+              setStopPopcorn(true);
               clearInterval(interval);
               setIsListening(false);
-
             }
           }
         }, 100);
@@ -73,25 +93,31 @@ const Listener = () => {
     <div>
       {!isListening ? (
         <div className="popcorn-content__button">
-          <button onClick={startListening}>Start Listening</button>
+          {/* Bg color rgb(254 253 173 / 92%); */}
+          <button
+            onClick={startListening}
+            style={{
+              backgroundColor: "rgb(254 253 173 / 92%)",
+              color: "#565526",
+            }}
+          >
+            <PlayCircleFilledWhiteIcon style={{ fontSize: 40 }} />
+          </button>
         </div>
       ) : (
         <div className="popcorn-content__button">
-          <button onClick={stopListening}>Stop Listening</button>
+          <button onClick={stopListening}>
+            <StopCircleIcon style={{ fontSize: 40 }} />
+          </button>
         </div>
       )}
 
-      {isListening ? "Listening for popcorn pops..." : "Not listening"}
-
-      <div className="popcorn-content__timestamps">
-        <h3>Timestamps</h3>
-        {/* TOTAL */}
-        <div className="popcorn-content__timestamp">
-          <span>Total: </span>
+      {isListening && (
+        <div className="popcorn-content__total">
+          <span>Total Poppin: </span>
           <span>{popTimestamps.length}</span>
         </div>
-        {/* 1 */}
-      </div>
+      )}
     </div>
   );
 };
