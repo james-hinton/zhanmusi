@@ -6,21 +6,52 @@ import "./style.scss";
 
 // Icons
 import HouseIcon from "@mui/icons-material/House";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
 
 // Data
-// There are two JSON files, one is the data for the drinks, the other is the data for the food
-import allIngredients from "./data/ingredients.json";
 import allCocktails from "./data/cocktails.json";
+
+// Songs
+import stranger from "./music/stranger.mp3";
 
 const Bar = () => {
   // State
   const [drinks, setDrinks] = useState(allCocktails);
   const [selectedCocktail, setSelectedCocktail] = useState(null);
+  const [minimiseCocktails, setMinimiseCocktails] = useState(false);
 
   // When user first enters the page, a random cocktail will be selected
   useEffect(() => {
     setSelectedCocktail(drinks[Math.floor(Math.random() * drinks.length)]);
   }, []);
+
+  // Music
+  const [volume, setVolume] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(0);
+
+  useEffect(() => {
+    // If its already playing, find how far in
+    const audio = new Audio(stranger);
+    audio.volume = volume;
+    // Skip to the right place
+    audio.currentTime = audioDuration;
+    audio.play();
+
+    // Make sure to loop
+    audio.addEventListener("ended", () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
+
+    return () => {
+      // Set the audio duration to where the song is paused
+      setAudioDuration(audio.currentTime);
+      audio.pause();
+    };
+  }, [volume]);
 
   return (
     <div className="bar">
@@ -31,41 +62,64 @@ const Bar = () => {
         </div>
         {/* Drinks */}
         <div className="bar-content-drinks">
-          {/* Search Box */}
-          <div className="bar-content-drinks-search">
-            <input
-              type="text"
-              placeholder="Search for a drink"
-              onChange={(e) => {
-                setDrinks(
-                  allCocktails.filter((drink) =>
-                    drink.name
-                      .toLowerCase()
-                      .includes(e.target.value.toLowerCase())
-                  )
-                );
-              }}
-            />
+          <div className="bar-content-drinks-header">
+            {/* Search Box */}
+            <div className="bar-content-drinks-search">
+              <input
+                type="text"
+                placeholder="Search for a drink"
+                onChange={(e) => {
+                  setDrinks(
+                    allCocktails.filter((drink) =>
+                      drink.name
+                        .toLowerCase()
+                        .includes(e.target.value.toLowerCase())
+                    )
+                  );
+                  setMinimiseCocktails(false);
+                }}
+              />
+            </div>
+
+            {/* Minimise */}
+            <div className="bar-content-drinks-icon">
+              {!minimiseCocktails ? (
+                <CloseFullscreenIcon
+                  onClick={() => {
+                    setMinimiseCocktails(true);
+                  }}
+                />
+              ) : (
+                <FullscreenIcon
+                  onClick={() => {
+                    setMinimiseCocktails(false);
+                  }}
+                />
+              )}
+            </div>
           </div>
 
           {/* Table */}
-          <div className="bar-content-drinks-table">
-            {/* Drinks */}
-            {drinks.map((drink, index) => (
-              <div
-                className="bar-content-drinks-table-row"
-                key={index}
-                onClick={() => {
-                  setSelectedCocktail(drink);
-                }}
-              >
-                {/* Name */}
-                <div className="bar-content-drinks-table-row-name">
-                  {drink.name}
+          {!minimiseCocktails && (
+            <div className="bar-content-drinks-table">
+              {/* Drinks */}
+              {drinks.map((drink, index) => (
+                <div
+                  className="bar-content-drinks-table-row"
+                  key={index}
+                  onClick={() => {
+                    setSelectedCocktail(drink);
+                    setMinimiseCocktails(true);
+                  }}
+                >
+                  {/* Name */}
+                  <div className="bar-content-drinks-table-row-name">
+                    {drink.name}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Holder */}
@@ -118,6 +172,36 @@ const Bar = () => {
         <a href="/">
           <HouseIcon />
         </a>
+      </div>
+
+      {/* Music */}
+      {/* Music button */}
+      <div className="bar-music">
+        {volume === 0 ? (
+          <VolumeOffIcon
+            onClick={() => {
+              setVolume(0.5);
+            }}
+          />
+        ) : (
+          <VolumeUpIcon
+            onClick={() => {
+              setVolume(0);
+            }}
+          />
+        )}
+
+        {/* Music volume */}
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volume}
+          onChange={(e) => {
+            setVolume(e.target.value);
+          }}
+        />
       </div>
     </div>
   );
