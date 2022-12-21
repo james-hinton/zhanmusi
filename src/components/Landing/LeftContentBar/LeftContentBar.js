@@ -158,7 +158,7 @@ const LeftContentBar = ({ pokeData }) => {
                   href="/bar"
                   style={{ color: "black", textDecoration: "none" }}
                 >
-                  Bar
+                  Cocktails
                 </a>
               </>
             }

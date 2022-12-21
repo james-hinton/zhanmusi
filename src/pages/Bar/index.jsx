@@ -167,7 +167,12 @@ const Bar = () => {
 
       {/* Home  */}
       {/* Back to home button */}
-      <div className="bar-back">
+      <div
+        className="bar-back"
+        onClick={() => {
+          window.location.href = "/";
+        }}
+      >
         <a href="/">
           <HouseIcon />
         </a>
