@@ -109,7 +109,6 @@ const Bar = () => {
                   key={index}
                   onClick={() => {
                     setSelectedCocktail(drink);
-                    setMinimiseCocktails(true);
                   }}
                 >
                   {/* Name */}
