@@ -90,6 +90,7 @@ const LeftContentBar = ({ pokeData }) => {
             image={"/twitter/logo-blue.png"}
             link={"/twitter/"}
             treasure={"Twitter"}
+            mood={"cool"}
           />
           <Image
             height={"30px"}
@@ -146,12 +147,20 @@ const LeftContentBar = ({ pokeData }) => {
           <InfoPanel
             title="Hobbies"
             value={
-              <a
-                href="/popcorn"
-                style={{ color: "black", textDecoration: "none" }}
-              >
-                Popcorn
-              </a>
+              <>
+                <a
+                  href="/popcorn"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Popcorn, {" "}
+                </a>
+                <a
+                  href="/bar"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Cocktails
+                </a>
+              </>
             }
           />
         </div>

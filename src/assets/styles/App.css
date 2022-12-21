@@ -57,7 +57,7 @@
   font-size: 1.5rem;
 }
 .hide-cursor * {
-  cursor: none;
+  cursor: none !important;
 }
 
 .show {
@@ -75,7 +75,6 @@
   /* Margin */
   margin-left: 15%;
   margin-right: 15%;
-  margin-top: 2%;
   padding: 2em;
   margin-bottom: 2em;
 
