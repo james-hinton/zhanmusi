@@ -2,8 +2,8 @@ import React from "react";
 
 function actionByKey(key) {
   const keys = {
-    KeyQ: "moveDown",
-    KeyE: "moveUp",
+    // KeyQ: "moveDown",
+    // KeyE: "moveUp",
     KeyA: "moveLeft",
     KeyD: "moveRight",
     KeyW: "moveForward",

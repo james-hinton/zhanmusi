@@ -152,13 +152,19 @@ const LeftContentBar = ({ pokeData }) => {
                   href="/popcorn"
                   style={{ color: "black", textDecoration: "none" }}
                 >
-                  Popcorn, {" "}
+                  Popcorn,{" "}
                 </a>
                 <a
                   href="/bar"
                   style={{ color: "black", textDecoration: "none" }}
                 >
-                  Cocktails
+                  Cocktails,{" "}
+                </a>
+                <a
+                  href="/middle-earth"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Lord of the Rings
                 </a>
               </>
             }

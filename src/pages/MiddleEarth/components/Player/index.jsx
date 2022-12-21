@@ -17,7 +17,7 @@ const Player = ({ movement, playerRigidBodyRef }) => {
     )
   );
 
-  const moveSpeed = 0.1;
+  const moveSpeed = 0.4;
 
   useEffect(() => {
     if (movement.moveForward) {

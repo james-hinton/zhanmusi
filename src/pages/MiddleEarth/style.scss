@@ -2,10 +2,10 @@
     height: 100vh;
     width: 100vw;
 
-    &-camera-info {
+    &__position {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 10px;
+        right: 10px;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
@@ -14,5 +14,28 @@
         color: #fff;
         font-size: 0.8rem;
         z-index: 1;
+        width: 100px;
+        background-color: rgba(216, 216, 216, 0.411);
+        border-radius: 5px;
+        font-weight: bold;
+
+        &__row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 0.5rem;
+            width: 100%;
+
+            &__label {
+                margin-right: 0.5rem;
+                width: 50%;
+            }
+
+            &__value {
+                font-weight: bold;
+                width: 50%;
+            }
+        }
     }
 }

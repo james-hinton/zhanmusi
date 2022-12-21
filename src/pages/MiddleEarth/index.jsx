@@ -27,11 +27,6 @@ const defaultState = {
   },
 };
 
-const ThreeFunctions = ({}) => {
-  const { camera } = useThree();
-  return <></>;
-};
-
 const Camera = ({ playerRigidBodyRef }) => {
   const cameraRef = useRef();
 
@@ -47,8 +42,9 @@ const Camera = ({ playerRigidBodyRef }) => {
     lookAtVec.set(x, y, z);
     cameraVector.lerp(lookAtVec, 0.1);
     state.camera.lookAt(cameraVector);
-    // Bring the camera position so that it's looking down at the player
-    state.camera.position.set(x, y + 1, z - 1);
+    // Smoothly Bring the camera position so that it's looking down at the player
+    state.camera.position.lerp(new THREE.Vector3(x, y + 2, z - 3), 0.1);
+
     state.camera.updateProjectionMatrix();
   });
 
@@ -98,9 +94,31 @@ const MiddleEarth = () => {
           </Physics>
         </Suspense>
         <Camera playerRigidBodyRef={playerRigidBodyRef} />
-
-        {/* <OrbitControls /> */}
       </Canvas>
+
+      <div className="middle-earth__position">
+        <div className="middle-earth__position__row">
+          <div classname="middle-earth__position__row__label">X:</div>
+          <div classname="middle-earth__position__row__value">
+            {playerRigidBodyRef.current?.translation().x.toFixed(2)}
+          </div>
+        </div>
+
+        <div className="middle-earth__position__row">
+          <div classname="middle-earth__position__row__label">Y:</div>
+          <div classname="middle-earth__position__row__value">
+            {/* Round to 2 decimal places */}
+            {playerRigidBodyRef.current?.translation().y.toFixed(2)}
+          </div>
+        </div>
+
+        <div className="middle-earth__position__row">
+          <div classname="middle-earth__position__row__label">Z:</div>
+          <div classname="middle-earth__position__row__value">
+            {playerRigidBodyRef.current?.translation().z.toFixed(2)}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
