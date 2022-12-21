@@ -90,6 +90,7 @@ const LeftContentBar = ({ pokeData }) => {
             image={"/twitter/logo-blue.png"}
             link={"/twitter/"}
             treasure={"Twitter"}
+            mood={"cool"}
           />
           <Image
             height={"30px"}
