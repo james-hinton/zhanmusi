@@ -3,8 +3,8 @@ import { Canvas } from "@react-three/fiber";
 
 import "./About.css";
 
-import Model from "../Model/Model";
-import Loader from "../Loader/Loader";
+import Model from "../../Three/Model/Model";
+import Loader from "../../Three/Loader/Loader";
 
 import { Environment, OrbitControls } from "@react-three/drei";
 
@@ -15,7 +15,6 @@ const About = () => {
   return (
     <>
       <div id="canvas-container">
-
         <Canvas camera={{ rotation: [1, 9, 5], position: [-45, 45, 80] }}>
           <Suspense fallback={<Loader />}>
             <Environment preset="forest" background />

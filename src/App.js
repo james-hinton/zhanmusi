@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Base Styles
 import "./assets/styles/App.css";
 
 // Pages
@@ -11,10 +12,13 @@ import Mountains from "./pages/Mountains/Mountains";
 import Twitter from "./pages/Twitter";
 import Popcorn from "./pages/Popcorn";
 import Bar from "./pages/Bar";
+import MiddleEarth from "./pages/MiddleEarth";
 
 // Components
 import Hypnotoad from "./components/Hynotoad/Hypnotoad";
 import CursorContextProvider from "./components/Generic/Cursor/CursorContextProvider";
+
+import { hot } from "react-hot-loader/root";
 
 const App = () => {
   const [background, setBackground] = useState("");
@@ -41,7 +45,8 @@ const App = () => {
     if (
       window.location.pathname.includes("twitter") ||
       window.location.pathname.includes("popcorn") ||
-      window.location.pathname.includes("bar")
+      window.location.pathname.includes("bar") ||
+      window.location.pathname.includes("middle-earth")
     ) {
       setShowNav(false);
     } else {
@@ -96,6 +101,7 @@ const App = () => {
           <Route path="/twitter" element={<Twitter />} />
           <Route path="/popcorn" element={<Popcorn />} />
           <Route path="/bar" element={<Bar />} />
+          <Route path="/middle-earth" element={<MiddleEarth />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>
@@ -103,4 +109,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(App);

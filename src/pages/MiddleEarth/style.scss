@@ -1,0 +1,18 @@
+.middle-earth {
+    height: 100vh;
+    width: 100vw;
+
+    &-camera-info {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 0.8rem;
+        z-index: 1;
+    }
+}
