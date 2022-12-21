@@ -4,7 +4,8 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 const Player = ({ movement, playerRigidBodyRef }) => {
-  const sphereGeom = [0.02, 64, 64];
+  const sphereGeom = [0.009, 64, 64];
+  const maxSpeed = 0.4;
 
   const playerRef = useRef(
     new THREE.Mesh(
@@ -17,7 +18,7 @@ const Player = ({ movement, playerRigidBodyRef }) => {
     )
   );
 
-  const moveSpeed = 0.4;
+  const moveSpeed = 0.2;
 
   useEffect(() => {
     if (movement.moveForward) {
@@ -72,6 +73,10 @@ const Player = ({ movement, playerRigidBodyRef }) => {
         new THREE.Vector3(0, 0, 0)
       );
     }
+
+    console.log("Player Rigid Body", playerRigidBodyRef.current);
+
+
   }, [movement]);
 
   return (

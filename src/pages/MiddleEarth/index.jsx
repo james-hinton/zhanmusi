@@ -40,10 +40,10 @@ const Camera = ({ playerRigidBodyRef }) => {
     const cameraVector = new THREE.Vector3(0, 0, 0);
 
     lookAtVec.set(x, y, z);
-    cameraVector.lerp(lookAtVec, 0.1);
+    cameraVector.lerp(lookAtVec, 1);
     state.camera.lookAt(cameraVector);
     // Smoothly Bring the camera position so that it's looking down at the player
-    state.camera.position.lerp(new THREE.Vector3(x, y + 2, z - 3), 0.1);
+    state.camera.position.lerp(new THREE.Vector3(x, y+0.1, z+0.2), 0.01);
 
     state.camera.updateProjectionMatrix();
   });
