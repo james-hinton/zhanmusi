@@ -52,17 +52,16 @@
   height: 2em!important;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 680px) {
   .navbar {
     justify-content: space-between;
     width: 100%;
-    height: 4.5em;
+    height: 1em;
     align-items: center;
   }
 
   .navbar img {
-    height: 3em;
-    width: 3em;
+    height: 1.5em;
   }
   .right {
     position: static;
@@ -87,5 +86,9 @@
     font-size: 1.2em;
 
     padding: 2em;
+  }
+
+  .letter {
+    height: 1em!important;
   }
 }
