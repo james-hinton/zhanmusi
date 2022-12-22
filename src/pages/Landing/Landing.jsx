@@ -6,15 +6,15 @@ import Cursor from "../../components/Generic/Cursor/Cursor";
 import { useMediaQuery } from "@mui/material";
 
 const Landing = ({ pokeData, activeCursor, showContent }) => {
-  const isMobile = useMediaQuery("(max-width:501px)");
-  console.log(isMobile);
+  // isMobile should check for a screen smaller than 768px and that is portrait
+  const isMobile = useMediaQuery(
+    "(max-width:768px) and (orientation: portrait)"
+  );
+
   return (
     <div className={`${showContent ? "show" : "hide"}`}>
       {/* Div with 2em height, and 100% width */}
-      <div 
-
-        className="content__divider"
-      ></div>
+      <div className="content__divider"></div>
 
       <div className={`content ${showContent}`}>
         {isMobile ? <Swiper /> : <LeftContentBar pokeData={pokeData} />}
