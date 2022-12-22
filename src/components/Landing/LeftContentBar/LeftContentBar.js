@@ -166,6 +166,8 @@ const LeftContentBar = ({ pokeData }) => {
                 >
                   Lord of the Rings
                 </a>
+
+                
               </>
             }
           />

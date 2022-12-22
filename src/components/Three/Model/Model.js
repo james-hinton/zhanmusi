@@ -8,7 +8,6 @@ const Model = ({
   scale,
   position,
   onCustomClick,
-  physicsProps,
   ...props
 }) => {
   const gltf = useLoader(GLTFLoader, process.env.PUBLIC_URL + path);

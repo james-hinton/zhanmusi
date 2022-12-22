@@ -1,26 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import Model from "../../../../components/Three/Model/Model";
+import { RigidBody } from "@react-three/rapier";
 
 import * as THREE from "three";
 
 const Player = ({ movement, playerRigidBodyRef }) => {
-  const sphereGeom = [0.009, 64, 64];
-  const maxSpeed = 0.4;
+  const moveSpeed = 5;
 
-  const playerRef = useRef(
-    new THREE.Mesh(
-      new THREE.SphereBufferGeometry(
-        sphereGeom[0],
-        sphereGeom[1],
-        sphereGeom[2]
-      ),
-      new THREE.MeshStandardMaterial({ color: "green" })
-    )
-  );
-
-  const moveSpeed = 0.2;
-
-  useEffect(() => {
+  useFrame(() => {
     if (movement.moveForward) {
       // Apply a force in the forward direction to the player's rigid body
       console.log("Move Forward");
@@ -73,18 +61,23 @@ const Player = ({ movement, playerRigidBodyRef }) => {
         new THREE.Vector3(0, 0, 0)
       );
     }
-
-    console.log("Player Rigid Body", playerRigidBodyRef.current);
-
-
-  }, [movement]);
+  });
 
   return (
     <>
-      <mesh castShadow name="player" ref={playerRef}>
-        <sphereBufferGeometry args={sphereGeom} />
-        <meshStandardMaterial color="green" />
-      </mesh>
+      <RigidBody
+        colliders={"hull"}
+        restitution={0.2}
+        ref={playerRigidBodyRef}
+        mass={1}
+
+      >
+        <Model
+          path="/middle_earth/models/car/scene.gltf"
+          scale={[0.1, 0.1, 0.1]}
+          name="player"
+        />
+      </RigidBody>
     </>
   );
 };

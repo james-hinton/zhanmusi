@@ -1,99 +1,68 @@
 import { Suspense, useEffect, useState, useRef } from "react";
 
 // Three Components
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
-import * as THREE from "three";
-
-// Perspective Camera
-import { PerspectiveCamera } from "three";
-
-import { Physics, RigidBody, Debug, CuboidCollider } from "@react-three/rapier";
-
-// Three Hooks
-import { useKeyboardControls } from "./hooks/useKeyboardControls.jsx";
-
-import Model from "../../components/Three/Model/Model";
-import Loader from "../../components/Three/Loader/Loader";
-import Player from "./components/Player";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 
 // Styles
 import "./style.scss";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-const defaultState = {
-  camera: {
-    position: [0.85, 2.49, 4.29],
-    rotation: [-0.46, -0.005, -0.002],
-  },
-};
+import Loader from "../../components/Three/Loader/Loader";
+import Model from "../../components/Three/Model/Model";
+import { Physics, RigidBody, Debug } from "@react-three/rapier";
+import { Environment, OrbitControls } from "@react-three/drei";
+// Three Hooks
+import { useKeyboardControls } from "./hooks/useKeyboardControls.jsx";
+import * as THREE from "three";
+import Player from "./components/Player";
 
-const Camera = ({ playerRigidBodyRef }) => {
-  const cameraRef = useRef();
-
-  useFrame((state) => {
-    if (!playerRigidBodyRef.current) return;
-    // Get the position of the player's rigid body
-    const { x, y, z } = playerRigidBodyRef.current?.translation();
-    if (!x || !y || !z) return;
-
-    const lookAtVec = new THREE.Vector3(0, 0, 0);
-    const cameraVector = new THREE.Vector3(0, 0, 0);
-
-    lookAtVec.set(x, y, z);
-    cameraVector.lerp(lookAtVec, 1);
-    state.camera.lookAt(cameraVector);
-    // Smoothly Bring the camera position so that it's looking down at the player
-    state.camera.position.lerp(new THREE.Vector3(x, y+0.1, z+0.2), 0.01);
-
-    state.camera.updateProjectionMatrix();
-  });
-
-  return (
-    <perspectiveCamera position={[10, 4, 10]} makeDefault ref={cameraRef} />
-  );
-};
-
-const MiddleEarth = () => {
+const RocketLeague = () => {
   const { movement } = useKeyboardControls();
   const playerRigidBodyRef = useRef(null);
 
   return (
-    <div className="middle-earth">
-      <Canvas
-        onCreated={({ gl }) => {
-          gl.setClearColor(new THREE.Color("#000000"));
+    <group>
+      {/* Floor */}
+      <RigidBody
+        type="Static"
+        position={[0, -1, 0]}
+        shape={{
+          type: "Cuboid",
+          halfExtents: [100, 1, 100],
         }}
+        mass={0}
       >
+        <mesh>
+          <boxBufferGeometry args={[100, 1, 100]} />
+          <meshStandardMaterial color="green" />
+        </mesh>
+      </RigidBody>
+
+      <group>
+
+          {/* Use Model */}
+          <Player movement={movement} playerRigidBodyRef={playerRigidBodyRef} />
+      </group>
+    </group>
+  );
+};
+
+const MiddleEarth = () => {
+  const playerRigidBodyRef = useRef(null);
+
+  return (
+    <div className="middle-earth">
+      <Canvas camera={{ position: [0, 0, 10] }}>
         <Suspense fallback={<Loader />}>
+          {/* Sunset */}
           <Environment preset="sunset" />
 
           <Physics>
-            <RigidBody
-              name={"basemap"}
-              position={[0, 0, 0]}
-              colliders={"hull"}
-              mass={0}
-            >
-              <Model
-                path={"/middle_earth/models/basemap/scene.gltf"}
-                scale={3}
-              />
-            </RigidBody>
-            <RigidBody
-              ref={playerRigidBodyRef}
-              restitution={0.2}
-              name={"player"}
-              mass={1}
-              colliders={"hull"}
-            >
-              <Player
-                movement={movement}
-                playerRigidBodyRef={playerRigidBodyRef}
-              />
-            </RigidBody>
+            <RocketLeague />
+            <Debug />
           </Physics>
         </Suspense>
-        <Camera playerRigidBodyRef={playerRigidBodyRef} />
+        <OrbitControls />
       </Canvas>
 
       <div className="middle-earth__position">
