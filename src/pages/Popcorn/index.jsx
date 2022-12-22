@@ -12,7 +12,6 @@ const Popcorn = () => {
   const [stopPopcorn, setStopPopcorn] = useState(false);
 
   const meta = document.querySelector('meta[name="viewport"]');
-  meta.setAttribute("content", "width=device-width, initial-scale=1");
 
   useEffect(() => {
     localStorage.setItem("Popcoin", "found");
