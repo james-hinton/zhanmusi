@@ -4,10 +4,10 @@ function actionByKey(key) {
   const keys = {
     // KeyQ: "moveDown",
     // KeyE: "moveUp",
-    KeyA: "moveLeft",
-    KeyD: "moveRight",
-    KeyW: "moveForward",
     KeyS: "moveBackward",
+    KeyW: "moveForward",
+    KeyD: "MoveRight",
+    KeyA: "moveLeft",
   };
   return keys[key];
 }

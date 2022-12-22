@@ -39,9 +39,8 @@ const RocketLeague = () => {
       </RigidBody>
 
       <group>
-
-          {/* Use Model */}
-          <Player movement={movement} playerRigidBodyRef={playerRigidBodyRef} />
+        {/* Use Model */}
+        <Player movement={movement} playerRigidBodyRef={playerRigidBodyRef} />
       </group>
     </group>
   );
@@ -52,7 +51,10 @@ const MiddleEarth = () => {
 
   return (
     <div className="middle-earth">
-      <Canvas camera={{ position: [0, 0, 10] }}>
+      <Canvas
+        camera={{ position: [0, 0, 10] }}
+        style={{ background: "black" }}
+      >
         <Suspense fallback={<Loader />}>
           {/* Sunset */}
           <Environment preset="sunset" />

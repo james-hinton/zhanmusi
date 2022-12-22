@@ -6,39 +6,37 @@ import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 
 const Player = ({ movement, playerRigidBodyRef }) => {
-  const moveSpeed = 5;
+  const moveSpeed = 10;
+  const angleSpeed = 60;
 
   useFrame(() => {
-    if (movement.moveForward) {
-      // Apply a force in the forward direction to the player's rigid body
-      console.log("Move Forward");
-      playerRigidBodyRef.current.applyImpulseAtPoint(
-        new THREE.Vector3(0, 0, -moveSpeed),
-        new THREE.Vector3(0, 0, 0)
+    if (movement.moveRight) {
+      console.log("Move Right", playerRigidBodyRef);
+
+      // As it's moving right, we just want to angle the car to the right
+      playerRigidBodyRef.current.addTorque(new THREE.Vector3(0, angleSpeed, 0));
+    }
+
+    if (movement.moveLeft) {
+      // Apply a force in the backward direction to the player's rigid body
+      console.log("Move Left");
+      playerRigidBodyRef.current.addTorque(
+        new THREE.Vector3(0, -angleSpeed, 0)
       );
     }
 
     if (movement.moveBackward) {
-      // Apply a force in the backward direction to the player's rigid body
-      console.log("Move Backward");
-      playerRigidBodyRef.current.applyImpulseAtPoint(
-        new THREE.Vector3(0, 0, moveSpeed),
-        new THREE.Vector3(0, 0, 0)
-      );
-    }
-
-    if (movement.moveLeft) {
       // Apply a force in the left direction to the player's rigid body
-      console.log("Move Left");
-      playerRigidBodyRef.current.applyImpulseAtPoint(
+      console.log("Move Backard");
+      playerRigidBodyRef.current.addForceAtPoint(
         new THREE.Vector3(-moveSpeed, 0, 0),
         new THREE.Vector3(0, 0, 0)
       );
     }
-    if (movement.moveRight) {
+    if (movement.moveForward) {
       // Apply a force in the right direction to the player's rigid body
-      console.log("Move Right");
-      playerRigidBodyRef.current.applyImpulseAtPoint(
+      console.log("Move Forward");
+      playerRigidBodyRef.current.addForceAtPoint(
         new THREE.Vector3(moveSpeed, 0, 0),
         new THREE.Vector3(0, 0, 0)
       );
@@ -47,16 +45,12 @@ const Player = ({ movement, playerRigidBodyRef }) => {
     if (movement.moveUp) {
       // Apply a force in the up direction to the player's rigid body
       console.log("Move Up");
-      playerRigidBodyRef.current.applyImpulseAtPoint(
-        new THREE.Vector3(0, moveSpeed, 0),
-        new THREE.Vector3(0, 0, 0)
-      );
     }
 
     if (movement.moveDown) {
       // Apply a force in the down direction to the player's rigid body
       console.log("Move Down");
-      playerRigidBodyRef.current.applyImpulseAtPoint(
+      playerRigidBodyRef.current.addForceAtPoint(
         new THREE.Vector3(0, -moveSpeed, 0),
         new THREE.Vector3(0, 0, 0)
       );
@@ -69,8 +63,7 @@ const Player = ({ movement, playerRigidBodyRef }) => {
         colliders={"hull"}
         restitution={0.2}
         ref={playerRigidBodyRef}
-        mass={1}
-
+        mass={10}
       >
         <Model
           path="/middle_earth/models/car/scene.gltf"
