@@ -12,10 +12,8 @@ const Landing = ({ pokeData, activeCursor, showContent }) => {
     <div className={`${showContent ? "show" : "hide"}`}>
       {/* Div with 2em height, and 100% width */}
       <div 
-        style={{
-          height: "2.5em",
-          width: "100%",
-        }}
+
+        className="content__divider"
       ></div>
 
       <div className={`content ${showContent}`}>

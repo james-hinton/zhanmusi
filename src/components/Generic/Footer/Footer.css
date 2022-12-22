@@ -35,7 +35,7 @@
   width: 110px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 680px) {
   .footer__content {
     width: 100%;
   }
