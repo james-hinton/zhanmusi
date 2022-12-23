@@ -5,9 +5,12 @@ import Footer from "../../components/Generic/Footer/Footer";
 import Cursor from "../../components/Generic/Cursor/Cursor";
 import { useMediaQuery } from "@mui/material";
 
+import { BrowserView, MobileView, isBrowser, isMobile
+ } from 'react-device-detect';
+
+
 const Landing = ({ pokeData, activeCursor, showContent }) => {
-  const isMobile = useMediaQuery("(max-width: 680px)");
-  console.log(isMobile);
+
   return (
     <div className={`${showContent ? "show" : "hide"}`}>
       {/* Div with 2em height, and 100% width */}
