@@ -11,6 +11,10 @@ import Contact from "../../Contact";
 // Styles
 import "./Navbar.scss";
 
+// Mobile Detect
+import { isMobile } from "react-device-detect";
+
+
 const Navbar = ({
   setBackground,
   setpokeData,
@@ -51,7 +55,7 @@ const Navbar = ({
               />
             </div>
             {/* If on home page */}
-            {window.location.pathname === "/" && (
+            {(window.location.pathname === "/" && !isMobile) && (
               <div className="navbar__item throw">
                 <NavLink
                   text="Cat Cursor"

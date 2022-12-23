@@ -86,7 +86,7 @@
   }
 
   .content__left h1 {
-    font-size: 2.8em;
+    font-size: 2.5em;
     z-index: 100;
     margin-bottom: 0.2em;
     text-shadow: 0 0 46px rgb(253, 253, 253);
@@ -120,7 +120,7 @@
 
   .content__left--header-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
     width: 100%;
@@ -137,7 +137,6 @@
   .content__left--header-container--text h1 {
     width: 100%;
     text-align: center;
-    font-size: 200%;
     margin: 0;
   }
 
@@ -151,6 +150,7 @@
     margin: 0;
     text-align: center;
     width: 30vw;
+    margin-bottom: 1.3em;
   }
 
   .content__left--image img {
@@ -198,7 +198,7 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 821px) {
   .content__left--header-container {
     flex-direction: column;
   }
