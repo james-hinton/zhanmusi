@@ -4,26 +4,19 @@ import Swiper from "../../components/Landing/Swiper/Swiper";
 import Footer from "../../components/Generic/Footer/Footer";
 import Cursor from "../../components/Generic/Cursor/Cursor";
 import { useMediaQuery } from "@mui/material";
-
-import { BrowserView, MobileView, isBrowser, isMobile
- } from 'react-device-detect';
-
+import * as rdd from "react-device-detect";
+import { isMobile } from "react-device-detect";
 
 const Landing = ({ pokeData, activeCursor, showContent }) => {
+  rdd.isMobile = false;
 
   return (
     <div className={`${showContent ? "show" : "hide"}`}>
-      {/* Div with 2em height, and 100% width */}
-      <div 
-
-        className="content__divider"
-      ></div>
-
+      <div className="content__divider"></div>
       <div className={`content ${showContent}`}>
         {isMobile ? <Swiper /> : <LeftContentBar pokeData={pokeData} />}
         <RightContentBar />
       </div>
-
       <Footer />
       <Cursor active={activeCursor} />
     </div>
