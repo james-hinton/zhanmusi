@@ -12,9 +12,9 @@ const RightContentBar = ({}) => {
       <div className="content__right" id="rightbar">
         <Tabs>
           <TabList>
-            <Tab style={isMobile && { fontSize: "2em" }}>Portfolio</Tab>
-            <Tab style={isMobile && { fontSize: "2em" }}>About</Tab>
-            <Tab style={isMobile && { fontSize: "2em" }}>Experience</Tab>
+            <Tab style={isMobile ? { fontSize: "2em" } : {} }>Overview</Tab>
+            <Tab style={isMobile ? { fontSize: "2em" } : {} }>About</Tab>
+            <Tab style={isMobile ? { fontSize: "2em" } : {} }>Projects</Tab>
           </TabList>
 
           <TabPanel>

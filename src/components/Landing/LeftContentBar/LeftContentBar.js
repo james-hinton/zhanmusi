@@ -5,6 +5,9 @@ import InfoPanel from "../InfoPanel/InfoPanel";
 import { capitalizeFirstLetter } from "../../../utils/utils";
 import "./LeftContentBar.css";
 
+import { isMobile } from "react-device-detect";
+
+
 const LeftContentBar = ({ pokeData }) => {
   const [image, setImage] = useState(
     "https://avatars.githubusercontent.com/u/63542818?v=4"
@@ -36,7 +39,9 @@ const LeftContentBar = ({ pokeData }) => {
   return (
     <>
       <div className="content__left">
-        <div className="content__left--header-container">
+        <div className="content__left--header-container"
+          style={!isMobile ? { flexDirection: "column" } : {}}
+        >
           <div className="content__left--image">
             <Image image={image} circle margin={true} />
 
