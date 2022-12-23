@@ -16,7 +16,7 @@ input.searchBox:focus {
   width: 30em;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   input.searchBox {
     display: none;
   }

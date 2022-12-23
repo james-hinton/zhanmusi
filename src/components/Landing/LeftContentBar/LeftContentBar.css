@@ -63,7 +63,7 @@
   color: white;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   h3 {
     padding: 0;
     margin: 0;
