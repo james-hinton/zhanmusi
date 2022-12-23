@@ -1,7 +1,16 @@
+// React
 import { useEffect, useState } from "react";
+
+// Components
 import TreasureModal from "./components/TreasureModal";
+
+// Images
 import treasureChest from "../../../../../assets/images/treasure-chest.png";
+
+// Data
 import { allHints } from "./components/TreasureModal/consts";
+
+// Styles
 import "./style.scss";
 
 const TreasureChest = () => {

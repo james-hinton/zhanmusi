@@ -1,3 +1,4 @@
+// Styles
 import "./InfoPanel.css";
 
 const InfoPanel = ({ title, value, link }) => {
@@ -12,11 +13,8 @@ const InfoPanel = ({ title, value, link }) => {
               rel="noreferrer"
               style={{
                 textDecoration: "none",
-
                 textDecorationLine: "none",
-
                 textDecorationStyle: "none",
-
                 color: "black",
               }}
             >

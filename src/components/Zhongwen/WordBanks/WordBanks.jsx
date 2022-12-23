@@ -1,6 +1,8 @@
+// Styles
 import "./WordBanks.scss";
+
 const WordBanks = () => {
-  let myBanks = [
+  const myBanks = [
     {
       name: "At the Restaurant",
       img: "https://images.pexels.com/photos/1181715/pexels-photo-1181715.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",

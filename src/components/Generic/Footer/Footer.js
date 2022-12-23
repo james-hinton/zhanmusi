@@ -1,7 +1,10 @@
+// Components
 import Image from "../Image/Image";
 import NavLink from "../../Navbar/Navbar/NavLink";
 import WorkAvailable from "./components/WorkAvailable";
 import TreasureChest from "./components/TreasureChest";
+
+// Styles
 import "./Footer.css";
 
 const Footer = () => {

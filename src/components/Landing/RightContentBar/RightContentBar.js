@@ -1,10 +1,13 @@
+// Components
 import Overview from "../Overview/Overview";
 import Experience from "../Experience/Experience";
 import About from "../About/About";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { isMobile } from "react-device-detect";
+
+// Styles
 import "react-tabs/style/react-tabs.css";
 import "./RightContentBar.css";
-import { isMobile } from "react-device-detect";
 
 const RightContentBar = ({}) => {
   return (

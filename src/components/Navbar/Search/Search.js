@@ -1,9 +1,14 @@
+// React
 import { useState, useEffect } from "react";
-import colours from "../../../constants/colours";
-import Dropdown from "../Dropdown/Dropdown";
 
+// Data
+import colours from "../../../constants/colours";
+
+// Components
+import Dropdown from "../Dropdown/Dropdown";
 import poke from "../../../utils/pokeapi";
 
+// Styles
 import "./Search.css";
 
 const Search = ({ setBackground, setpokeData, setTheme }) => {

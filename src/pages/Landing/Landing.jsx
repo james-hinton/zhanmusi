@@ -1,9 +1,11 @@
+// Components
 import LeftContentBar from "../../components/Landing/LeftContentBar/LeftContentBar";
 import RightContentBar from "../../components/Landing/RightContentBar/RightContentBar";
 import Swiper from "../../components/Landing/Swiper/Swiper";
 import Footer from "../../components/Generic/Footer/Footer";
 import Cursor from "../../components/Generic/Cursor/Cursor";
-import { useMediaQuery } from "@mui/material";
+
+// Mobile Styles
 import * as rdd from "react-device-detect";
 import { isMobile } from "react-device-detect";
 

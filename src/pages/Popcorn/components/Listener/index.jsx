@@ -1,7 +1,10 @@
+// React
 import React, { useState, useEffect } from "react";
-import StopCircleIcon from "@mui/icons-material/StopCircle";
 
+// Icons
+import StopCircleIcon from "@mui/icons-material/StopCircle";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
+
 const Listener = ({ stopPopcorn, setStopPopcorn }) => {
   // Initialize state variables
   const [isListening, setIsListening] = useState(false);

@@ -1,3 +1,4 @@
+// Data
 import pokemon from "../constants/Pokemon.js";
 
 export default function poke(query, setpokeData, setShowDropdown) {

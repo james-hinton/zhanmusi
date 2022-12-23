@@ -1,6 +1,7 @@
-import { Icon } from "@mui/material";
-import { useEffect } from "react";
-import { useState } from "react";
+// React
+import { useEffect, useState } from "react";
+
+// Data
 import { allHints } from "./consts";
 
 const TreasureModal = ({

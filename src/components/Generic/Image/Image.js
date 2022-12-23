@@ -1,7 +1,13 @@
+// React
+import { useContext, useCallback } from "react";
+
+// Styles
 import "./Image.css";
+
+// Components
 import classNames from "classnames";
 
-import { useContext, useCallback } from "react";
+// Providers
 import { CursorContext } from "../Cursor/CursorContextProvider";
 
 const Image = ({

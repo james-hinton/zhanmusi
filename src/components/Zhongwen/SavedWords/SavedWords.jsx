@@ -1,15 +1,18 @@
-import { useEffect } from "react";
+// React
 import { useState, useMemo } from "react";
-import "./SavedWords.scss";
 
+// Styles
+import "./SavedWords.scss";
+import "tippy.js/dist/tippy.css"; // optional
+
+// Utils
 import {
   getPinyinOfChar,
   getDefinitionOfChar,
 } from "../Translate/TranslateUtils";
 
+// Components
 import Tippy from "@tippyjs/react";
-import "tippy.js/dist/tippy.css"; // optional
-
 import { useTable, usePagination, useExpanded } from "react-table";
 import Modal from "./components/Modal";
 

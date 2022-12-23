@@ -1,8 +1,15 @@
-import classNames from "classnames";
+// React
 import { useEffect, useState, useContext, useCallback } from "react";
-import { CursorContext } from "../../Generic/Cursor/CursorContextProvider";
-import "./Repo.scss";
+
+// Components
+import classNames from "classnames";
 import { isMobile } from "react-device-detect";
+
+// Providers
+import { CursorContext } from "../../Generic/Cursor/CursorContextProvider";
+
+// Styles
+import "./Repo.scss";
 
 const Repo = ({ project, priv, about, language, image, link }) => {
   const [background, setBackground] = useState(null);

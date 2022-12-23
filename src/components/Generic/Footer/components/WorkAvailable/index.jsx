@@ -1,5 +1,10 @@
+// React
 import { useEffect, useState } from "react";
+
+// Utils
 import detectCountryUserIsFrom from "../../../../../utils/country";
+
+// Icons
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const WorkAvailable = () => {

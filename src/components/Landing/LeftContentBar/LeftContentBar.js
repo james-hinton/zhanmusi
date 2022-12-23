@@ -1,12 +1,17 @@
+// React
 import { useEffect, useState } from "react";
+
+// Components
 import Image from "../../Generic/Image/Image";
 import Button from "../../Generic/Button/Button";
 import InfoPanel from "../InfoPanel/InfoPanel";
-import { capitalizeFirstLetter } from "../../../utils/utils";
-import "./LeftContentBar.css";
-
 import { isMobile } from "react-device-detect";
 
+// Utils
+import { capitalizeFirstLetter } from "../../../utils/utils";
+
+// Styles
+import "./LeftContentBar.css";
 
 const LeftContentBar = ({ pokeData }) => {
   const [image, setImage] = useState(
@@ -39,7 +44,8 @@ const LeftContentBar = ({ pokeData }) => {
   return (
     <>
       <div className="content__left">
-        <div className="content__left--header-container"
+        <div
+          className="content__left--header-container"
           style={!isMobile ? { flexDirection: "column" } : {}}
         >
           <div className="content__left--image">

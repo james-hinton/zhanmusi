@@ -1,6 +1,8 @@
+// React
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Styles
 import "./assets/styles/App.css";
 
 // Pages
