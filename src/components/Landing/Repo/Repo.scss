@@ -78,7 +78,7 @@ p {
   .repo {
     width: 100%;
     flex-direction: column;
-    font-size: 1.5em;
+    font-size: 1.3em;
     height: 8em;
     position: relative;
     padding: 0;
@@ -90,11 +90,11 @@ p {
       // Reduce the height of the background
       height: 8em;
       // Center and scale the image nicely
-      background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       opacity: 0.2;
       width: 100%;
+      height: 100%;
     }
 
     &__top {
@@ -156,7 +156,7 @@ p {
   }
 
   .about {
-    width: 80%;
+    width: 90%;
     justify-content: center;
     text-align: center;
   }
@@ -165,6 +165,7 @@ p {
     //italics
     font-style: italic;
     font-size: 0.8em;
+    width: 90%;
   }
 
   .active {
@@ -178,8 +179,13 @@ p {
     font-weight: 900;
 
     text-shadow: 1px 1px rgb(0, 0, 0);
-    
-    // increase size
-    font-size: 1.8em!important;
+    font-size: 1.5em!important;
+
+    // If screen size less than 650px make height 20em
+    @media only screen and (max-width: 650px) {
+      height: 15em;
+    }
+
+
   }
 }

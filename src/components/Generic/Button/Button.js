@@ -1,7 +1,11 @@
+// React
+import { useState } from "react";
+
+// Styles
 import "./Button.css";
 
+// Components
 import Contact from "../../Contact";
-import { useState } from "react";
 
 const Button = ({ text, contact, className }) => {
   const [showModal, setShowModal] = useState(false);

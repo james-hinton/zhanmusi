@@ -1,6 +1,13 @@
-import DropdownItem from "./DropdownItem.js";
-import "./Dropdown.css";
+// React
 import { useEffect, useState } from "react";
+
+// Components
+import DropdownItem from "./DropdownItem.js";
+
+// Styles
+import "./Dropdown.css";
+
+// Data
 import Pokemon from "../../../constants/Pokemon";
 
 const Dropdown = ({ searchText, setSearchText }) => {

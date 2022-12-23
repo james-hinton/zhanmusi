@@ -1,5 +1,10 @@
+// React
 import { useContext } from "react";
+
+// Hooks
 import useMousePosition from "../../../hooks/useMousePosition"
+
+// Provider
 import { CursorContext } from "./CursorContextProvider";
 
 const Cursor = ({active}) => {

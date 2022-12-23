@@ -1,4 +1,7 @@
+// React
 import { useEffect, useState } from "react";
+
+// Image
 import hypnotoad from "../../assets/images/hypnotoad.gif";
 
 const Hypnotoad = () => {

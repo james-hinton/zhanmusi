@@ -1,9 +1,12 @@
+// Components
 import Overview from "../Overview/Overview";
 import Experience from "../Experience/Experience";
 import About from "../About/About";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import { isMobile } from "react-device-detect";
 
+// Styles
+import "react-tabs/style/react-tabs.css";
 import "./RightContentBar.css";
 
 const RightContentBar = ({}) => {
@@ -12,9 +15,9 @@ const RightContentBar = ({}) => {
       <div className="content__right" id="rightbar">
         <Tabs>
           <TabList>
-            <Tab>Portfolio</Tab>
-            <Tab>About Me</Tab>
-            <Tab>Skills & Experience</Tab>
+            <Tab style={isMobile ? { fontSize: "2em" } : {} }>Overview</Tab>
+            <Tab style={isMobile ? { fontSize: "2em" } : {} }>About</Tab>
+            <Tab style={isMobile ? { fontSize: "2em" } : {} }>Projects</Tab>
           </TabList>
 
           <TabPanel>

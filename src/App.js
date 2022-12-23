@@ -1,7 +1,8 @@
+// React
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// Base Styles
+// Styles
 import "./assets/styles/App.css";
 
 // Pages
@@ -19,6 +20,9 @@ import Hypnotoad from "./components/Hynotoad/Hypnotoad";
 import CursorContextProvider from "./components/Generic/Cursor/CursorContextProvider";
 
 import { hot } from "react-hot-loader/root";
+// Mobile Check
+import { isMobile } from "react-device-detect";
+
 
 const App = () => {
   const [background, setBackground] = useState("");
@@ -46,7 +50,8 @@ const App = () => {
       window.location.pathname.includes("twitter") ||
       window.location.pathname.includes("popcorn") ||
       window.location.pathname.includes("bar") ||
-      window.location.pathname.includes("middle-earth")
+      window.location.pathname.includes("middle-earth") ||
+      isMobile 
     ) {
       setShowNav(false);
     } else {

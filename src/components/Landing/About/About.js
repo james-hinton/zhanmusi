@@ -1,12 +1,16 @@
+// React
 import { Suspense, useEffect } from "react";
-import { Canvas } from "@react-three/fiber";
 
+// Three
+import { Canvas } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
+
+// Styles
 import "./About.css";
 
 import Model from "../../Three/Model/Model";
 import Loader from "../../Three/Loader/Loader";
 
-import { Environment, OrbitControls } from "@react-three/drei";
 
 const About = () => {
   useEffect(() => {

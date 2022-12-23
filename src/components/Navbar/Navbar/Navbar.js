@@ -1,11 +1,19 @@
+// React
+import { useEffect, useState } from "react";
+
+// Components
 import Image from "../../Generic/Image/Image";
 import Letter from "../../../assets/images/letter.png";
 import Search from "../Search/Search";
 import NavLink from "./NavLink";
 import Contact from "../../Contact";
 
+// Styles
 import "./Navbar.scss";
-import { useEffect, useState } from "react";
+
+// Mobile Detect
+import { isMobile } from "react-device-detect";
+
 
 const Navbar = ({
   setBackground,
@@ -47,17 +55,17 @@ const Navbar = ({
               />
             </div>
             {/* If on home page */}
-            {window.location.pathname === "/" && (
-            <div className="navbar__item throw">
-              <NavLink
-                text="Cat Cursor"
-                link="#"
-                onCustomClick={() => {
-                  window.localStorage.setItem("Cat", "found");
-                  setActiveCursor(!activeCursor);
-                }}
-              />
-            </div>
+            {(window.location.pathname === "/" && !isMobile) && (
+              <div className="navbar__item throw">
+                <NavLink
+                  text="Cat Cursor"
+                  link="#"
+                  onCustomClick={() => {
+                    window.localStorage.setItem("Cat", "found");
+                    setActiveCursor(!activeCursor);
+                  }}
+                />
+              </div>
             )}
           </>
         )}

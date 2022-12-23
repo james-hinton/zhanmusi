@@ -1,5 +1,7 @@
-// this will be a nice page with mountains on it :)
+// React Components
 import { useEffect, useState } from "react";
+
+// Styles
 import "./Mountains.scss";
 
 const Mountains = () => {

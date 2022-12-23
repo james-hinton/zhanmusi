@@ -1,5 +1,10 @@
+// React
 import { useState } from "react";
+
+// Components
 import classNames from "classnames";
+
+// Styles
 import "./NavLink.css";
 
 const Navlink = ({

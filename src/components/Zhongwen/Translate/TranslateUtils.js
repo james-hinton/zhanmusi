@@ -1,3 +1,4 @@
+// Data
 import cedict from "./cedict_ts.json";
 
 const getPinyin = async (query) => {

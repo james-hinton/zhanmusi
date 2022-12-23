@@ -1,8 +1,9 @@
+// Components
 import Repo from "../Repo/Repo.js";
 import Contributions from "../Contributions/Contributions.js";
-
 import Projects from "../../../constants/Projects";
 
+// Styles
 import "./Overview.css";
 
 const Overview = () => {

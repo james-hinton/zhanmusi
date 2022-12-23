@@ -16,7 +16,6 @@ import "./style.scss";
 const Twitter = () => {
   // Change the <meta width> to not be 1000px TODO: Remove and add to a global stylesheet
   const meta = document.querySelector('meta[name="viewport"]');
-  meta.setAttribute("content", "width=device-width, initial-scale=1");
 
   const [tweets, setTweets] = useState(defaultTweets);
 

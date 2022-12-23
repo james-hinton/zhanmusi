@@ -1,6 +1,14 @@
-import classNames from "classnames";
+// React
 import { useEffect, useState, useContext, useCallback } from "react";
+
+// Components
+import classNames from "classnames";
+import { isMobile } from "react-device-detect";
+
+// Providers
 import { CursorContext } from "../../Generic/Cursor/CursorContextProvider";
+
+// Styles
 import "./Repo.scss";
 
 const Repo = ({ project, priv, about, language, image, link }) => {
@@ -27,16 +35,32 @@ const Repo = ({ project, priv, about, language, image, link }) => {
         rect.top < window.innerHeight / 2 &&
         rect.bottom > window.innerHeight / 2
       ) {
-        console.log("Element is in the middle of the screen", project);
         // Add a class of "active" to the element
         // find element of element-bg
         document.getElementById(project + "-bg").classList.add("active");
-        document.getElementById(project).classList.add("active");
+
+        if (!isMobile) {
+          document.getElementById(project).classList.add("active");
+        } else {
+          document.getElementById(project).style.fontSize = "2em";
+          document.getElementById(project).style.height = "10em";
+          // Transition time 0.1
+          document.getElementById(project).style.transition = "0.1s";
+        }
+
+        if (isMobile) {
+          // document.getElementById(project).style.fontSize = "2.5em";
+        }
       } else {
         // Remove the class "active" from the element
         document.getElementById(project + "-bg").classList.remove("active");
         document.getElementById(project).classList.remove("active");
         setBackground(false);
+
+        if (isMobile) {
+          document.getElementById(project).style.fontSize = "1.5em";
+          document.getElementById(project).style.height = "8em";
+        }
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -46,7 +70,12 @@ const Repo = ({ project, priv, about, language, image, link }) => {
   return (
     <>
       <div
-        style={{ backgroundImage: bgImage, cursor: "pointer" }}
+        // Add style if mobile, but add background image and cursor to both
+        // If mobile
+        style={{
+          backgroundImage: bgImage,
+          cursor: "pointer",
+        }}
         className={classNames({
           repo: "repo",
           background: background,
@@ -87,7 +116,10 @@ const Repo = ({ project, priv, about, language, image, link }) => {
 
       <div
         id={project}
-        style={{ cursor: "pointer" }}
+        style={{
+          cursor: "pointer",
+          fontSize: isMobile ? "2em" : "1em",
+        }}
         className={classNames({
           repo: "repo",
           background: "background",

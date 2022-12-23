@@ -1,3 +1,4 @@
+// Icons
 import ProfileImg from "../../../assets/images/profile.jpeg";
 import Like from "../../../assets/images/swipey/like.png";
 import Dislike from "../../../assets/images/swipey/dislike.png";
@@ -6,10 +7,14 @@ import SadImg from "../../../assets/images/swipey/sad.png";
 import HappyImg from "../../../assets/images/swipey/happy.png";
 import SuperSadImg from "../../../assets/images/swipey/supersad.png";
 import SuperHappyImg from "../../../assets/images/swipey/superhappy.png";
-import "./style.scss";
 import Cross from "../../../assets/images/swipey/cross.png";
+
+// Styles
+import "./style.scss";
+
+// Components
 import Draggable from "react-draggable";
-// Swiper is a tinder clone
+
 const Swiper = () => {
   const onStart = (e) => {
     //console.log("onStart", e);

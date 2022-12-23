@@ -1,4 +1,6 @@
+// Components
 import GitHubCalendar from "react-github-calendar";
+
 const Contributions = ({}) => {
   var values = {
     "2021-06-23": 1,

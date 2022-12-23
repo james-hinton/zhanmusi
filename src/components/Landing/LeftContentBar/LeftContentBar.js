@@ -1,8 +1,16 @@
+// React
 import { useEffect, useState } from "react";
+
+// Components
 import Image from "../../Generic/Image/Image";
 import Button from "../../Generic/Button/Button";
 import InfoPanel from "../InfoPanel/InfoPanel";
+import { isMobile } from "react-device-detect";
+
+// Utils
 import { capitalizeFirstLetter } from "../../../utils/utils";
+
+// Styles
 import "./LeftContentBar.css";
 
 const LeftContentBar = ({ pokeData }) => {
@@ -36,47 +44,50 @@ const LeftContentBar = ({ pokeData }) => {
   return (
     <>
       <div className="content__left">
-        <div className="content__left--image">
-          <Image image={image} circle margin={true} />
+        <div className="content__left--header-container">
+          <div className="content__left--image">
+            <Image image={image} circle margin={true} />
 
-          <div
-            className="content__left--emoji"
-            onClick={() => {
-              if (showEmojiSelector) {
-                setShowEmojiSelector(false);
-              } else {
-                setShowEmojiSelector(true);
-              }
-            }}
-          >
-            {emoji}
-          </div>
-          {showEmojiSelector && (
-            <div className="content__left--emoji-selector">
-              {["😁", "😎", "🤓", "😙", "😀", "🌄"].map((e, i) => {
-                return (
-                  <div
-                    className="content__left--emoji-selector--emoji"
-                    key={i}
-                    onClick={() => {
-                      setEmoji(e);
-                      setShowEmojiSelector(false);
-                      // If its 🌄 then navigate to /mountains/
-                      if (e === "🌄") {
-                        window.location.href = "/mountains/";
-                      }
-                    }}
-                  >
-                    {e}
-                  </div>
-                );
-              })}
+            <div
+              className="content__left--emoji"
+              onClick={() => {
+                if (showEmojiSelector) {
+                  setShowEmojiSelector(false);
+                } else {
+                  setShowEmojiSelector(true);
+                }
+              }}
+            >
+              {emoji}
             </div>
-          )}
+            {showEmojiSelector && (
+              <div className="content__left--emoji-selector">
+                {["😁", "😎", "🤓", "😙", "😀", "🌄"].map((e, i) => {
+                  return (
+                    <div
+                      className="content__left--emoji-selector--emoji"
+                      key={i}
+                      onClick={() => {
+                        setEmoji(e);
+                        setShowEmojiSelector(false);
+                        // If its 🌄 then navigate to /mountains/
+                        if (e === "🌄") {
+                          window.location.href = "/mountains/";
+                        }
+                      }}
+                    >
+                      {e}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <div className="content__left--header-container--text">
+            <h1>{name}</h1>
+            <h3>james-hinton</h3>
+          </div>
         </div>
-
-        <h1>{name}</h1>
-        <h3>james-hinton</h3>
 
         <div className="content__left--socials">
           <Image

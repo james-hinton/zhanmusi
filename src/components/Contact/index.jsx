@@ -1,3 +1,4 @@
+// Styles
 import "./style.scss";
 
 const Modal = ({ setShowModal, showModal }) => {
