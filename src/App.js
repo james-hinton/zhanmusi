@@ -16,6 +16,10 @@ import Bar from "./pages/Bar";
 import Hypnotoad from "./components/Hynotoad/Hypnotoad";
 import CursorContextProvider from "./components/Generic/Cursor/CursorContextProvider";
 
+// Mobile Check
+import { isMobile } from "react-device-detect";
+
+
 const App = () => {
   const [background, setBackground] = useState("");
   const [activeCursor, setActiveCursor] = useState(false);
@@ -41,7 +45,8 @@ const App = () => {
     if (
       window.location.pathname.includes("twitter") ||
       window.location.pathname.includes("popcorn") ||
-      window.location.pathname.includes("bar")
+      window.location.pathname.includes("bar") ||
+      isMobile 
     ) {
       setShowNav(false);
     } else {
