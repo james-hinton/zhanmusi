@@ -73,8 +73,8 @@
   display: flex;
 
   /* Margin */
-  margin-left: 15%;
-  margin-right: 15%;
+  margin-left: 11%;
+  margin-right: 11%;
   padding: 2em;
   margin-bottom: 2em;
 
@@ -133,6 +133,26 @@
   border: 1px solid #88888854;
 
   margin: 2em;
+}
+
+@media only screen and (max-width: 1400px) {
+  .content {
+    /* Smaller margin */
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .content {
+    margin: 0;
+  }
+
+  .content__divider {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
