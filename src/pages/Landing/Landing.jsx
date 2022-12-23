@@ -10,7 +10,10 @@ import * as rdd from "react-device-detect";
 import { isMobile } from "react-device-detect";
 
 const Landing = ({ pokeData, activeCursor, showContent }) => {
-  // rdd.isMobile = true;
+  rdd.isMobile = true;
+  if (isMobile && window.innerHeight > window.innerWidth) {
+    rdd.isMobile = true;
+  } 
 
   return (
     <div className={`${showContent ? "show" : "hide"}`}>

@@ -179,8 +179,6 @@
     z-index: 100;
   }
 
-
-
   .content__left--socials img {
     margin: 5%;
     height: 2em;
@@ -197,5 +195,11 @@
 
   .infopanel {
     font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .content__left--header-container {
+    flex-direction: column;
   }
 }

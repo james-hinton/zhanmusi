@@ -44,10 +44,7 @@ const LeftContentBar = ({ pokeData }) => {
   return (
     <>
       <div className="content__left">
-        <div
-          className="content__left--header-container"
-          style={!isMobile ? { flexDirection: "column" } : {}}
-        >
+        <div className="content__left--header-container">
           <div className="content__left--image">
             <Image image={image} circle margin={true} />
 
