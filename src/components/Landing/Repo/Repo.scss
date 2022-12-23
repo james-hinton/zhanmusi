@@ -181,7 +181,11 @@ p {
     text-shadow: 1px 1px rgb(0, 0, 0);
     font-size: 1.5em!important;
 
-    // If is mobile
+    // If screen size less than 650px make height 20em
+    @media only screen and (max-width: 650px) {
+      height: 15em;
+    }
+
 
   }
 }
