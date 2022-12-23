@@ -3,9 +3,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import * as THREE from "three";
 import { useLoader, useThree } from "@react-three/fiber";
 
-const Model = ({ path, scale, position, rotation }) => {
-  const { scene, gl, size, camera } = useThree();
-
 const Model = ({
   path,
   scale,
