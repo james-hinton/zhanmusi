@@ -7,7 +7,7 @@ export const retrieveFossilsForBoundingBox = async (boundingBox) => {
     };
   }
 
-  const url = `https://paleobiodb.org/data1.2/occs/list.json?lngmin=${boundingBox.lngmin}&lngmax=${boundingBox.lngmax}&latmin=${boundingBox.latmin}&latmax=${boundingBox.latmax}&show=loc&show=coords`;
+  const url = `https://paleobiodb.org/data1.2/occs/list.json?lngmin=${boundingBox.lngmin}&lngmax=${boundingBox.lngmax}&latmin=${boundingBox.latmin}&latmax=${boundingBox.latmax}&show=full`;
   const response = await fetch(url);
   const data = await response.json();
   console.log("Fossils retrieved", data);
