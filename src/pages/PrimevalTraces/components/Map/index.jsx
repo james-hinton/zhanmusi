@@ -30,6 +30,7 @@ const PrimevalMap = () => {
   const mapRef = useRef();
   // State for the fossils data
   const [fossils, setFossils] = useState([]);
+  const [shownFossils, setShownFossils] = useState([]);
   // State for the open status of the tooltip
   const [isOpenTooltip, setIsOpenTooltip] = useState(false);
 
@@ -37,6 +38,7 @@ const PrimevalMap = () => {
   const updateMap = (bounds) => {
     // Clear the current fossil data
     setFossils([]);
+    setShownFossils([]);
 
     // Define the bounding box for the API request
     const boundingBox = {
@@ -51,6 +53,24 @@ const PrimevalMap = () => {
       // Update the state with the new data if the response was successful
       if (response.status === 200) {
         setFossils(response.data);
+
+        // We need to loop through the fossils, and if there is a fossil with the exact same lat,lng we dont add it to the shownFossils array
+        let tempFossils = [];
+        for (let i = 0; i < response.data.length; i++) {
+          let found = false;
+          for (let j = 0; j < tempFossils.length; j++) {
+            if (
+              response.data[i].lat === tempFossils[j].lat &&
+              response.data[i].lng === tempFossils[j].lng
+            ) {
+              found = true;
+            }
+          }
+          if (!found) {
+            tempFossils.push(response.data[i]);
+          }
+        }
+        setShownFossils(tempFossils);
       }
     });
   };
@@ -70,7 +90,7 @@ const PrimevalMap = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {fossils.map((fossil, index) => (
+        {shownFossils.map((fossil, index) => (
           <PrimevalMarker
             key={index}
             position={[fossil.lat, fossil.lng]} // Assuming that fossil object has lat and lng properties

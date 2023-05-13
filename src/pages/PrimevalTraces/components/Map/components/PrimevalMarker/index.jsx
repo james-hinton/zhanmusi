@@ -127,7 +127,6 @@ const PrimevalMarker = ({ position, fossil, setIsOpenTooltip }) => {
           </p>
         )}
         {/* Reference section */}
-  
         {referenceID && (
           <p>
             <strong>Reference: </strong>
