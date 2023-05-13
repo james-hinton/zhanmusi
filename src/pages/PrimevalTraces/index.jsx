@@ -1,4 +1,5 @@
 import PrimevalNavbar from './components/Navbar'
+import Map from './components/Map'
 
 import './style.scss'
 
@@ -6,7 +7,7 @@ const PrimevalTraces = () => {
   return (
     <div id="primeval">
       <PrimevalNavbar />
-      <h1>Primeval Traces</h1>
+      <Map />
     </div>
   )
 }

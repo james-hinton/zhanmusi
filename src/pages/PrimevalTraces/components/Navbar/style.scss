@@ -10,6 +10,9 @@
   width: 100%;
   padding: 0.5rem 0;
   box-shadow: rgba(0, 0, 0, 0.404) 0px 20px 30px -10px;
+  border-bottom: 3px solid black;
+  z-index: 9999;
+  height: 3%;
 
   &-brand {
     color: $amber;
@@ -27,7 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 1rem;
+    padding-right: 2rem;
     color: $amber;
   }
 }
