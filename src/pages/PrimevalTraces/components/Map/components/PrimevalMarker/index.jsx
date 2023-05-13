@@ -43,20 +43,23 @@ const PrimevalMarker = ({ position, fossil, setIsOpenTooltip }) => {
       szn: speciesName,
       odl: order,
       fml: family,
+      more,
     } = fossil;
-  
+
     // Helper function to remove prefixes
     const removePrefix = (id, prefix) => id && id.replace(prefix, "");
-  
+
     // Remove prefixes from IDs
     taxonID = removePrefix(taxonID, "txn:");
     collectionID = removePrefix(collectionID, "col:");
     orderID = removePrefix(orderID, "occ:");
     referenceID = removePrefix(referenceID, "ref:");
-  
-    // If order is NO_ORDER_SPECIFIED then set to null
+
     if (order === "NO_ORDER_SPECIFIED") order = null;
-  
+    if (phylum === "NO_PHYLUM_SPECIFIED") phylum = null;
+    if (class_ === "NO_CLASS_SPECIFIED") class_ = null;
+    if (family === "NO_FAMILY_SPECIFIED") family = null;
+
     return (
       <div>
         <h3>
@@ -65,8 +68,8 @@ const PrimevalMarker = ({ position, fossil, setIsOpenTooltip }) => {
         {/* Temporal Interval section */}
         {earliestAge && latestAge && (
           <p>
-            <strong>Temporal Interval:</strong> {earliestAge} EAG to {latestAge} LAG (
-            {overallExistInterval && overallExistInterval})
+            <strong>Temporal Interval:</strong> {earliestAge} EAG to {latestAge}{" "}
+            LAG ({overallExistInterval && overallExistInterval})
           </p>
         )}
         {/* Location section */}
@@ -140,6 +143,16 @@ const PrimevalMarker = ({ position, fossil, setIsOpenTooltip }) => {
             </a>
             )
           </p>
+        )}
+        {more > 0 && (
+          <div
+            style={{
+              width: "100%",
+              color: "gray",
+            }}
+          >
+            <small>{more} more fossils found at this location</small>
+          </div>
         )}
       </div>
     );

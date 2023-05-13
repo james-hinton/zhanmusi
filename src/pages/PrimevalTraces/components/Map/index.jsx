@@ -54,7 +54,7 @@ const PrimevalMap = () => {
       if (response.status === 200) {
         setFossils(response.data);
 
-        // We need to loop through the fossils, and if there is a fossil with the exact same lat,lng we dont add it to the shownFossils array
+        // We need to loop through the fossils, and if there is a fossil with the exact same lat,lng we don't add it to the shownFossils array
         let tempFossils = [];
         for (let i = 0; i < response.data.length; i++) {
           let found = false;
@@ -64,10 +64,15 @@ const PrimevalMap = () => {
               response.data[i].lng === tempFossils[j].lng
             ) {
               found = true;
+              if (!tempFossils[j].more) {
+                tempFossils[j].more = 1;
+              } else {
+                tempFossils[j].more += 1;
+              }
             }
           }
           if (!found) {
-            tempFossils.push(response.data[i]);
+            tempFossils.push({ ...response.data[i], more: 0 });
           }
         }
         setShownFossils(tempFossils);

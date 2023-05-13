@@ -1,5 +1,4 @@
 export const retrieveFossilsForBoundingBox = async (boundingBox) => {
-  console.log("Retrieving fossils for bounding box", boundingBox);
   if (!checkBoundingBoxSize(boundingBox)) {
     return {
       status: 401,
@@ -26,10 +25,3 @@ const checkBoundingBoxSize = (boundingBox) => {
   }
   return true;
 };
-
-// interface boundingBox {
-//   lngmin: number;
-//   lngmax: number;
-//   latmin: number;
-//   latmax: number;
-// }
