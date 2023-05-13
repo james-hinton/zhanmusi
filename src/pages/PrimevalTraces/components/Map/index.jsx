@@ -7,11 +7,10 @@ import "./style.scss";
 
 const PrimevalMap = () => {
   const mapRef = useRef();
-  const defaultCenter = [38.9072, -77.0369];
 
   return (
     <div className="primeval-map">
-      <MapContainer center={[51.505, -0.09]} zoom={13}>
+      <MapContainer center={[51.505, -0.09]} zoom={3} ref={mapRef}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
