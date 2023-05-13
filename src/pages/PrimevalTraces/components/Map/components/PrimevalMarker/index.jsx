@@ -22,63 +22,124 @@ const PrimevalMarker = ({ position, fossil, setIsOpenTooltip }) => {
   };
 
   const renderPopupContent = () => {
-    let { idn, tna, oid, cid, eag, lag, ggc, cc2, stp, tid } = fossil;
-    tid = tid && tid.replace("txn:", "");
-    cid = cid && cid.replace("col:", "");
-
+    // Destructure and rename variables for clarity
+    let {
+      aut: author,
+      idn: identifier,
+      tna: taxonomicName,
+      oid: orderID,
+      cid: collectionID,
+      cnm: collectionName,
+      eag: earliestAge,
+      lag: latestAge,
+      ggc: geogComment,
+      cc2: country,
+      oei: overallExistInterval,
+      stp: stratPhylum,
+      tid: taxonID,
+      rid: referenceID,
+      phl: phylum,
+      cll: class_,
+      szn: speciesName,
+      odl: order,
+      fml: family,
+    } = fossil;
+  
+    // Helper function to remove prefixes
+    const removePrefix = (id, prefix) => id && id.replace(prefix, "");
+  
+    // Remove prefixes from IDs
+    taxonID = removePrefix(taxonID, "txn:");
+    collectionID = removePrefix(collectionID, "col:");
+    orderID = removePrefix(orderID, "occ:");
+    referenceID = removePrefix(referenceID, "ref:");
+  
+    // If order is NO_ORDER_SPECIFIED then set to null
+    if (order === "NO_ORDER_SPECIFIED") order = null;
+  
     return (
       <div>
         <h3>
-          {idn} ({tna})
+          {identifier} ({taxonomicName})
         </h3>
-
-        {oid && (
+        {/* Temporal Interval section */}
+        {earliestAge && latestAge && (
           <p>
-            <strong>Occurrence ID:</strong> {oid}
+            <strong>Temporal Interval:</strong> {earliestAge} EAG to {latestAge} LAG (
+            {overallExistInterval && overallExistInterval})
           </p>
         )}
-        {cid && (
+        {/* Location section */}
+        {geogComment ? (
           <p>
-            <strong>Collection ID:</strong>
-            {cid}
+            <strong>Location:</strong> {geogComment}
+          </p>
+        ) : (
+          collectionName && (
+            <p>
+              <strong>Location:</strong> {collectionName}
+            </p>
+          )
+        )}
+        {/* Species Name section */}
+        {speciesName && (
+          <p>
+            <strong>Species Name:</strong> {speciesName}
           </p>
         )}
-
-        {eag && (
+        {/* Taxonomic Classification section */}
+        <p>
+          {phylum && (
+            <span>
+              <strong>Phylum:</strong> {phylum}
+            </span>
+          )}
+          {class_ && (
+            <span>
+              {phylum && ", "}
+              <strong>Class:</strong> {class_}
+            </span>
+          )}
+          {order && (
+            <span>
+              {(phylum || class_) && ", "}
+              <strong>Order:</strong> {order}
+            </span>
+          )}
+          {family && (
+            <span>
+              {(phylum || class_ || order) && ", "}
+              <strong>Family:</strong> {family}
+            </span>
+          )}
+        </p>
+        {/* Taxon ID section */}
+        {taxonID && (
           <p>
-            <strong>Early Age:</strong> {eag}
-          </p>
-        )}
-        {lag && (
-          <p>
-            <strong>Late Age:</strong> {lag}
-          </p>
-        )}
-        {ggc && (
-          <p>
-            <strong>Location:</strong> {ggc}
-          </p>
-        )}
-        {cc2 && (
-          <p>
-            <strong>Country:</strong> {cc2}
-          </p>
-        )}
-        {stp && (
-          <p>
-            <strong>State:</strong> {stp}
-          </p>
-        )}
-        {tid && (
-          <p>
-            <strong>Taxon ID:</strong>
+            <strong>Taxon ID: </strong>
             <a
-              href={`https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=${tid}`}
+              href={`https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=${taxonID}`}
               target="_blank"
               rel="noreferrer"
             >
-              {tid}
+              {taxonID}
             </a>
+          </p>
+        )}
+        {/* Reference section */}
+  
+        {referenceID && (
+          <p>
+            <strong>Reference: </strong>
+            {author && author} (
+            <a
+              href={`https://paleobiodb.org/classic/displayReference?reference_no=${referenceID}&is_real_user=1`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {referenceID}
+            </a>
+            )
           </p>
         )}
       </div>
