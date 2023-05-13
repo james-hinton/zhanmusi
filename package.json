@@ -29,7 +29,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
     "react-table": "^7.8.0",
-    "react-tabs": "^3.2.2",
+    "react-tabs": "^5",
     "sass": "^1.54.0",
     "styled-components": "^5.3.6",
     "three": "^0.143.0",
