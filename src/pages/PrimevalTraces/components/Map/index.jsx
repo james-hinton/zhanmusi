@@ -36,10 +36,6 @@ const PrimevalMap = () => {
 
   // Function to update the map, called on moveend event and tooltip close
   const updateMap = (bounds) => {
-    // Clear the current fossil data
-    setFossils([]);
-    setShownFossils([]);
-
     // Define the bounding box for the API request
     const boundingBox = {
       lngmin: bounds._southWest.lng,
@@ -50,6 +46,10 @@ const PrimevalMap = () => {
 
     // Call the API to retrieve fossils for the bounding box
     retrieveFossilsForBoundingBox(boundingBox).then((response) => {
+      // Clear the current fossil data
+      setFossils([]);
+      setShownFossils([]);
+
       // Update the state with the new data if the response was successful
       if (response.status === 200) {
         setFossils(response.data);
@@ -100,6 +100,7 @@ const PrimevalMap = () => {
             key={index}
             position={[fossil.lat, fossil.lng]} // Assuming that fossil object has lat and lng properties
             fossil={fossil} // Using idn property as content of the marker
+            isOpenTooltip={isOpenTooltip}
             setIsOpenTooltip={setIsOpenTooltip}
           />
         ))}
