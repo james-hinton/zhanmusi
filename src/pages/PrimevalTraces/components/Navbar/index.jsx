@@ -5,9 +5,12 @@ import "./style.scss";
 const PrimevalNavbar = () => {
   return (
     <div className="primeval-navbar">
-      <a href="/" className="primeval-navbar-brand">
-        Primeval Traces
-      </a>
+      <div className="primeval-navbar-brand-container">
+        <a href="/" className="primeval-navbar-brand">
+          Primeval Traces
+        </a>
+        <span className="primeval-navbar-brand-subtitle">Fossil Finder by James Hinton</span>
+      </div>
       <div className="primeval-navbar-search">
         <FaSearch />
       </div>

@@ -9,7 +9,6 @@ export const retrieveFossilsForBoundingBox = async (boundingBox) => {
   const url = `https://paleobiodb.org/data1.2/occs/list.json?lngmin=${boundingBox.lngmin}&lngmax=${boundingBox.lngmax}&latmin=${boundingBox.latmin}&latmax=${boundingBox.latmax}&show=full`;
   const response = await fetch(url);
   const data = await response.json();
-  console.log("Fossils retrieved", data);
   return {
     status: 200,
     data: data.records,
@@ -19,7 +18,7 @@ export const retrieveFossilsForBoundingBox = async (boundingBox) => {
 const checkBoundingBoxSize = (boundingBox) => {
   const lngDiff = boundingBox.lngmax - boundingBox.lngmin;
   const latDiff = boundingBox.latmax - boundingBox.latmin;
-  if (lngDiff > 1 || latDiff > 1) {
+  if (lngDiff > 1.5 || latDiff > 1.5) {
     console.log("Bounding box too large, returning");
     return false;
   }
