@@ -13,6 +13,7 @@ import Mountains from "./pages/Mountains/Mountains";
 import Twitter from "./pages/Twitter";
 import Popcorn from "./pages/Popcorn";
 import Bar from "./pages/Bar";
+import PrimevalTraces from "./pages/PrimevalTraces";
 
 // Components
 import Hypnotoad from "./components/Hynotoad/Hypnotoad";
@@ -48,6 +49,7 @@ const App = () => {
       window.location.pathname.includes("twitter") ||
       window.location.pathname.includes("popcorn") ||
       window.location.pathname.includes("bar") ||
+      window.location.pathname.includes("primeval-traces") ||
       isMobile 
     ) {
       setShowNav(false);
@@ -103,6 +105,7 @@ const App = () => {
           <Route path="/twitter" element={<Twitter />} />
           <Route path="/popcorn" element={<Popcorn />} />
           <Route path="/bar" element={<Bar />} />
+          <Route path="/primeval-traces" element={<PrimevalTraces />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </div>

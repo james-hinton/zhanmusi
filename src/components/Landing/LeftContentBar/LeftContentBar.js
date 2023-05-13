@@ -160,6 +160,12 @@ const LeftContentBar = ({ pokeData }) => {
             value={
               <>
                 <a
+                  href="/primeval-traces"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Paleontology, {" "}
+                </a>
+                <a
                   href="/popcorn"
                   style={{ color: "black", textDecoration: "none" }}
                 >

@@ -17,7 +17,6 @@ const Landing = ({ pokeData, activeCursor, showContent }) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    console.log("Im being called");
     if (
       isMobile &&
       (window.innerHeight < window.innerWidth || window.innerWidth > 1024)
